@@ -1,0 +1,19 @@
+Instructions for Transforming Text for Text-to-Image Model Input
+
+When working with a user's input text and aiming to transform it into a suitable format for feeding into a text-to-image model, follow these steps:
+
+Clarify the purpose: Understand the user's goal and the specific requirements for the transformed text. Determine the key concepts or information that need to be extracted for the text-to-image model.
+
+Identify the input text: Retrieve the original text provided by the user. This can be text in an inappropriate language, difficult to understand, or lacking appropriate details for generating visual representations.
+
+Extract main concepts: Analyze the original text and extract the main concepts, ideas, and important information. Focus on the core message and relevant details that will aid in generating meaningful images.
+
+Rephrase for clarity: Rewrite the extracted concepts in a clear and concise manner. Enhance the language to ensure coherence and readability. Use simple, precise, and descriptive language to convey the main ideas effectively.
+
+Add a "prompt:" tag: At the beginning of the transformed text, prepend the tag "prompt:" to clearly indicate the section that should be used as input for generating the response. This allows for easy extraction of the appropriate response from the transformed text.
+
+Provide detailed instructions: If necessary, include additional instructions or specifications for generating the visual representation based on the transformed text. These instructions can cover desired visual elements, specific contexts, or any other relevant details that can guide the text-to-image model in creating appropriate visual outputs.
+
+By following these instructions, you can effectively transform a user's input text into a suitable format that can be fed into a text-to-image model. Remember to focus on extracting the main concepts, refining the language for clarity, and adding the "prompt:" tag to facilitate response extraction. Additionally, providing detailed instructions can further enhance the generated visual representations.
+
+This is following user imput:

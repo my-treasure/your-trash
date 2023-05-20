@@ -793,9 +793,1248 @@ Migrating to AddColumnsToOffers (20230520102352)
   [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(2054292390599346030)[0m
   [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-=======
-  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2054292390599346030)[0m
+  [1m[35m (394.3ms)[0m  [1m[35mCREATE DATABASE "CHANGE_THIS_TO_YOUR_RAILS_APP_NAME_development" ENCODING = 'unicode'[0m
+  [1m[35m (181.1ms)[0m  [1m[35mCREATE DATABASE "CHANGE_THIS_TO_YOUR_RAILS_APP_NAME_test" ENCODING = 'unicode'[0m
+  [1m[35m (33.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (17.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2054292390599346030)[0m
   [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20230518175628)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (19.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp(6), "remember_created_at" timestamp(6), "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (6.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (5.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230518175628"]]
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateFollows (20230518180651)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (10.0ms)[0m  [1m[35mCREATE TABLE "follows" ("id" bigserial primary key, "user_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_32479bd030"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (5.8ms)[0m  [1m[35mCREATE INDEX "index_follows_on_user_id" ON "follows" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230518180651"]]
+  [1m[36mTRANSACTION (2.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateOffers (20230518180944)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (12.2ms)[0m  [1m[35mCREATE TABLE "offers" ("id" bigserial primary key, "title" text, "body" text, "user_id" bigint NOT NULL, "address" text, "offer_image" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_e6095d6211"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (5.0ms)[0m  [1m[35mCREATE INDEX "index_offers_on_user_id" ON "offers" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230518180944"]]
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateMessages (20230518181027)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (10.8ms)[0m  [1m[35mCREATE TABLE "messages" ("id" bigserial primary key, "title" text, "body" text, "user_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_273a25a7a6"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE INDEX "index_messages_on_user_id" ON "messages" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230518181027"]]
+  [1m[36mTRANSACTION (2.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateBookings (20230518181106)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.0ms)[0m  [1m[35mCREATE TABLE "bookings" ("id" bigserial primary key, "user_id" bigint NOT NULL, "offer_id" bigint NOT NULL, "pick_up_time" timestamp(6), "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_ef0571f117"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_9c126c1dd5"
+FOREIGN KEY ("offer_id")
+  REFERENCES "offers" ("id")
+)[0m
+  [1m[35m (6.2ms)[0m  [1m[35mCREATE INDEX "index_bookings_on_user_id" ON "bookings" ("user_id")[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE INDEX "index_bookings_on_offer_id" ON "bookings" ("offer_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230518181106"]]
+  [1m[36mTRANSACTION (2.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateReviews (20230518182544)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (11.7ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" bigserial primary key, "booking_id" bigint NOT NULL, "user_id" bigint NOT NULL, "comment" text, "rating" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_ba7db97e35"
+FOREIGN KEY ("booking_id")
+  REFERENCES "bookings" ("id")
+, CONSTRAINT "fk_rails_74a66bd6c5"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (5.0ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_booking_id" ON "reviews" ("booking_id")[0m
+  [1m[35m (10.7ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_user_id" ON "reviews" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230518182544"]]
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddColumnsToUsers (20230518183135)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "username" text[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "info" text[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230518183135"]]
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to RemoveOfferImageFromOffers (20230518183848)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "offers" DROP COLUMN "offer_image"[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230518183848"]]
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateBookingStatuses (20230518184702)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.2ms)[0m  [1m[35mCREATE TABLE "booking_statuses" ("id" bigserial primary key, "accepted" boolean, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230518184702"]]
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddOtherColumnsToUsers (20230520101055)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "address" character varying[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "longitude" float[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "latitute" float[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "role" character varying[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230520101055"]]
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddColumnsToOffers (20230520102352)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "offers" ADD "longitude" float[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "offers" ADD "latitude" float[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "offers" ADD "pickupslots" timestamp(6)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "offers" ADD "typeofoffer" character varying[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "offers" ADD "foodtype" character varying[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "offers" ADD "allergengluten" boolean[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "offers" ADD "allergennuts" boolean[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "offers" ADD "allergenfish" boolean[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "offers" ADD "allergenother" boolean[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230520102352"]]
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-05-20 13:41:26.509279"], ["updated_at", "2023-05-20 13:41:26.509279"]]
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(2054292390599346030)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2054292390599346030)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to FixLatitute (20230520142145)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (10.8ms)[0m  [1m[35mALTER TABLE "users" RENAME COLUMN "latitute" TO "latitude"[0m
+  [1m[36mActiveRecord::SchemaMigration Create (3.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230520142145"]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.8ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(2054292390599346030)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2054292390599346030)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
-  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(2054292390599346030)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(2054292390599346030)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2054292390599346030)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddColumnsToBookingStatuses (20230520134157)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (9.7ms)[0m  [1m[35mALTER TABLE "booking_statuses" ADD "booking_id" integer[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230520134157"]]
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(2054292390599346030)[0m
   [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (84.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "CHANGE_THIS_TO_YOUR_RAILS_APP_NAME_development"[0m
+  [1m[35m (45.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "CHANGE_THIS_TO_YOUR_RAILS_APP_NAME_test"[0m
+  [1m[35m (216.2ms)[0m  [1m[35mCREATE DATABASE "CHANGE_THIS_TO_YOUR_RAILS_APP_NAME_development" ENCODING = 'unicode'[0m
+  [1m[35m (98.2ms)[0m  [1m[35mCREATE DATABASE "CHANGE_THIS_TO_YOUR_RAILS_APP_NAME_test" ENCODING = 'unicode'[0m
+  [1m[35m (6.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2054292390599346030)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20230518175628)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp(6), "remember_created_at" timestamp(6), "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230518175628"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateFollows (20230518180651)
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.1ms)[0m  [1m[35mCREATE TABLE "follows" ("id" bigserial primary key, "user_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_32479bd030"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE INDEX "index_follows_on_user_id" ON "follows" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230518180651"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateOffers (20230518180944)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE TABLE "offers" ("id" bigserial primary key, "title" text, "body" text, "user_id" bigint NOT NULL, "address" text, "offer_image" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_e6095d6211"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE INDEX "index_offers_on_user_id" ON "offers" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230518180944"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateMessages (20230518181027)
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.6ms)[0m  [1m[35mCREATE TABLE "messages" ("id" bigserial primary key, "title" text, "body" text, "user_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_273a25a7a6"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE INDEX "index_messages_on_user_id" ON "messages" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230518181027"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateBookings (20230518181106)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.3ms)[0m  [1m[35mCREATE TABLE "bookings" ("id" bigserial primary key, "user_id" bigint NOT NULL, "offer_id" bigint NOT NULL, "pick_up_time" timestamp(6), "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_ef0571f117"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_9c126c1dd5"
+FOREIGN KEY ("offer_id")
+  REFERENCES "offers" ("id")
+)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE INDEX "index_bookings_on_user_id" ON "bookings" ("user_id")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE INDEX "index_bookings_on_offer_id" ON "bookings" ("offer_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230518181106"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateReviews (20230518182544)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" bigserial primary key, "booking_id" bigint NOT NULL, "user_id" bigint NOT NULL, "comment" text, "rating" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_ba7db97e35"
+FOREIGN KEY ("booking_id")
+  REFERENCES "bookings" ("id")
+, CONSTRAINT "fk_rails_74a66bd6c5"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_booking_id" ON "reviews" ("booking_id")[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_user_id" ON "reviews" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230518182544"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddColumnsToUsers (20230518183135)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "username" text[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "users" ADD "info" text[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230518183135"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to RemoveOfferImageFromOffers (20230518183848)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "offers" DROP COLUMN "offer_image"[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230518183848"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateBookingStatuses (20230518184702)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "booking_statuses" ("id" bigserial primary key, "accepted" boolean, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230518184702"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddOtherColumnsToUsers (20230520101055)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "address" character varying[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "longitude" float[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "latitute" float[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "role" character varying[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230520101055"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddColumnsToOffers (20230520102352)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "offers" ADD "longitude" float[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "offers" ADD "latitude" float[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "offers" ADD "pickupslots" timestamp(6)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "offers" ADD "typeofoffer" character varying[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "offers" ADD "foodtype" character varying[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "offers" ADD "allergengluten" boolean[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "offers" ADD "allergennuts" boolean[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "offers" ADD "allergenfish" boolean[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "offers" ADD "allergenother" boolean[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230520102352"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddColumnsToBookingStatuses (20230520134157)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "booking_statuses" ADD "booking_id" integer[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230520134157"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-05-20 14:30:43.893506"], ["updated_at", "2023-05-20 14:30:43.893506"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(2054292390599346030)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (1.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (60.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "CHANGE_THIS_TO_YOUR_RAILS_APP_NAME_development"[0m
+  [1m[35m (38.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "CHANGE_THIS_TO_YOUR_RAILS_APP_NAME_test"[0m
+  [1m[35m (214.3ms)[0m  [1m[35mCREATE DATABASE "CHANGE_THIS_TO_YOUR_RAILS_APP_NAME_development" ENCODING = 'unicode'[0m
+  [1m[35m (104.3ms)[0m  [1m[35mCREATE DATABASE "CHANGE_THIS_TO_YOUR_RAILS_APP_NAME_test" ENCODING = 'unicode'[0m
+  [1m[35m (4.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (5.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2054292390599346030)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20230518175628)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp(6), "remember_created_at" timestamp(6), "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230518175628"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateFollows (20230518180651)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "follows" ("id" bigserial primary key, "user_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_32479bd030"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE INDEX "index_follows_on_user_id" ON "follows" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230518180651"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateOffers (20230518180944)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE TABLE "offers" ("id" bigserial primary key, "title" text, "body" text, "user_id" bigint NOT NULL, "address" text, "offer_image" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_e6095d6211"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE INDEX "index_offers_on_user_id" ON "offers" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230518180944"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateMessages (20230518181027)
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.6ms)[0m  [1m[35mCREATE TABLE "messages" ("id" bigserial primary key, "title" text, "body" text, "user_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_273a25a7a6"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX "index_messages_on_user_id" ON "messages" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230518181027"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateBookings (20230518181106)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE "bookings" ("id" bigserial primary key, "user_id" bigint NOT NULL, "offer_id" bigint NOT NULL, "pick_up_time" timestamp(6), "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_ef0571f117"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_9c126c1dd5"
+FOREIGN KEY ("offer_id")
+  REFERENCES "offers" ("id")
+)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE INDEX "index_bookings_on_user_id" ON "bookings" ("user_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE INDEX "index_bookings_on_offer_id" ON "bookings" ("offer_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230518181106"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateReviews (20230518182544)
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.0ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" bigserial primary key, "booking_id" bigint NOT NULL, "user_id" bigint NOT NULL, "comment" text, "rating" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_ba7db97e35"
+FOREIGN KEY ("booking_id")
+  REFERENCES "bookings" ("id")
+, CONSTRAINT "fk_rails_74a66bd6c5"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_booking_id" ON "reviews" ("booking_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_user_id" ON "reviews" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230518182544"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddColumnsToUsers (20230518183135)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "users" ADD "username" text[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "users" ADD "info" text[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230518183135"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to RemoveOfferImageFromOffers (20230518183848)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.1ms)[0m  [1m[35mALTER TABLE "offers" DROP COLUMN "offer_image"[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230518183848"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateBookingStatuses (20230518184702)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "booking_statuses" ("id" bigserial primary key, "accepted" boolean, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230518184702"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddOtherColumnsToUsers (20230520101055)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "address" character varying[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "longitude" float[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "latitute" float[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "role" character varying[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230520101055"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddColumnsToOffers (20230520102352)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "offers" ADD "longitude" float[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "offers" ADD "latitude" float[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "offers" ADD "pickupslots" timestamp(6)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "offers" ADD "typeofoffer" character varying[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "offers" ADD "foodtype" character varying[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "offers" ADD "allergengluten" boolean[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "offers" ADD "allergennuts" boolean[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "offers" ADD "allergenfish" boolean[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "offers" ADD "allergenother" boolean[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230520102352"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddColumnsToBookingStatuses (20230520134157)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "booking_statuses" ADD "booking_id" integer[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230520134157"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddNewColumnToCreateTable (20230520152515)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.1ms)[0m  [1m[35mALTER TABLE "create_tables" ADD "allergen" boolean[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(2054292390599346030)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (2.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE DATABASE "CHANGE_THIS_TO_YOUR_RAILS_APP_NAME_development" ENCODING = 'unicode'[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE DATABASE "CHANGE_THIS_TO_YOUR_RAILS_APP_NAME_test" ENCODING = 'unicode'[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2054292390599346030)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddNewColumnToCreateTable (20230520152515)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "create_tables" ADD "allergen" boolean[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(2054292390599346030)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (1.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE DATABASE "CHANGE_THIS_TO_YOUR_RAILS_APP_NAME_development" ENCODING = 'unicode'[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE DATABASE "CHANGE_THIS_TO_YOUR_RAILS_APP_NAME_test" ENCODING = 'unicode'[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2054292390599346030)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddNewColumnToOffers (20230520153122)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "offers" ADD "allergen" boolean[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230520153122"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-05-20 15:31:51.134147"], ["updated_at", "2023-05-20 15:31:51.134147"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(2054292390599346030)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (74.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "CHANGE_THIS_TO_YOUR_RAILS_APP_NAME_development"[0m
+  [1m[35m (53.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "CHANGE_THIS_TO_YOUR_RAILS_APP_NAME_test"[0m
+  [1m[35m (205.4ms)[0m  [1m[35mCREATE DATABASE "CHANGE_THIS_TO_YOUR_RAILS_APP_NAME_development" ENCODING = 'unicode'[0m
+  [1m[35m (93.1ms)[0m  [1m[35mCREATE DATABASE "CHANGE_THIS_TO_YOUR_RAILS_APP_NAME_test" ENCODING = 'unicode'[0m
+  [1m[35m (19.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2054292390599346030)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20230518175628)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp(6), "remember_created_at" timestamp(6), "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230518175628"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateFollows (20230518180651)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "follows" ("id" bigserial primary key, "user_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_32479bd030"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX "index_follows_on_user_id" ON "follows" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230518180651"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateOffers (20230518180944)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "offers" ("id" bigserial primary key, "title" text, "body" text, "user_id" bigint NOT NULL, "address" text, "offer_image" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_e6095d6211"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (8.6ms)[0m  [1m[35mCREATE INDEX "index_offers_on_user_id" ON "offers" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230518180944"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateMessages (20230518181027)
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE TABLE "messages" ("id" bigserial primary key, "title" text, "body" text, "user_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_273a25a7a6"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (5.4ms)[0m  [1m[35mCREATE INDEX "index_messages_on_user_id" ON "messages" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230518181027"]]
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateBookings (20230518181106)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "bookings" ("id" bigserial primary key, "user_id" bigint NOT NULL, "offer_id" bigint NOT NULL, "pick_up_time" timestamp(6), "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_ef0571f117"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_9c126c1dd5"
+FOREIGN KEY ("offer_id")
+  REFERENCES "offers" ("id")
+)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX "index_bookings_on_user_id" ON "bookings" ("user_id")[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE INDEX "index_bookings_on_offer_id" ON "bookings" ("offer_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230518181106"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateReviews (20230518182544)
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" bigserial primary key, "booking_id" bigint NOT NULL, "user_id" bigint NOT NULL, "comment" text, "rating" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_ba7db97e35"
+FOREIGN KEY ("booking_id")
+  REFERENCES "bookings" ("id")
+, CONSTRAINT "fk_rails_74a66bd6c5"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_booking_id" ON "reviews" ("booking_id")[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_user_id" ON "reviews" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230518182544"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddColumnsToUsers (20230518183135)
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "users" ADD "username" text[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "info" text[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230518183135"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to RemoveOfferImageFromOffers (20230518183848)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "offers" DROP COLUMN "offer_image"[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230518183848"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateBookingStatuses (20230518184702)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "booking_statuses" ("id" bigserial primary key, "accepted" boolean, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230518184702"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddOtherColumnsToUsers (20230520101055)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "address" character varying[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "longitude" float[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "latitute" float[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "role" character varying[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230520101055"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddColumnsToOffers (20230520102352)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "offers" ADD "longitude" float[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "offers" ADD "latitude" float[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "offers" ADD "pickupslots" timestamp(6)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "offers" ADD "typeofoffer" character varying[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "offers" ADD "foodtype" character varying[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "offers" ADD "allergengluten" boolean[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "offers" ADD "allergennuts" boolean[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "offers" ADD "allergenfish" boolean[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "offers" ADD "allergenother" boolean[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230520102352"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddColumnsToBookingStatuses (20230520134157)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "booking_statuses" ADD "booking_id" integer[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230520134157"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddNewColumnToOffers (20230520153122)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "offers" ADD "allergen" boolean[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230520153122"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to RemoveColumnAllergenglutenFromOffers (20230520153633)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "offers" DROP COLUMN "allergengluten"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "offers" DROP COLUMN "allergenfish"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "offers" DROP COLUMN "allergennuts"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "offers" DROP COLUMN "allergenother"[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230520153633"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-05-20 15:37:25.404837"], ["updated_at", "2023-05-20 15:37:25.404837"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(2054292390599346030)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+=======
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2054292390599346030)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateActiveStorageTables (20230520144918)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (60.4ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "service_name" character varying NOT NULL, "byte_size" bigint NOT NULL, "checksum" character varying, "created_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (9.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  [1m[35m (21.7ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (9.9ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (6.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (12.1ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" bigserial primary key, "blob_id" bigint NOT NULL, "variation_digest" character varying NOT NULL, CONSTRAINT "fk_rails_993965df05"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (8.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230520144918"]]
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(2054292390599346030)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+DEPRECATION WARNING: image/jpg is not a valid content type, it should not be used when creating a blob, and support for it will be removed in Rails 7.1. If you want to keep supporting this content type past Rails 7.1, add it to `config.active_storage.variable_content_types`. Dismiss this warning by setting `config.active_storage.silence_invalid_content_types_warning = true`. (called from <main> at db/seeds/4_create_users.rb:28)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (3.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@admin.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (3.1ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "username", "info", "address", "longitude", "latitude", "role") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["email", "admin@admin.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2023-05-20 14:49:32.058387"], ["updated_at", "2023-05-20 14:49:32.058387"], ["username", "admin"], ["info", "I am the admin of this website"], ["address", "70, Manteuffelstraße, Luisenstadt, Kreuzberg, Friedrichshain-Kreuzberg, Berlin, 10999, Germany"], ["longitude", 13.424278526160498], ["latitude", 52.49640283049725], ["role", "admin"]]
+  [1m[36mActiveStorage::Blob Load (1.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.6ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "sfq4zzw7ttr6df05i3rw23hi6z3o"], ["filename", "profile_pictures/photo-1488410632976-f7b286bbddd6"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "cloudinary"], ["byte_size", 12051], ["checksum", "Mcsyfdb+6766gmr9ZDin5Q=="], ["created_at", "2023-05-20 14:49:32.121146"]]
+  [1m[36mActiveStorage::Attachment Create (10.0ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "profile_picture"], ["record_type", "User"], ["record_id", 1], ["blob_id", 1], ["created_at", "2023-05-20 14:49:32.123704"]]
+  [1m[36mUser Update (4.5ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1 WHERE "users"."id" = $2[0m  [["updated_at", "2023-05-20 14:49:32.135340"], ["id", 1]]
+  [1m[36mTRANSACTION (2.5ms)[0m  [1m[35mCOMMIT[0m
+[36m  Cloudinary Storage (991.3ms) [0m[32mUploaded file to key: sfq4zzw7ttr6df05i3rw23hi6z3o (checksum: Mcsyfdb+6766gmr9ZDin5Q==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 7801637b-9a54-4e3a-a7c1-e736f98514ad) to Async(default) with arguments: #<GlobalID:0x00007fe3a8028bc0 @uri=#<URI::GID gid://change-this-to-your-rails-app-name/ActiveStorage::Blob/1>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7801637b-9a54-4e3a-a7c1-e736f98514ad]   [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7801637b-9a54-4e3a-a7c1-e736f98514ad] Performing ActiveStorage::AnalyzeJob (Job ID: 7801637b-9a54-4e3a-a7c1-e736f98514ad) from Async(default) enqueued at 2023-05-20T14:49:33Z with arguments: #<GlobalID:0x00007fe3aa4f3478 @uri=#<URI::GID gid://change-this-to-your-rails-app-name/ActiveStorage::Blob/1>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7801637b-9a54-4e3a-a7c1-e736f98514ad] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7801637b-9a54-4e3a-a7c1-e736f98514ad]   [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7801637b-9a54-4e3a-a7c1-e736f98514ad]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7801637b-9a54-4e3a-a7c1-e736f98514ad]   [1m[36mTRANSACTION (2.7ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7801637b-9a54-4e3a-a7c1-e736f98514ad] Performed ActiveStorage::AnalyzeJob (Job ID: 7801637b-9a54-4e3a-a7c1-e736f98514ad) from Async(default) in 1290.87ms
+DEPRECATION WARNING: image/jpg is not a valid content type, it should not be used when creating a blob, and support for it will be removed in Rails 7.1. If you want to keep supporting this content type past Rails 7.1, add it to `config.active_storage.variable_content_types`. Dismiss this warning by setting `config.active_storage.silence_invalid_content_types_warning = true`. (called from block in <main> at db/seeds/4_create_users.rb:53)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "shakira.price@borer.test"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "username", "info", "address", "longitude", "latitude", "role") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["email", "shakira.price@borer.test"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2023-05-20 14:49:39.274287"], ["updated_at", "2023-05-20 14:49:39.274287"], ["username", "gail_ledner"], ["info", "Repellendus ut distinctio. Neque quasi distinctio."], ["address", "Nachbarschaftsladen, 65, Naunynstraße, Luisenstadt, Kreuzberg, Friedrichshain-Kreuzberg, Berlin, 10997, Germany"], ["longitude", 13.42140548073112], ["latitude", 52.5018331058832], ["role", "seed"]]
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "i0jsa7ovgi8k5sm20ftborhg6f8y"], ["filename", "profile_pictures/photo-1577023311546-cdc07a8454d9"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "cloudinary"], ["byte_size", 11107], ["checksum", "yethFZENYglhGdaqb4cTSA=="], ["created_at", "2023-05-20 14:49:39.280468"]]
+  [1m[36mActiveStorage::Attachment Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "profile_picture"], ["record_type", "User"], ["record_id", 2], ["blob_id", 2], ["created_at", "2023-05-20 14:49:39.282452"]]
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1 WHERE "users"."id" = $2[0m  [["updated_at", "2023-05-20 14:49:39.284207"], ["id", 2]]
+  [1m[36mTRANSACTION (7.4ms)[0m  [1m[35mCOMMIT[0m
+[36m  Cloudinary Storage (1033.3ms) [0m[32mUploaded file to key: i0jsa7ovgi8k5sm20ftborhg6f8y (checksum: yethFZENYglhGdaqb4cTSA==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 3b6b6a73-26c7-452f-954b-e846c8546f03) to Async(default) with arguments: #<GlobalID:0x00007fe3a31a2230 @uri=#<URI::GID gid://change-this-to-your-rails-app-name/ActiveStorage::Blob/2>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3b6b6a73-26c7-452f-954b-e846c8546f03]   [1m[36mActiveStorage::Blob Load (0.9ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3b6b6a73-26c7-452f-954b-e846c8546f03] Performing ActiveStorage::AnalyzeJob (Job ID: 3b6b6a73-26c7-452f-954b-e846c8546f03) from Async(default) enqueued at 2023-05-20T14:49:40Z with arguments: #<GlobalID:0x00007fe3a3182db8 @uri=#<URI::GID gid://change-this-to-your-rails-app-name/ActiveStorage::Blob/2>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3b6b6a73-26c7-452f-954b-e846c8546f03] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3b6b6a73-26c7-452f-954b-e846c8546f03]   [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3b6b6a73-26c7-452f-954b-e846c8546f03]   [1m[36mActiveStorage::Blob Update (0.8ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 2]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3b6b6a73-26c7-452f-954b-e846c8546f03]   [1m[36mTRANSACTION (4.1ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3b6b6a73-26c7-452f-954b-e846c8546f03] Performed ActiveStorage::AnalyzeJob (Job ID: 3b6b6a73-26c7-452f-954b-e846c8546f03) from Async(default) in 22.47ms
+DEPRECATION WARNING: image/jpg is not a valid content type, it should not be used when creating a blob, and support for it will be removed in Rails 7.1. If you want to keep supporting this content type past Rails 7.1, add it to `config.active_storage.variable_content_types`. Dismiss this warning by setting `config.active_storage.silence_invalid_content_types_warning = true`. (called from block in <main> at db/seeds/4_create_users.rb:53)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "hilda.kunze@oreilly-adams.example"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "username", "info", "address", "longitude", "latitude", "role") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["email", "hilda.kunze@oreilly-adams.example"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2023-05-20 14:49:41.302888"], ["updated_at", "2023-05-20 14:49:41.302888"], ["username", "isidra.mclaughlin"], ["info", "Velit in culpa. Vitae est recusandae."], ["address", "EKT - Leierkasten e.V., Muskauer Straße, Luisenstadt, Kreuzberg, Friedrichshain-Kreuzberg, Berlin, 10997, Germany"], ["longitude", 13.4298236980947], ["latitude", 52.502078571807836], ["role", "seed"]]
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "uwu03t2y46bs5labtbonp76enun3"], ["filename", "profile_pictures/photo-1438283173091-5dbf5c5a3206"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "cloudinary"], ["byte_size", 17819], ["checksum", "YGpKjOGyDuCfLgTECXOnSg=="], ["created_at", "2023-05-20 14:49:41.308791"]]
+  [1m[36mActiveStorage::Attachment Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "profile_picture"], ["record_type", "User"], ["record_id", 3], ["blob_id", 3], ["created_at", "2023-05-20 14:49:41.310677"]]
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1 WHERE "users"."id" = $2[0m  [["updated_at", "2023-05-20 14:49:41.312180"], ["id", 3]]
+  [1m[36mTRANSACTION (3.4ms)[0m  [1m[35mCOMMIT[0m
+[36m  Cloudinary Storage (1308.8ms) [0m[32mUploaded file to key: uwu03t2y46bs5labtbonp76enun3 (checksum: YGpKjOGyDuCfLgTECXOnSg==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 922d4024-2115-4b1b-9d0b-7e73e787fa00) to Async(default) with arguments: #<GlobalID:0x00007fe3a3091e90 @uri=#<URI::GID gid://change-this-to-your-rails-app-name/ActiveStorage::Blob/3>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [922d4024-2115-4b1b-9d0b-7e73e787fa00]   [1m[36mActiveStorage::Blob Load (0.7ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [922d4024-2115-4b1b-9d0b-7e73e787fa00] Performing ActiveStorage::AnalyzeJob (Job ID: 922d4024-2115-4b1b-9d0b-7e73e787fa00) from Async(default) enqueued at 2023-05-20T14:49:42Z with arguments: #<GlobalID:0x00007fe3a307a268 @uri=#<URI::GID gid://change-this-to-your-rails-app-name/ActiveStorage::Blob/3>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [922d4024-2115-4b1b-9d0b-7e73e787fa00] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [922d4024-2115-4b1b-9d0b-7e73e787fa00]   [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [922d4024-2115-4b1b-9d0b-7e73e787fa00]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 3]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [922d4024-2115-4b1b-9d0b-7e73e787fa00]   [1m[36mTRANSACTION (3.0ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [922d4024-2115-4b1b-9d0b-7e73e787fa00] Performed ActiveStorage::AnalyzeJob (Job ID: 922d4024-2115-4b1b-9d0b-7e73e787fa00) from Async(default) in 15.08ms
+DEPRECATION WARNING: image/jpg is not a valid content type, it should not be used when creating a blob, and support for it will be removed in Rails 7.1. If you want to keep supporting this content type past Rails 7.1, add it to `config.active_storage.variable_content_types`. Dismiss this warning by setting `config.active_storage.silence_invalid_content_types_warning = true`. (called from block in <main> at db/seeds/4_create_users.rb:53)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "tyrell_beer@hintz.example"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "username", "info", "address", "longitude", "latitude", "role") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["email", "tyrell_beer@hintz.example"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2023-05-20 14:49:43.231028"], ["updated_at", "2023-05-20 14:49:43.231028"], ["username", "lance"], ["info", "Et quia consequatur. Sapiente et eius."], ["address", "6, Neue Jakobstraße, Luisenstadt, Mitte, Berlin, 10179, Germany"], ["longitude", 13.412348277467585], ["latitude", 52.51134439312441], ["role", "seed"]]
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "wfyn1irz014cdevhea93yb50ecyc"], ["filename", "profile_pictures/photo-1507808973436-a4ed7b5e87c9"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "cloudinary"], ["byte_size", 10405], ["checksum", "VgeZ0v00oP0PNstlRCFBRQ=="], ["created_at", "2023-05-20 14:49:43.237272"]]
+  [1m[36mActiveStorage::Attachment Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "profile_picture"], ["record_type", "User"], ["record_id", 4], ["blob_id", 4], ["created_at", "2023-05-20 14:49:43.239223"]]
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1 WHERE "users"."id" = $2[0m  [["updated_at", "2023-05-20 14:49:43.240737"], ["id", 4]]
+  [1m[36mTRANSACTION (5.7ms)[0m  [1m[35mCOMMIT[0m
+[36m  Cloudinary Storage (975.9ms) [0m[32mUploaded file to key: wfyn1irz014cdevhea93yb50ecyc (checksum: VgeZ0v00oP0PNstlRCFBRQ==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 7f47660d-d0d1-4093-ba9c-f07157dd4811) to Async(default) with arguments: #<GlobalID:0x00007fe3a2fb5030 @uri=#<URI::GID gid://change-this-to-your-rails-app-name/ActiveStorage::Blob/4>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7f47660d-d0d1-4093-ba9c-f07157dd4811]   [1m[36mActiveStorage::Blob Load (0.8ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7f47660d-d0d1-4093-ba9c-f07157dd4811] Performing ActiveStorage::AnalyzeJob (Job ID: 7f47660d-d0d1-4093-ba9c-f07157dd4811) from Async(default) enqueued at 2023-05-20T14:49:44Z with arguments: #<GlobalID:0x00007fe3a2f9d2c8 @uri=#<URI::GID gid://change-this-to-your-rails-app-name/ActiveStorage::Blob/4>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7f47660d-d0d1-4093-ba9c-f07157dd4811] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7f47660d-d0d1-4093-ba9c-f07157dd4811]   [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7f47660d-d0d1-4093-ba9c-f07157dd4811]   [1m[36mActiveStorage::Blob Update (1.3ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 4]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7f47660d-d0d1-4093-ba9c-f07157dd4811]   [1m[36mTRANSACTION (7.5ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7f47660d-d0d1-4093-ba9c-f07157dd4811] Performed ActiveStorage::AnalyzeJob (Job ID: 7f47660d-d0d1-4093-ba9c-f07157dd4811) from Async(default) in 32.88ms
+DEPRECATION WARNING: image/jpg is not a valid content type, it should not be used when creating a blob, and support for it will be removed in Rails 7.1. If you want to keep supporting this content type past Rails 7.1, add it to `config.active_storage.variable_content_types`. Dismiss this warning by setting `config.active_storage.silence_invalid_content_types_warning = true`. (called from block in <main> at db/seeds/4_create_users.rb:53)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "hortensia@reilly.example"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "username", "info", "address", "longitude", "latitude", "role") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["email", "hortensia@reilly.example"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2023-05-20 14:49:44.950025"], ["updated_at", "2023-05-20 14:49:44.950025"], ["username", "mitch"], ["info", "Alias enim voluptas. Dolore maiores ut."], ["address", "159, Reichenberger Straße, Luisenstadt, Kreuzberg, Friedrichshain-Kreuzberg, Berlin, 10999, Germany"], ["longitude", 13.42292088302525], ["latitude", 52.49810671206702], ["role", "seed"]]
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "ds0i6bvhqzhtwi8qx5w4vh9i4850"], ["filename", "profile_pictures/photo-1589883661923-6476cb0ae9f2"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "cloudinary"], ["byte_size", 7607], ["checksum", "TklEIV8OhokxWMLse8MHgA=="], ["created_at", "2023-05-20 14:49:44.956141"]]
+  [1m[36mActiveStorage::Attachment Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "profile_picture"], ["record_type", "User"], ["record_id", 5], ["blob_id", 5], ["created_at", "2023-05-20 14:49:44.958022"]]
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1 WHERE "users"."id" = $2[0m  [["updated_at", "2023-05-20 14:49:44.959538"], ["id", 5]]
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[35mCOMMIT[0m
+[36m  Cloudinary Storage (1166.7ms) [0m[32mUploaded file to key: ds0i6bvhqzhtwi8qx5w4vh9i4850 (checksum: TklEIV8OhokxWMLse8MHgA==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 938ffa19-194d-4113-87a3-45f318fa5567) to Async(default) with arguments: #<GlobalID:0x00007fe3a2ed8a68 @uri=#<URI::GID gid://change-this-to-your-rails-app-name/ActiveStorage::Blob/5>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [938ffa19-194d-4113-87a3-45f318fa5567]   [1m[36mActiveStorage::Blob Load (1.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [938ffa19-194d-4113-87a3-45f318fa5567] Performing ActiveStorage::AnalyzeJob (Job ID: 938ffa19-194d-4113-87a3-45f318fa5567) from Async(default) enqueued at 2023-05-20T14:49:46Z with arguments: #<GlobalID:0x00007fe3a2ec7718 @uri=#<URI::GID gid://change-this-to-your-rails-app-name/ActiveStorage::Blob/5>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [938ffa19-194d-4113-87a3-45f318fa5567] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [938ffa19-194d-4113-87a3-45f318fa5567]   [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [938ffa19-194d-4113-87a3-45f318fa5567]   [1m[36mActiveStorage::Blob Update (0.7ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 5]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [938ffa19-194d-4113-87a3-45f318fa5567]   [1m[36mTRANSACTION (2.8ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [938ffa19-194d-4113-87a3-45f318fa5567] Performed ActiveStorage::AnalyzeJob (Job ID: 938ffa19-194d-4113-87a3-45f318fa5567) from Async(default) in 24.81ms
+DEPRECATION WARNING: image/jpg is not a valid content type, it should not be used when creating a blob, and support for it will be removed in Rails 7.1. If you want to keep supporting this content type past Rails 7.1, add it to `config.active_storage.variable_content_types`. Dismiss this warning by setting `config.active_storage.silence_invalid_content_types_warning = true`. (called from block in <main> at db/seeds/4_create_users.rb:53)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "winford@effertz.test"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "username", "info", "address", "longitude", "latitude", "role") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["email", "winford@effertz.test"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2023-05-20 14:49:46.704696"], ["updated_at", "2023-05-20 14:49:46.704696"], ["username", "santos"], ["info", "Ipsam quasi dolores. In enim ullam."], ["address", "Bistro Arena am Ostbahnhof, Erich-Steinfurth-Straße, Friedrichshain, Friedrichshain-Kreuzberg, Berlin, 10243, Germany"], ["longitude", 13.436630618463491], ["latitude", 52.510542806567706], ["role", "seed"]]
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 6], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 6], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "g55xrlsho9t78coq1ycajz10sz3v"], ["filename", "profile_pictures/photo-1507808973436-a4ed7b5e87c9"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "cloudinary"], ["byte_size", 10405], ["checksum", "VgeZ0v00oP0PNstlRCFBRQ=="], ["created_at", "2023-05-20 14:49:46.710412"]]
+  [1m[36mActiveStorage::Attachment Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "profile_picture"], ["record_type", "User"], ["record_id", 6], ["blob_id", 6], ["created_at", "2023-05-20 14:49:46.712449"]]
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1 WHERE "users"."id" = $2[0m  [["updated_at", "2023-05-20 14:49:46.714140"], ["id", 6]]
+  [1m[36mTRANSACTION (6.1ms)[0m  [1m[35mCOMMIT[0m
+[36m  Cloudinary Storage (1034.0ms) [0m[32mUploaded file to key: g55xrlsho9t78coq1ycajz10sz3v (checksum: VgeZ0v00oP0PNstlRCFBRQ==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: d9865dc7-72a0-4861-a192-2657163b454e) to Async(default) with arguments: #<GlobalID:0x00007fe3a2e01a68 @uri=#<URI::GID gid://change-this-to-your-rails-app-name/ActiveStorage::Blob/6>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d9865dc7-72a0-4861-a192-2657163b454e]   [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d9865dc7-72a0-4861-a192-2657163b454e] Performing ActiveStorage::AnalyzeJob (Job ID: d9865dc7-72a0-4861-a192-2657163b454e) from Async(default) enqueued at 2023-05-20T14:49:47Z with arguments: #<GlobalID:0x00007fe3a2de9d50 @uri=#<URI::GID gid://change-this-to-your-rails-app-name/ActiveStorage::Blob/6>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d9865dc7-72a0-4861-a192-2657163b454e] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d9865dc7-72a0-4861-a192-2657163b454e]   [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d9865dc7-72a0-4861-a192-2657163b454e]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 6]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d9865dc7-72a0-4861-a192-2657163b454e]   [1m[36mTRANSACTION (2.6ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d9865dc7-72a0-4861-a192-2657163b454e] Performed ActiveStorage::AnalyzeJob (Job ID: d9865dc7-72a0-4861-a192-2657163b454e) from Async(default) in 10.06ms
+DEPRECATION WARNING: image/jpg is not a valid content type, it should not be used when creating a blob, and support for it will be removed in Rails 7.1. If you want to keep supporting this content type past Rails 7.1, add it to `config.active_storage.variable_content_types`. Dismiss this warning by setting `config.active_storage.silence_invalid_content_types_warning = true`. (called from block in <main> at db/seeds/4_create_users.rb:53)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "lezlie@sanford.example"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "username", "info", "address", "longitude", "latitude", "role") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["email", "lezlie@sanford.example"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2023-05-20 14:49:48.389224"], ["updated_at", "2023-05-20 14:49:48.389224"], ["username", "shantell"], ["info", "Voluptatem fugiat et. Illum est dolorem."], ["address", "Schlichthaus 6, Am Wriezener Bahnhof, Friedrichshain, Friedrichshain-Kreuzberg, Berlin, 10243, Germany"], ["longitude", 13.441877600848729], ["latitude", 52.50973981612989], ["role", "seed"]]
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 7], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 7], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "9twa7xq6dg7i5l6bp7msaesnoqaw"], ["filename", "profile_pictures/photo-1589883661923-6476cb0ae9f2"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "cloudinary"], ["byte_size", 7607], ["checksum", "TklEIV8OhokxWMLse8MHgA=="], ["created_at", "2023-05-20 14:49:48.394763"]]
+  [1m[36mActiveStorage::Attachment Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "profile_picture"], ["record_type", "User"], ["record_id", 7], ["blob_id", 7], ["created_at", "2023-05-20 14:49:48.396575"]]
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1 WHERE "users"."id" = $2[0m  [["updated_at", "2023-05-20 14:49:48.398047"], ["id", 7]]
+  [1m[36mTRANSACTION (5.8ms)[0m  [1m[35mCOMMIT[0m
+[36m  Cloudinary Storage (1084.9ms) [0m[32mUploaded file to key: 9twa7xq6dg7i5l6bp7msaesnoqaw (checksum: TklEIV8OhokxWMLse8MHgA==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 0ad8e785-09d9-446a-9062-0975505cfca5) to Async(default) with arguments: #<GlobalID:0x00007fe3a2d27890 @uri=#<URI::GID gid://change-this-to-your-rails-app-name/ActiveStorage::Blob/7>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0ad8e785-09d9-446a-9062-0975505cfca5]   [1m[36mActiveStorage::Blob Load (1.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0ad8e785-09d9-446a-9062-0975505cfca5] Performing ActiveStorage::AnalyzeJob (Job ID: 0ad8e785-09d9-446a-9062-0975505cfca5) from Async(default) enqueued at 2023-05-20T14:49:49Z with arguments: #<GlobalID:0x00007fe3a2d0fb50 @uri=#<URI::GID gid://change-this-to-your-rails-app-name/ActiveStorage::Blob/7>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0ad8e785-09d9-446a-9062-0975505cfca5] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0ad8e785-09d9-446a-9062-0975505cfca5]   [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0ad8e785-09d9-446a-9062-0975505cfca5]   [1m[36mActiveStorage::Blob Update (0.7ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 7]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0ad8e785-09d9-446a-9062-0975505cfca5]   [1m[36mTRANSACTION (8.0ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0ad8e785-09d9-446a-9062-0975505cfca5] Performed ActiveStorage::AnalyzeJob (Job ID: 0ad8e785-09d9-446a-9062-0975505cfca5) from Async(default) in 31.78ms
+DEPRECATION WARNING: image/jpg is not a valid content type, it should not be used when creating a blob, and support for it will be removed in Rails 7.1. If you want to keep supporting this content type past Rails 7.1, add it to `config.active_storage.variable_content_types`. Dismiss this warning by setting `config.active_storage.silence_invalid_content_types_warning = true`. (called from block in <main> at db/seeds/4_create_users.rb:53)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "joseph@flatley.example"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "username", "info", "address", "longitude", "latitude", "role") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["email", "joseph@flatley.example"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2023-05-20 14:49:50.152337"], ["updated_at", "2023-05-20 14:49:50.152337"], ["username", "julian.dibbert"], ["info", "Dolores fugit illum. Voluptatibus tempora inventore."], ["address", "79, Dresdener Straße, Luisenstadt, Mitte, Berlin, 10179, Germany"], ["longitude", 13.412639440443836], ["latitude", 52.5075723991756], ["role", "seed"]]
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 8], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 8], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "6etw3fwzeueqw8vwief817io2078"], ["filename", "profile_pictures/photo-1488410632976-f7b286bbddd6"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "cloudinary"], ["byte_size", 12051], ["checksum", "Mcsyfdb+6766gmr9ZDin5Q=="], ["created_at", "2023-05-20 14:49:50.157954"]]
+  [1m[36mActiveStorage::Attachment Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "profile_picture"], ["record_type", "User"], ["record_id", 8], ["blob_id", 8], ["created_at", "2023-05-20 14:49:50.159841"]]
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1 WHERE "users"."id" = $2[0m  [["updated_at", "2023-05-20 14:49:50.161684"], ["id", 8]]
+  [1m[36mTRANSACTION (2.6ms)[0m  [1m[35mCOMMIT[0m
+[36m  Cloudinary Storage (975.8ms) [0m[32mUploaded file to key: 6etw3fwzeueqw8vwief817io2078 (checksum: Mcsyfdb+6766gmr9ZDin5Q==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 0e2c6211-2275-4c68-8eaa-e34a8e3417e9) to Async(default) with arguments: #<GlobalID:0x00007fe3a2c7ae60 @uri=#<URI::GID gid://change-this-to-your-rails-app-name/ActiveStorage::Blob/8>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0e2c6211-2275-4c68-8eaa-e34a8e3417e9]   [1m[36mActiveStorage::Blob Load (1.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0e2c6211-2275-4c68-8eaa-e34a8e3417e9] Performing ActiveStorage::AnalyzeJob (Job ID: 0e2c6211-2275-4c68-8eaa-e34a8e3417e9) from Async(default) enqueued at 2023-05-20T14:49:51Z with arguments: #<GlobalID:0x00007fe3a2c63120 @uri=#<URI::GID gid://change-this-to-your-rails-app-name/ActiveStorage::Blob/8>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0e2c6211-2275-4c68-8eaa-e34a8e3417e9] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0e2c6211-2275-4c68-8eaa-e34a8e3417e9]   [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0e2c6211-2275-4c68-8eaa-e34a8e3417e9]   [1m[36mActiveStorage::Blob Update (0.6ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 8]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0e2c6211-2275-4c68-8eaa-e34a8e3417e9]   [1m[36mTRANSACTION (5.4ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0e2c6211-2275-4c68-8eaa-e34a8e3417e9] Performed ActiveStorage::AnalyzeJob (Job ID: 0e2c6211-2275-4c68-8eaa-e34a8e3417e9) from Async(default) in 28.57ms
+DEPRECATION WARNING: image/jpg is not a valid content type, it should not be used when creating a blob, and support for it will be removed in Rails 7.1. If you want to keep supporting this content type past Rails 7.1, add it to `config.active_storage.variable_content_types`. Dismiss this warning by setting `config.active_storage.silence_invalid_content_types_warning = true`. (called from block in <main> at db/seeds/4_create_users.rb:53)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "gretta.bernier@ward-beer.test"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "username", "info", "address", "longitude", "latitude", "role") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["email", "gretta.bernier@ward-beer.test"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2023-05-20 14:49:51.977094"], ["updated_at", "2023-05-20 14:49:51.977094"], ["username", "johnathon.hintz"], ["info", "Aut et ut. Neque labore et."], ["address", "Terrazza Portofino, 18 d, Straße der Pariser Kommune, Friedrichshain, Friedrichshain-Kreuzberg, Berlin, 10243, Germany"], ["longitude", 13.43809365091925], ["latitude", 52.511466367451746], ["role", "seed"]]
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 9], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 9], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "x87uzggifdm0njt9a2bnlt6njiwa"], ["filename", "profile_pictures/photo-1592194996308-7b43878e84a6"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "cloudinary"], ["byte_size", 8537], ["checksum", "LLW1nhmA8NV3QApUqmNxnw=="], ["created_at", "2023-05-20 14:49:51.982709"]]
+  [1m[36mActiveStorage::Attachment Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "profile_picture"], ["record_type", "User"], ["record_id", 9], ["blob_id", 9], ["created_at", "2023-05-20 14:49:51.984635"]]
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1 WHERE "users"."id" = $2[0m  [["updated_at", "2023-05-20 14:49:51.986286"], ["id", 9]]
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[35mCOMMIT[0m
+[36m  Cloudinary Storage (895.5ms) [0m[32mUploaded file to key: x87uzggifdm0njt9a2bnlt6njiwa (checksum: LLW1nhmA8NV3QApUqmNxnw==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 7a5b8d71-180d-4e90-bc3f-80aa5a2ce7a9) to Async(default) with arguments: #<GlobalID:0x00007fe3a354fe78 @uri=#<URI::GID gid://change-this-to-your-rails-app-name/ActiveStorage::Blob/9>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7a5b8d71-180d-4e90-bc3f-80aa5a2ce7a9]   [1m[36mActiveStorage::Blob Load (0.6ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7a5b8d71-180d-4e90-bc3f-80aa5a2ce7a9] Performing ActiveStorage::AnalyzeJob (Job ID: 7a5b8d71-180d-4e90-bc3f-80aa5a2ce7a9) from Async(default) enqueued at 2023-05-20T14:49:52Z with arguments: #<GlobalID:0x00007fe3a34f5d38 @uri=#<URI::GID gid://change-this-to-your-rails-app-name/ActiveStorage::Blob/9>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7a5b8d71-180d-4e90-bc3f-80aa5a2ce7a9] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7a5b8d71-180d-4e90-bc3f-80aa5a2ce7a9]   [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7a5b8d71-180d-4e90-bc3f-80aa5a2ce7a9]   [1m[36mActiveStorage::Blob Update (0.7ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 9]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7a5b8d71-180d-4e90-bc3f-80aa5a2ce7a9]   [1m[36mTRANSACTION (6.7ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7a5b8d71-180d-4e90-bc3f-80aa5a2ce7a9] Performed ActiveStorage::AnalyzeJob (Job ID: 7a5b8d71-180d-4e90-bc3f-80aa5a2ce7a9) from Async(default) in 23.2ms
+DEPRECATION WARNING: image/jpg is not a valid content type, it should not be used when creating a blob, and support for it will be removed in Rails 7.1. If you want to keep supporting this content type past Rails 7.1, add it to `config.active_storage.variable_content_types`. Dismiss this warning by setting `config.active_storage.silence_invalid_content_types_warning = true`. (called from block in <main> at db/seeds/4_create_users.rb:53)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "rebbecca.keebler@mayer.example"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "username", "info", "address", "longitude", "latitude", "role") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["email", "rebbecca.keebler@mayer.example"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2023-05-20 14:49:53.535422"], ["updated_at", "2023-05-20 14:49:53.535422"], ["username", "tenesha"], ["info", "Error qui reiciendis. Et pariatur voluptas."], ["address", "116, Oranienstraße, Luisenstadt, Kreuzberg, Friedrichshain-Kreuzberg, Berlin, 10969, Germany"], ["longitude", 13.40273442991436], ["latitude", 52.50504630841299], ["role", "seed"]]
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 10], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 10], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "7101y01328ratfeq82g78lugpwxj"], ["filename", "profile_pictures/photo-1577023311546-cdc07a8454d9"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "cloudinary"], ["byte_size", 11107], ["checksum", "yethFZENYglhGdaqb4cTSA=="], ["created_at", "2023-05-20 14:49:53.541625"]]
+  [1m[36mActiveStorage::Attachment Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "profile_picture"], ["record_type", "User"], ["record_id", 10], ["blob_id", 10], ["created_at", "2023-05-20 14:49:53.543527"]]
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1 WHERE "users"."id" = $2[0m  [["updated_at", "2023-05-20 14:49:53.545000"], ["id", 10]]
+  [1m[36mTRANSACTION (5.9ms)[0m  [1m[35mCOMMIT[0m
+[36m  Cloudinary Storage (957.5ms) [0m[32mUploaded file to key: 7101y01328ratfeq82g78lugpwxj (checksum: yethFZENYglhGdaqb4cTSA==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: b79fe665-c45d-466a-8388-e33dc7dca6f4) to Async(default) with arguments: #<GlobalID:0x00007fe3a342d1f8 @uri=#<URI::GID gid://change-this-to-your-rails-app-name/ActiveStorage::Blob/10>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [b79fe665-c45d-466a-8388-e33dc7dca6f4]   [1m[36mActiveStorage::Blob Load (0.6ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [b79fe665-c45d-466a-8388-e33dc7dca6f4] Performing ActiveStorage::AnalyzeJob (Job ID: b79fe665-c45d-466a-8388-e33dc7dca6f4) from Async(default) enqueued at 2023-05-20T14:49:54Z with arguments: #<GlobalID:0x00007fe3a34154b8 @uri=#<URI::GID gid://change-this-to-your-rails-app-name/ActiveStorage::Blob/10>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [b79fe665-c45d-466a-8388-e33dc7dca6f4] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [b79fe665-c45d-466a-8388-e33dc7dca6f4]   [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [b79fe665-c45d-466a-8388-e33dc7dca6f4]   [1m[36mActiveStorage::Blob Update (4.5ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 10]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [b79fe665-c45d-466a-8388-e33dc7dca6f4]   [1m[36mTRANSACTION (2.5ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [b79fe665-c45d-466a-8388-e33dc7dca6f4] Performed ActiveStorage::AnalyzeJob (Job ID: b79fe665-c45d-466a-8388-e33dc7dca6f4) from Async(default) in 22.29ms
+DEPRECATION WARNING: image/jpg is not a valid content type, it should not be used when creating a blob, and support for it will be removed in Rails 7.1. If you want to keep supporting this content type past Rails 7.1, add it to `config.active_storage.variable_content_types`. Dismiss this warning by setting `config.active_storage.silence_invalid_content_types_warning = true`. (called from block in <main> at db/seeds/4_create_users.rb:53)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "essie.hills@orn.example"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "username", "info", "address", "longitude", "latitude", "role") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["email", "essie.hills@orn.example"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2023-05-20 14:49:55.361633"], ["updated_at", "2023-05-20 14:49:55.361633"], ["username", "weldon"], ["info", "Sed mollitia recusandae. Aut quam dolores."], ["address", "Blücherstraße, Kreuzberg, Friedrichshain-Kreuzberg, Berlin, 10961, Germany"], ["longitude", 13.391603217971424], ["latitude", 52.49593042227099], ["role", "seed"]]
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 11], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 11], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "xi4xwvj1kzn6vxgix7ey59t6e731"], ["filename", "profile_pictures/photo-1548546738-8509cb246ed3"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "cloudinary"], ["byte_size", 18017], ["checksum", "sRNUXpz+RQyOMN6PgebCAA=="], ["created_at", "2023-05-20 14:49:55.367360"]]
+  [1m[36mActiveStorage::Attachment Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "profile_picture"], ["record_type", "User"], ["record_id", 11], ["blob_id", 11], ["created_at", "2023-05-20 14:49:55.369357"]]
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1 WHERE "users"."id" = $2[0m  [["updated_at", "2023-05-20 14:49:55.370995"], ["id", 11]]
+  [1m[36mTRANSACTION (5.2ms)[0m  [1m[35mCOMMIT[0m
+[36m  Cloudinary Storage (1277.1ms) [0m[32mUploaded file to key: xi4xwvj1kzn6vxgix7ey59t6e731 (checksum: sRNUXpz+RQyOMN6PgebCAA==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: d24d7d18-92b9-44c5-bfc7-2e8941f9b13a) to Async(default) with arguments: #<GlobalID:0x00007fe3a3357a08 @uri=#<URI::GID gid://change-this-to-your-rails-app-name/ActiveStorage::Blob/11>>
+  [1m[36mUser Count (5.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d24d7d18-92b9-44c5-bfc7-2e8941f9b13a]   [1m[36mActiveStorage::Blob Load (1.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d24d7d18-92b9-44c5-bfc7-2e8941f9b13a] Performing ActiveStorage::AnalyzeJob (Job ID: d24d7d18-92b9-44c5-bfc7-2e8941f9b13a) from Async(default) enqueued at 2023-05-20T14:49:56Z with arguments: #<GlobalID:0x00007fe3a3368268 @uri=#<URI::GID gid://change-this-to-your-rails-app-name/ActiveStorage::Blob/11>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d24d7d18-92b9-44c5-bfc7-2e8941f9b13a] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d24d7d18-92b9-44c5-bfc7-2e8941f9b13a]   [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d24d7d18-92b9-44c5-bfc7-2e8941f9b13a]   [1m[36mActiveStorage::Blob Update (0.5ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 11]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d24d7d18-92b9-44c5-bfc7-2e8941f9b13a]   [1m[36mTRANSACTION (2.6ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d24d7d18-92b9-44c5-bfc7-2e8941f9b13a] Performed ActiveStorage::AnalyzeJob (Job ID: d24d7d18-92b9-44c5-bfc7-2e8941f9b13a) from Async(default) in 37.23ms
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mOffer Create (10.0ms)[0m  [1m[32mINSERT INTO "offers" ("title", "body", "user_id", "address", "created_at", "updated_at", "longitude", "latitude", "pickupslots", "typeofoffer", "foodtype", "allergengluten", "allergennuts", "allergenfish", "allergenother") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["title", "\"Freshly made pasta, handpicked from the local market! Enjoy the authentic taste of Italy with our range of pastas. Order now and get 10% off on your first purchase!\""], ["body", "ian cooking with this simple and delicious dish.\"\n\nPreparation\n\n1. Cook pasta according to package instructions.\n\n2. Drain cooked pasta and return to pot.\n\n3. Add olive oil, garlic, tomatoes, and basil to cooked pasta and stir to combine.\n\n4. Serve pasta with a sprinkle of Parmesan cheese and enjoy!"], ["user_id", 8], ["address", "Berlin Ostbahnhof, Straße der Pariser Kommune, Friedrichshain, Friedrichshain-Kreuzberg, Berlin, 10243, Germany"], ["created_at", "2022-08-10 00:00:00"], ["updated_at", "2023-05-20 14:54:49.063333"], ["longitude", 13.435208656727152], ["latitude", 52.510407349999994], ["pickupslots", nil], ["typeofoffer", nil], ["foodtype", nil], ["allergengluten", nil], ["allergennuts", nil], ["allergenfish", nil], ["allergenother", nil]]
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mOffer Create (6.5ms)[0m  [1m[32mINSERT INTO "offers" ("title", "body", "user_id", "address", "created_at", "updated_at", "longitude", "latitude", "pickupslots", "typeofoffer", "foodtype", "allergengluten", "allergennuts", "allergenfish", "allergenother") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["title", "Et molestiae labore."], ["body", "Aliquam quia voluptate. Iusto nostrum sit."], ["user_id", 1], ["address", "67, Markgrafenstraße, Kreuzberg, Friedrichshain-Kreuzberg, Berlin, 10969, Germany"], ["created_at", "2022-01-06 00:00:00"], ["updated_at", "2023-05-20 14:57:01.802607"], ["longitude", 13.3936764], ["latitude", 52.5057583], ["pickupslots", nil], ["typeofoffer", nil], ["foodtype", nil], ["allergengluten", nil], ["allergennuts", nil], ["allergenfish", nil], ["allergenother", nil]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveStorage::Blob Load (0.7ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 2], ["record_type", "Offer"], ["name", "images"]]
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 2], ["record_type", "Offer"], ["name", "images"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "g1u2hcazez59hmm0kolj0tsizehc"], ["filename", "post_seed/a9cc6c63e32cd79d4417899ef2a109f57910bcd8bfcd24213393ca9d0353b7d3"], ["content_type", "image/png"], ["metadata", "{\"identified\":true}"], ["service_name", "cloudinary"], ["byte_size", 787387], ["checksum", "MIlHfC70QVGP7pg277//KA=="], ["created_at", "2023-05-20 14:57:01.897287"]]
+  [1m[36mActiveStorage::Attachment Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "images"], ["record_type", "Offer"], ["record_id", 2], ["blob_id", 12], ["created_at", "2023-05-20 14:57:01.900986"]]
+  [1m[36mOffer Update (0.5ms)[0m  [1m[33mUPDATE "offers" SET "updated_at" = $1 WHERE "offers"."id" = $2[0m  [["updated_at", "2023-05-20 14:57:01.902814"], ["id", 2]]
+  [1m[36mTRANSACTION (2.7ms)[0m  [1m[35mCOMMIT[0m
+[36m  Cloudinary Storage (1906.4ms) [0m[32mUploaded file to key: g1u2hcazez59hmm0kolj0tsizehc (checksum: MIlHfC70QVGP7pg277//KA==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: f534db5c-1f8d-4621-8286-9a5e26da110c) to Async(default) with arguments: #<GlobalID:0x00007faf49262258 @uri=#<URI::GID gid://change-this-to-your-rails-app-name/ActiveStorage::Blob/12>>
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mOffer Create (3.3ms)[0m  [1m[32mINSERT INTO "offers" ("title", "body", "user_id", "address", "created_at", "updated_at", "longitude", "latitude", "pickupslots", "typeofoffer", "foodtype", "allergengluten", "allergennuts", "allergenfish", "allergenother") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["title", "\"Hey everyone! I have some fresh milk collected from the market and I want to share it with you all. It's absolutely free, so come grab some and enjoy the delicious taste! Hurry up before it's all gone!\""], ["body", "ipping now!\"\n\nA player has joined the game."], ["user_id", 11], ["address", "133, Köpenicker Straße, Luisenstadt, Mitte, Berlin, 10179, Germany"], ["created_at", "2022-03-09 00:00:00"], ["updated_at", "2023-05-20 14:58:57.101812"], ["longitude", 13.4256849], ["latitude", 52.5082813], ["pickupslots", nil], ["typeofoffer", nil], ["foodtype", nil], ["allergengluten", nil], ["allergennuts", nil], ["allergenfish", nil], ["allergenother", nil]]
+  [1m[36mTRANSACTION (7.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveStorage::Blob Load (0.8ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 3], ["record_type", "Offer"], ["name", "images"]]
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 3], ["record_type", "Offer"], ["name", "images"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "hxzbs9ldseuqm3ml6qz5ufzmkm74"], ["filename", "post_seed/bdac8f926f386afa7336f1db436c899ec3145aa3ab3991e311f8a15d97b3639f"], ["content_type", "image/png"], ["metadata", "{\"identified\":true}"], ["service_name", "cloudinary"], ["byte_size", 787387], ["checksum", "pcRRQteVWBA0+KT5gtddzA=="], ["created_at", "2023-05-20 14:58:57.287418"]]
+  [1m[36mActiveStorage::Attachment Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "images"], ["record_type", "Offer"], ["record_id", 3], ["blob_id", 13], ["created_at", "2023-05-20 14:58:57.292350"]]
+  [1m[36mOffer Update (0.5ms)[0m  [1m[33mUPDATE "offers" SET "updated_at" = $1 WHERE "offers"."id" = $2[0m  [["updated_at", "2023-05-20 14:58:57.295988"], ["id", 3]]
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT[0m
+[36m  Cloudinary Storage (1641.2ms) [0m[32mUploaded file to key: hxzbs9ldseuqm3ml6qz5ufzmkm74 (checksum: pcRRQteVWBA0+KT5gtddzA==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: c9f03ec6-301b-4ccf-96a6-28dba5959c9e) to Async(default) with arguments: #<GlobalID:0x00007f2658800298 @uri=#<URI::GID gid://change-this-to-your-rails-app-name/ActiveStorage::Blob/13>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [c9f03ec6-301b-4ccf-96a6-28dba5959c9e]   [1m[36mActiveStorage::Blob Load (0.9ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [c9f03ec6-301b-4ccf-96a6-28dba5959c9e] Performing ActiveStorage::AnalyzeJob (Job ID: c9f03ec6-301b-4ccf-96a6-28dba5959c9e) from Async(default) enqueued at 2023-05-20T14:58:58Z with arguments: #<GlobalID:0x00007f2658774ef0 @uri=#<URI::GID gid://change-this-to-your-rails-app-name/ActiveStorage::Blob/13>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [c9f03ec6-301b-4ccf-96a6-28dba5959c9e] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [c9f03ec6-301b-4ccf-96a6-28dba5959c9e]   [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [c9f03ec6-301b-4ccf-96a6-28dba5959c9e]   [1m[36mActiveStorage::Blob Update (0.5ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 13]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [c9f03ec6-301b-4ccf-96a6-28dba5959c9e]   [1m[36mTRANSACTION (3.0ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [c9f03ec6-301b-4ccf-96a6-28dba5959c9e] Performed ActiveStorage::AnalyzeJob (Job ID: c9f03ec6-301b-4ccf-96a6-28dba5959c9e) from Async(default) in 206.1ms
+  [1m[36mOffer Count (5.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "offers"[0m
+Started GET "/" for 127.0.0.1 at 2023-05-20 17:05:16 +0200
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by OffersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering offers/index.html.erb within layouts/application
+  Rendered offers/index.html.erb within layouts/application (Duration: 6.9ms | Allocations: 3860)
+  Rendered layout layouts/application.html.erb (Duration: 7.1ms | Allocations: 3970)
+Completed 500 Internal Server Error in 42ms (ActiveRecord: 0.0ms | Allocations: 11713)
+
+
+  
+ActionView::Template::Error (Missing partial offer/_map with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :jbuilder]}.
+
+Searched in:
+  * "/home/nomi/code/my-treasure/your-trash/app/views"
+  * "/home/nomi/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/devise-4.9.2/app/views"
+  * "/home/nomi/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/turbo-rails-1.4.0/app/views"
+  * "/home/nomi/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actiontext-7.0.4.3/app/views"
+  * "/home/nomi/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actionmailbox-7.0.4.3/app/views"
+
+Did you mean?  offers/offercard
+               action_text/attachables/missing_attachable
+               action_text/attachables/remote_image
+               action_text/attachment_galleries/attachment_gallery
+               shared/navbar
+               shared/flashes):
+     5:   </div>
+     6:   <div class="album py-5" data-controller="visibility">
+     7:     <div class="" data-visibility-target="hideable" hidden>
+     8:       <%= render "offer/map" %>
+     9:     </div>
+    10: 
+    11:     <div class="grid" data-visibility-target="hideable">
+  
+app/views/offers/index.html.erb:8
+Started GET "/" for 127.0.0.1 at 2023-05-20 17:05:47 +0200
+Processing by OffersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering offers/index.html.erb within layouts/application
+  Rendered offers/index.html.erb within layouts/application (Duration: 3.7ms | Allocations: 2698)
+  Rendered layout layouts/application.html.erb (Duration: 4.0ms | Allocations: 2787)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.0ms | Allocations: 3640)
+
+
+  
+ActionView::Template::Error (Missing partial offer/_map with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :jbuilder]}.
+
+Searched in:
+  * "/home/nomi/code/my-treasure/your-trash/app/views"
+  * "/home/nomi/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/devise-4.9.2/app/views"
+  * "/home/nomi/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/turbo-rails-1.4.0/app/views"
+  * "/home/nomi/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actiontext-7.0.4.3/app/views"
+  * "/home/nomi/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actionmailbox-7.0.4.3/app/views"
+
+Did you mean?  offers/map
+               offers/offercard
+               action_text/attachables/missing_attachable
+               action_text/attachables/remote_image
+               action_text/attachment_galleries/attachment_gallery
+               shared/navbar):
+     5:   </div>
+     6:   <div class="album py-5" data-controller="visibility">
+     7:     <div class="" data-visibility-target="hideable" hidden>
+     8:       <%= render "offer/map" %>
+     9:     </div>
+    10: 
+    11:     <div class="grid" data-visibility-target="hideable">
+  
+app/views/offers/index.html.erb:8
+Started GET "/" for 127.0.0.1 at 2023-05-20 17:06:04 +0200
+Processing by OffersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering offers/index.html.erb within layouts/application
+  Rendered offers/_map.html.erb (Duration: 0.4ms | Allocations: 92)
+  [1m[36mOffer Load (4.6ms)[0m  [1m[34mSELECT "offers".* FROM "offers"[0m
+  ↳ app/views/offers/index.html.erb:12
+  Rendered offers/_offercard.html.erb (Duration: 0.5ms | Allocations: 116)
+  Rendered offers/_offercard.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered offers/_offercard.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered offers/index.html.erb within layouts/application (Duration: 41.1ms | Allocations: 14649)
+  Rendered shared/_navbar.html.erb (Duration: 3.1ms | Allocations: 843)
+  Rendered shared/_flashes.html.erb (Duration: 0.7ms | Allocations: 222)
+  Rendered layout layouts/application.html.erb (Duration: 7292.8ms | Allocations: 194702)
+Completed 200 OK in 7295ms (Views: 7283.1ms | ActiveRecord: 11.3ms | Allocations: 195619)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-20 17:07:16 +0200
+Processing by OffersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering offers/index.html.erb within layouts/application
+  Rendered offers/_map.html.erb (Duration: 0.1ms | Allocations: 9)
+  [1m[36mOffer Load (1.1ms)[0m  [1m[34mSELECT "offers".* FROM "offers"[0m
+  ↳ app/views/offers/index.html.erb:12
+  Rendered offers/_offercard.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered offers/_offercard.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered offers/_offercard.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered offers/index.html.erb within layouts/application (Duration: 6.9ms | Allocations: 922)
+  Rendered shared/_navbar.html.erb (Duration: 0.6ms | Allocations: 186)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 24)
+  Rendered layout layouts/application.html.erb (Duration: 33.7ms | Allocations: 10472)
+Completed 200 OK in 36ms (Views: 33.6ms | ActiveRecord: 1.1ms | Allocations: 10764)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-20 17:07:56 +0200
+Processing by OffersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering offers/index.html.erb within layouts/application
+  [1m[36mOffer Load (0.5ms)[0m  [1m[34mSELECT "offers".* FROM "offers"[0m
+  ↳ app/views/offers/index.html.erb:5
+  Rendered offers/_offercard.html.erb (Duration: 0.5ms | Allocations: 93)
+  Rendered offers/_offercard.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered offers/_offercard.html.erb (Duration: 0.2ms | Allocations: 8)
+  Rendered offers/index.html.erb within layouts/application (Duration: 4.6ms | Allocations: 1271)
+  Rendered shared/_navbar.html.erb (Duration: 2.2ms | Allocations: 642)
+  Rendered shared/_flashes.html.erb (Duration: 0.9ms | Allocations: 205)
+  Rendered layout layouts/application.html.erb (Duration: 24.0ms | Allocations: 11985)
+Completed 200 OK in 27ms (Views: 25.3ms | ActiveRecord: 0.5ms | Allocations: 12839)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-20 17:07:57 +0200
+Processing by OffersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering offers/index.html.erb within layouts/application
+  [1m[36mOffer Load (0.5ms)[0m  [1m[34mSELECT "offers".* FROM "offers"[0m
+  ↳ app/views/offers/index.html.erb:5
+  Rendered offers/_offercard.html.erb (Duration: 0.0ms | Allocations: 9)
+  Rendered offers/_offercard.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered offers/_offercard.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered offers/index.html.erb within layouts/application (Duration: 2.0ms | Allocations: 808)
+  Rendered shared/_navbar.html.erb (Duration: 0.5ms | Allocations: 186)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 24)
+  Rendered layout layouts/application.html.erb (Duration: 13.8ms | Allocations: 10296)
+Completed 200 OK in 15ms (Views: 13.8ms | ActiveRecord: 0.5ms | Allocations: 10582)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-20 17:08:04 +0200
+Processing by OffersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering offers/index.html.erb within layouts/application
+  [1m[36mOffer Load (0.4ms)[0m  [1m[34mSELECT "offers".* FROM "offers"[0m
+  ↳ app/views/offers/index.html.erb:5
+  Rendered offers/_offercard.html.erb (Duration: 0.4ms | Allocations: 93)
+  Rendered offers/_offercard.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered offers/_offercard.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered offers/index.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1260)
+  Rendered shared/_navbar.html.erb (Duration: 1.2ms | Allocations: 642)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 205)
+  Rendered layout layouts/application.html.erb (Duration: 17.9ms | Allocations: 11980)
+Completed 200 OK in 20ms (Views: 19.0ms | ActiveRecord: 0.4ms | Allocations: 12820)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-20 17:08:27 +0200
+  
+SyntaxError (/home/nomi/code/my-treasure/your-trash/app/controllers/offers_controller.rb:50: syntax error, unexpected end-of-input, expecting `end'
+  end
+     ^
+):
+  
+app/controllers/offers_controller.rb:50: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/offers_controller.rb:50: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/offers_controller.rb:50: syntax error, unexpected end-of-input, expecting `end'
+Started GET "/" for 127.0.0.1 at 2023-05-20 17:08:42 +0200
+Processing by OffersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering offers/index.html.erb within layouts/application
+  [1m[36mOffer Load (0.6ms)[0m  [1m[34mSELECT "offers".* FROM "offers"[0m
+  ↳ app/views/offers/index.html.erb:5
+  Rendered offers/_offercard.html.erb (Duration: 0.0ms | Allocations: 12)
+  Rendered offers/_offercard.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered offers/_offercard.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered offers/index.html.erb within layouts/application (Duration: 14.0ms | Allocations: 5095)
+  Rendered shared/_navbar.html.erb (Duration: 3.1ms | Allocations: 284)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 35)
+  Rendered layout layouts/application.html.erb (Duration: 29.0ms | Allocations: 15091)
+Completed 200 OK in 36ms (Views: 25.4ms | ActiveRecord: 4.6ms | Allocations: 18253)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-20 17:08:44 +0200
+Processing by OffersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering offers/index.html.erb within layouts/application
+  [1m[36mOffer Load (0.4ms)[0m  [1m[34mSELECT "offers".* FROM "offers"[0m
+  ↳ app/views/offers/index.html.erb:5
+  Rendered offers/_offercard.html.erb (Duration: 0.0ms | Allocations: 9)
+  Rendered offers/_offercard.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered offers/_offercard.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered offers/index.html.erb within layouts/application (Duration: 2.2ms | Allocations: 801)
+  Rendered shared/_navbar.html.erb (Duration: 0.4ms | Allocations: 186)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 24)
+  Rendered layout layouts/application.html.erb (Duration: 12.9ms | Allocations: 10278)
+Completed 200 OK in 14ms (Views: 12.9ms | ActiveRecord: 0.4ms | Allocations: 10553)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-20 17:09:00 +0200
+Processing by OffersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering offers/index.html.erb within layouts/application
+  [1m[36mOffer Load (0.5ms)[0m  [1m[34mSELECT "offers".* FROM "offers"[0m
+  ↳ app/views/offers/index.html.erb:4
+  Rendered offers/_offercard.html.erb (Duration: 0.5ms | Allocations: 93)
+  Rendered offers/_offercard.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered offers/_offercard.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered offers/index.html.erb within layouts/application (Duration: 3.8ms | Allocations: 1261)
+  Rendered shared/_navbar.html.erb (Duration: 1.3ms | Allocations: 643)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 205)
+  Rendered layout layouts/application.html.erb (Duration: 17.6ms | Allocations: 11991)
+Completed 200 OK in 20ms (Views: 18.4ms | ActiveRecord: 0.5ms | Allocations: 12850)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-20 17:09:00 +0200
+Processing by OffersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering offers/index.html.erb within layouts/application
+  [1m[36mOffer Load (0.6ms)[0m  [1m[34mSELECT "offers".* FROM "offers"[0m
+  ↳ app/views/offers/index.html.erb:4
+  Rendered offers/_offercard.html.erb (Duration: 0.0ms | Allocations: 9)
+  Rendered offers/_offercard.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered offers/_offercard.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered offers/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 809)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 186)
+  Rendered shared/_flashes.html.erb (Duration: 0.0ms | Allocations: 24)
+  Rendered layout layouts/application.html.erb (Duration: 22.3ms | Allocations: 10427)
+Completed 200 OK in 23ms (Views: 22.2ms | ActiveRecord: 0.6ms | Allocations: 10703)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-20 17:09:01 +0200
+Processing by OffersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering offers/index.html.erb within layouts/application
+  [1m[36mOffer Load (0.5ms)[0m  [1m[34mSELECT "offers".* FROM "offers"[0m
+  ↳ app/views/offers/index.html.erb:4
+  Rendered offers/_offercard.html.erb (Duration: 0.0ms | Allocations: 9)
+  Rendered offers/_offercard.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered offers/_offercard.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered offers/index.html.erb within layouts/application (Duration: 2.7ms | Allocations: 801)
+  Rendered shared/_navbar.html.erb (Duration: 0.5ms | Allocations: 186)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 24)
+  Rendered layout layouts/application.html.erb (Duration: 16.2ms | Allocations: 10311)
+Completed 200 OK in 17ms (Views: 16.1ms | ActiveRecord: 0.5ms | Allocations: 10565)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-20 17:09:01 +0200
+Processing by OffersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering offers/index.html.erb within layouts/application
+  [1m[36mOffer Load (0.5ms)[0m  [1m[34mSELECT "offers".* FROM "offers"[0m
+  ↳ app/views/offers/index.html.erb:4
+  Rendered offers/_offercard.html.erb (Duration: 0.0ms | Allocations: 9)
+  Rendered offers/_offercard.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered offers/_offercard.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered offers/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 801)
+  Rendered shared/_navbar.html.erb (Duration: 0.6ms | Allocations: 186)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 24)
+  Rendered layout layouts/application.html.erb (Duration: 13.5ms | Allocations: 10290)
+Completed 200 OK in 14ms (Views: 13.4ms | ActiveRecord: 0.5ms | Allocations: 10544)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-20 17:09:01 +0200
+Processing by OffersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering offers/index.html.erb within layouts/application
+  [1m[36mOffer Load (0.5ms)[0m  [1m[34mSELECT "offers".* FROM "offers"[0m
+  ↳ app/views/offers/index.html.erb:4
+  Rendered offers/_offercard.html.erb (Duration: 0.1ms | Allocations: 9)
+  Rendered offers/_offercard.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered offers/_offercard.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered offers/index.html.erb within layouts/application (Duration: 3.5ms | Allocations: 801)
+  Rendered shared/_navbar.html.erb (Duration: 1.0ms | Allocations: 186)
+  Rendered shared/_flashes.html.erb (Duration: 0.2ms | Allocations: 24)
+  Rendered layout layouts/application.html.erb (Duration: 24.6ms | Allocations: 10363)
+Completed 200 OK in 26ms (Views: 25.1ms | ActiveRecord: 0.5ms | Allocations: 10617)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-20 17:09:01 +0200
+Processing by OffersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering offers/index.html.erb within layouts/application
+  [1m[36mOffer Load (0.4ms)[0m  [1m[34mSELECT "offers".* FROM "offers"[0m
+  ↳ app/views/offers/index.html.erb:4
+  Rendered offers/_offercard.html.erb (Duration: 0.1ms | Allocations: 9)
+  Rendered offers/_offercard.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered offers/_offercard.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered offers/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 801)
+  Rendered shared/_navbar.html.erb (Duration: 0.7ms | Allocations: 186)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 24)
+  Rendered layout layouts/application.html.erb (Duration: 16.2ms | Allocations: 10316)
+Completed 200 OK in 17ms (Views: 16.3ms | ActiveRecord: 0.4ms | Allocations: 10570)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-20 17:09:08 +0200
+Processing by OffersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering offers/index.html.erb within layouts/application
+  [1m[36mOffer Load (0.9ms)[0m  [1m[34mSELECT "offers".* FROM "offers"[0m
+  ↳ app/views/offers/index.html.erb:4
+  Rendered offers/_offercard.html.erb (Duration: 1.0ms | Allocations: 93)
+  Rendered offers/_offercard.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered offers/_offercard.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered offers/index.html.erb within layouts/application (Duration: 8.3ms | Allocations: 1265)
+  Rendered shared/_navbar.html.erb (Duration: 2.7ms | Allocations: 643)
+  Rendered shared/_flashes.html.erb (Duration: 0.7ms | Allocations: 205)
+  Rendered layout layouts/application.html.erb (Duration: 29.7ms | Allocations: 11971)
+Completed 200 OK in 35ms (Views: 32.0ms | ActiveRecord: 0.9ms | Allocations: 12811)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-20 17:09:43 +0200
+Processing by OffersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering offers/index.html.erb within layouts/application
+  [1m[36mOffer Load (0.4ms)[0m  [1m[34mSELECT "offers".* FROM "offers"[0m
+  ↳ app/views/offers/index.html.erb:5
+  Rendered offers/_offercard.html.erb (Duration: 5.6ms | Allocations: 93)
+  Rendered offers/_offercard.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered offers/_offercard.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered offers/index.html.erb within layouts/application (Duration: 18.0ms | Allocations: 1350)
+  Rendered shared/_navbar.html.erb (Duration: 1.3ms | Allocations: 645)
+  Rendered shared/_flashes.html.erb (Duration: 0.6ms | Allocations: 205)
+  Rendered layout layouts/application.html.erb (Duration: 75.0ms | Allocations: 12230)
+Completed 200 OK in 83ms (Views: 76.4ms | ActiveRecord: 0.4ms | Allocations: 13092)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-20 17:12:06 +0200
+Processing by OffersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering offers/index.html.erb within layouts/application
+  [1m[36mOffer Load (0.6ms)[0m  [1m[34mSELECT "offers".* FROM "offers"[0m
+  ↳ app/views/offers/index.html.erb:4
+  [1m[36mActiveStorage::Attachment Exists? (3.9ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Offer"], ["name", "images"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:3
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:14
+  [1m[36mActiveStorage::Attachment Load (1.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 8], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:14
+  [1m[36mActiveStorage::Blob Load (3.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:15
+  Rendered offers/_offercard.html.erb (Duration: 129.6ms | Allocations: 39082)
+  [1m[36mActiveStorage::Attachment Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Offer"], ["name", "images"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:3
+  Rendered offers/_offercard.html.erb (Duration: 3.7ms | Allocations: 3139)
+  Rendered offers/index.html.erb within layouts/application (Duration: 138.6ms | Allocations: 43350)
+  Rendered layout layouts/application.html.erb (Duration: 139.0ms | Allocations: 43435)
+Completed 500 Internal Server Error in 143ms (ActiveRecord: 21.7ms | Allocations: 44275)
+
+
+  
+ActionView::Template::Error (undefined method `key' for #<ActiveStorage::Attached::Many:0x00007ff0d8d32a40 @name="images", @record=#<Offer id: 2, title: "Et molestiae labore.", body: "Aliquam quia voluptate. Iusto nostrum sit.", user_id: 1, address: "67, Markgrafenstraße, Kreuzberg, Friedrichshain-Kr...", created_at: "2022-01-06 00:00:00.000000000 +0000", updated_at: "2023-05-20 14:57:01.902814000 +0000", longitude: 13.3936764, latitude: 52.5057583, pickupslots: nil, typeofoffer: nil, foodtype: nil, allergengluten: nil, allergennuts: nil, allergenfish: nil, allergenother: nil>>):
+    1: <div class="postcard">
+    2:   <div class= "img-container">
+    3:     <% if offer.images.attached? %>
+    4:       <%= cl_image_tag offer.images.key,
+    5:         :gravity => "center",
+    6:         :class => "img_cl",
+    7:         crop: :fit %>
+  
+app/views/offers/_offercard.html.erb:4
+app/views/offers/index.html.erb:5
+app/views/offers/index.html.erb:4
+Started GET "/" for 127.0.0.1 at 2023-05-20 17:16:44 +0200
+Processing by OffersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering offers/index.html.erb within layouts/application
+  [1m[36mOffer Load (0.8ms)[0m  [1m[34mSELECT "offers".* FROM "offers"[0m
+  ↳ app/views/offers/index.html.erb:4
+  [1m[36mActiveStorage::Attachment Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Offer"], ["name", "images"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:3
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:13
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 8], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:13
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:14
+  Rendered offers/_offercard.html.erb (Duration: 12.2ms | Allocations: 4265)
+  [1m[36mActiveStorage::Attachment Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Offer"], ["name", "images"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:3
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 2], ["record_type", "Offer"], ["name", "images"]]
+  ↳ app/views/offers/_offercard.html.erb:4
+  [1m[36mActiveStorage::Blob Load (0.6ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:5
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:13
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:13
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:14
+  Rendered offers/_offercard.html.erb (Duration: 14.9ms | Allocations: 5377)
+  [1m[36mActiveStorage::Attachment Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Offer"], ["name", "images"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:3
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 3], ["record_type", "Offer"], ["name", "images"]]
+  ↳ app/views/offers/_offercard.html.erb:4
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:5
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:13
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 11], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:13
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:14
+  Rendered offers/_offercard.html.erb (Duration: 13.0ms | Allocations: 5360)
+  Rendered offers/index.html.erb within layouts/application (Duration: 44.8ms | Allocations: 16157)
+  Rendered shared/_navbar.html.erb (Duration: 4.4ms | Allocations: 597)
+  Rendered shared/_flashes.html.erb (Duration: 0.6ms | Allocations: 205)
+  Rendered layout layouts/application.html.erb (Duration: 64.8ms | Allocations: 27000)
+Completed 200 OK in 68ms (Views: 59.3ms | ActiveRecord: 7.6ms | Allocations: 27855)
+
+
