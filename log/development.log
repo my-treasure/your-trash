@@ -240,3 +240,15 @@ Migrating to CreateBookingStatuses (20230518184702)
   [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
   [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(2054292390599346030)[0m
   [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2023-05-20 11:12:53 +0200
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 2.0ms | Allocations: 442)
+  Rendered shared/_navbar.html.erb (Duration: 3.4ms | Allocations: 858)
+  Rendered shared/_flashes.html.erb (Duration: 0.8ms | Allocations: 222)
+  Rendered layout layouts/application.html.erb (Duration: 6825.6ms | Allocations: 160207)
+Completed 200 OK in 6853ms (Views: 6836.6ms | ActiveRecord: 0.0ms | Allocations: 164817)
+
+
