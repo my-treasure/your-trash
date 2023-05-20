@@ -192,6 +192,10 @@ GEM
     regexp_parser (2.8.0)
     reline (0.3.3)
       io-console (~> 0.5)
+    rename (1.0.8)
+      activesupport
+      rails (>= 3.0.0)
+      thor (>= 0.19.1)
     responders (3.1.0)
       actionpack (>= 5.2)
       railties (>= 5.2)
@@ -263,6 +267,7 @@ DEPENDENCIES
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.3)
+  rename
   sassc-rails
   selenium-webdriver
   simple_form!
