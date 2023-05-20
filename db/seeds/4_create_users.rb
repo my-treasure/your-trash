@@ -16,11 +16,11 @@ photo_blob = PROFILE_PICTURES["resources"].sample
 file = URI.open(photo_blob["secure_url"])
 
 admin = User.new(
-  email: "admin@admin.com"
-  username: "admin"
-  password: ENV.fetch("ADMIN_PASSWORD")
+  email: "admin@admin.com",
+  username: "admin",
+  password: ENV.fetch("ADMIN_PASSWORD"),
   role: "admin",
-  info: "I am the admin of this website"
+  info: "I am the admin of this website",
   address: reverse_geocode.first.address,
   latitude: rand_latitude,
   longitude: rand_longitude
