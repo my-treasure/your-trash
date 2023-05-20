@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_20_134157) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_20_153633) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -59,10 +59,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_20_134157) do
     t.datetime "pickupslots"
     t.string "typeofoffer"
     t.string "foodtype"
-    t.boolean "allergengluten"
-    t.boolean "allergennuts"
-    t.boolean "allergenfish"
-    t.boolean "allergenother"
+    t.boolean "allergen"
     t.index ["user_id"], name: "index_offers_on_user_id"
   end
 
@@ -89,7 +86,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_20_134157) do
     t.text "info"
     t.string "address"
     t.float "longitude"
-    t.float "lattitute"
+    t.float "latitute"
     t.string "role"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
