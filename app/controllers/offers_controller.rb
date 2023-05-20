@@ -1,4 +1,10 @@
 class OffersController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :new, :show]
+
+  def new
+    @offer = Offer.new
+  end
+
   def index
     @offers = Offer.all
     # @markers = @posts.geocoded.map do |post|
@@ -22,9 +28,6 @@ class OffersController < ApplicationController
     #   }]
   end
 
-  def new
-    @offer = Offer.new
-  end
 
   def create
     @offer = Offer.new(offer_params)
