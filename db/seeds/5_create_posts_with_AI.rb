@@ -14,7 +14,7 @@ require "openai"
 
 require 'digest'
 
-POST_PICTURES = Cloudinary::Api.resources(type: "upload", max_results: 500, prefix: "post_seed/")
+IMAGES = Cloudinary::Api.resources(type: "upload", max_results: 500, prefix: "post_seed/")
 
 puts "🤖 connecting with openai."
 CLIENT =
@@ -108,7 +108,7 @@ def prompt_from_tweet(filename, ai_tweet)
     CLIENT.chat(
       parameters: {
         model: "gpt-3.5-turbo", # Required.
-        messages: [{ role: "system", content: "#{filename} Generate a prompt for text-to-image model with no text or captions of the following expresion #{ai_tweet}" }], # Required
+        messages: [{ role: "system", content: "#{filename} Generate prompt for text-to-image just describing a simple pinture without context, just 2 sentences of the elements of the composition #{ai_tweet}" }], # Required
         temperature: 0.7
       }
     )
@@ -134,7 +134,7 @@ def image_uploader(ai_image)
 end
 
 def ai_post_generator
-  prompt = select_prompt("db/seeds/prompt_text.txt", "tweet")
+  prompt = select_prompt("db/seeds/prompt_text.txt", "free offer")
   puts "📝 selected prompt: #{prompt.split("Prompt:").last}"
   tweet = ai_tweet(prompt.split("Prompt:").last)
   puts "🤖 AI tweet: #{tweet}"
@@ -157,7 +157,7 @@ def ai_post_generator
   end
 end
 
-puts "📸 Creating Post..."
+puts "📸 Creating offers..."
 puts "🧠 Do you wish to prompts and images with OpenAI: [y,No] (be careful, it costs money 💸)"
 print "➡️"
 set_ai = false
@@ -167,12 +167,12 @@ else
   set_ai = false
 end
 
-puts "how many posts do you want to create?"
+puts "how many offers do you want to create?"
 print "➡️"
 n_posts = gets.chomp.to_i
 puts n_posts
 
-puts "creating #{n_posts} posts..."
+puts "creating #{n_posts} offers..."
 post = 0
 n_posts.times do
   print post += 1
@@ -189,30 +189,30 @@ n_posts.times do
   else
     tweet = Faker::Lorem.sentence(word_count: 3)
     description = Faker::Lorem.paragraph(sentence_count: 2)
-    image = POST_PICTURES["resources"].sample
+    image = IMAGES["resources"].sample
     file = URI.open(image["url"])
     image_id = image["public_id"]
     sleep_time = 0
   end
 
   if image_id
-    new_post = Post.create(
+    new_offer = Offer.create(
       title: tweet,
       body: description,
-      pickupslot: ["mornings", "afternoons", "evenings"].sample,
+      pickupslots: ["mornings", "afternoons", "evenings"].sample,
       user_id: User.all.sample.id,
       address: reverse_geocode.first.address,
       latitude: rand_latitude,
       longitude: rand_longitude,
       created_at: Faker::Date.between(from: '2022-01-01', to: '2023-05-10')
     )
-    new_post.post_image.attach(io: file, filename: image_id, content_type: "image/png")
+    new_offer.images.attach(io: file, filename: image_id, content_type: "image/png")
 
-    puts "Created post, sleeping #{sleep_time} seconds...\n"
+    puts "Created offer, sleeping #{sleep_time} seconds...\n"
     # wait before next request
     sleep(sleep_time)
   else
-    puts "No image created, skipping post"
+    puts "No image created, skipping offer"
   end
 end
-puts "Created #{Post.count} posts"
+puts "Created #{Offer.count} offers"
