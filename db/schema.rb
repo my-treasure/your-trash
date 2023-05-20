@@ -53,7 +53,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_20_102352) do
     t.text "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float "longtitude"
+    t.float "longitude"
     t.float "latitude"
     t.datetime "pickupslots"
     t.string "typeofoffer"
