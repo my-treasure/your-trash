@@ -1,0 +1,21 @@
+<body>
+<p>asdas</p>
+  <div>
+      <% @offers.each do |offer| %>
+        <%= render "offercard", offer: offer %>
+      <% end %>
+  </div>
+<main>
+  <div class="album py-5" data-controller="visibility">
+    <div class="" data-visibility-target="hideable" hidden>
+      <%#= render "offers/map" %>
+    </div>
+
+    <div class="grid" data-visibility-target="hideable">
+    </div>
+  </div>
+
+</main>
+
+  </body>
+</html>
