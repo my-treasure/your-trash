@@ -87,10 +87,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_20_144918) do
     t.datetime "pickupslots"
     t.string "typeofoffer"
     t.string "foodtype"
-    t.boolean "allergengluten"
-    t.boolean "allergennuts"
-    t.boolean "allergenfish"
-    t.boolean "allergenother"
+    t.boolean "allergen"
     t.index ["user_id"], name: "index_offers_on_user_id"
   end
 
