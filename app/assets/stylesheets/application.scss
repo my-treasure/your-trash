@@ -10,3 +10,34 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "coloreffects";
+
+
+
+.main_grid {
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  display: grid;
+  grid-template:
+    "searchbar" 50px
+    "main" auto
+    "navbar" 60px
+}
+
+.navbar {
+  grid-area: navbar;
+  background-color: $white;
+  box-shadow: $shadow;
+}
+
+.main {
+  grid-area: main;
+  grid-template: 1fr 1fr;
+  background-color: $white;
+  box-shadow: $shadow;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 20px;
+}
