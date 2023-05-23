@@ -14,7 +14,7 @@ class OffersController < ApplicationController
     #     info_window_html: render_to_string(partial: "info_window", locals: { post: post }),
     #     marker_html: render_to_string(partial: "marker", locals: { post: post })
     #   }
-    end
+    # end
   end
 
   def show
@@ -48,3 +48,4 @@ class OffersController < ApplicationController
   def offer_params
     params.require(:offer).permit(:title, :body, :address, :post_image)
   end
+end
