@@ -12,15 +12,18 @@
 
   <body>
     <div class="main_grid">
-      <div class="searchbar">
-        <%= render "shared/flashes" %>
-        <%= render "shared/navbar" %>
-      </div>
+
       <div class="main">
         <%= yield %>
       </div>
-      <div class="navbar">
-        <%#= render "shared/footer" %>
+
+      <div class="searchbar">
+        <%= render "shared/flashes" %>
+        <%= render "shared/searchbar" %>
+      </div>
+      
+      <div class="footnavbar">
+        <%= render "shared/footnavbar" %>
       </div>
     </div>
   </body>
