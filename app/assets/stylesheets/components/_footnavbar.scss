@@ -1,0 +1,19 @@
+.footnavbar {
+  grid-area: footnavbar;
+  left: 0;
+  bottom: 0;
+  position: fixed;
+  height: 50px;
+  width: 100%;
+  z-index: 1000;
+  background-color: $primary_bg;
+  box-shadow: $shadow;
+
+  .navbar-collapse {
+    flex-grow: 0;
+  }
+
+  .navbar-brand img {
+    width: 40px;
+  }
+}
