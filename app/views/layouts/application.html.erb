@@ -11,20 +11,21 @@
   </head>
 
   <body>
-    <div class="main_grid">
+
+  <div class="main_grid">
 
       <div class="main">
         <%= yield %>
-      </div>
+       </div>
 
       <div class="searchbar">
         <%= render "shared/flashes" %>
         <%= render "shared/searchbar" %>
       </div>
-      
-      <div class="footnavbar">
+
+    <div class="footnavbar">
         <%= render "shared/footnavbar" %>
-      </div>
+    </div>
     </div>
   </body>
 </html>
