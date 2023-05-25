@@ -19,3 +19,9 @@
   <h6 class="mt-5"> <%= @offer.title %> </h6>
   <h6 class="mb-5 mt-4"> Description: <br> <%= @offer.body %> </h6>
 </div>
+<div class="card-title">
+    <div class="btn-set">
+      <button type="button" class="btn btn-dark btn-circle btn-sm"><i class="fa-solid fa-heart icon-detail"></i></button>
+      <button type="button" class="btn btn-dark btn-circle btn-sm"><i class="fa-solid fa-comment icon-detail"></i></button>
+      <%#= offer.likes.count %> <%#= (offer.likes.count) == 1 ? 'Like' : 'Likes'%>
+    </div>
