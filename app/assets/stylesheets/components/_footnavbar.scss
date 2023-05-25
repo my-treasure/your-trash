@@ -5,11 +5,11 @@
   height: 50px;
   width: 100%;
   z-index: 1000;
-  background-color: $primary_bg;
+  background-color: #41644A;
   box-shadow: $shadow;
 
   .navbar-collapse {
-
+    flex-grow: 0;
   }
 
   .navbar-brand img {
