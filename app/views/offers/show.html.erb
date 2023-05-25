@@ -1,0 +1,21 @@
+<div>
+</div>
+<div class="row justify-content-center">
+      <div class="offer_image" style="background-image: url('<%= cl_image_path @offer.images[0].key %>')">
+
+      </div>
+
+
+
+<div>
+  <% if @offer.user.profile_picture.attached? %>
+    <%= cl_image_tag @offer.user.profile_picture.key,
+        :gravity => "center",
+        crop: :fit,
+        class:"profile_image" %>
+  <% else %>
+    <img src="https://res.cloudinary.com/dxdyu4tqu/image/upload/v1683908905/profile_pictures/photo-1583795128727-6ec3642408f8.jpg" alt="", class= "profile_image">
+  <% end %> <span class="username"> <%= @offer.user.username %> </span>
+  <h6 class="mt-5"> <%= @offer.title %> </h6>
+  <h6 class="mb-5 mt-4"> Description: <br> <%= @offer.body %> </h6>
+</div>

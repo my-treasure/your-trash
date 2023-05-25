@@ -1,5 +1,4 @@
 .footnavbar {
-  grid-area: footnavbar;
   left: 0;
   bottom: 0;
   position: fixed;
@@ -10,7 +9,7 @@
   box-shadow: $shadow;
 
   .navbar-collapse {
-    flex-grow: 0;
+
   }
 
   .navbar-brand img {
