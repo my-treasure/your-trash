@@ -1,8 +1,15 @@
-<%= form_with url: root_path, method: :get, class: "d-flex" do %>
-      <%= text_field_tag :query,
-            params[:query],
-            class: "form-control",
-            placeholder: "Type a keyword"
-        %>
-      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
-<% end %>
+<div class="search-bar-frame">
+  <%= form_with url: root_path, method: :get, class: "d-flex" do %>
+    <%= text_field_tag :query,
+          params[:query],
+          class: "form-control search-form",
+          placeholder: "Search..."
+      %>
+    <%= submit_tag "Search", name: "", class: "btn btn-primary search-btn" %>
+    <i class="fa-solid fa-circle-xmark"></i>
+  <% end %>
+  <div class="search-bar-filter">
+    <i class="fa-solid fa-filter"></i>
+  </div>
+</div>
+
