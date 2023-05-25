@@ -1,3 +1,4 @@
+<<<<<<< HEAD
   [1m[35m (0.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "CHANGE_THIS_TO_YOUR_RAILS_APP_NAME_development"[0m
   [1m[35m (0.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "CHANGE_THIS_TO_YOUR_RAILS_APP_NAME_test"[0m
   [1m[35m (188.4ms)[0m  [1m[35mCREATE DATABASE "CHANGE_THIS_TO_YOUR_RAILS_APP_NAME_development" ENCODING = 'unicode'[0m
@@ -10761,3 +10762,5 @@ Processing by OffersController#show as HTML
 Completed 200 OK in 36ms (Views: 27.5ms | ActiveRecord: 7.4ms | Allocations: 17955)
 
 
+=======
+>>>>>>> 86908c66ba739913c01f6b70f6167863c133597f

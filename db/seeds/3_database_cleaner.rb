@@ -1,6 +1,6 @@
 puts "🧼 Cleaning database...\n"
 
-tables = [User, Post, Like]
+tables = [User, Offer]
 # Comment, Followed
 
 tables.each do |table|

@@ -10,34 +10,26 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
-@import "coloreffects";
 
 
 
 .main_grid {
   width: 100vw;
   height: 100vh;
-  justify-content: center;
-  align-items: center;
   display: grid;
   grid-template:
     "searchbar" 50px
     "main" auto
-    "navbar" 60px
-}
-
-.navbar {
-  grid-area: navbar;
-  background-color: $white;
-  box-shadow: $shadow;
+    "footnavbar" 60px
 }
 
 .main {
   grid-area: main;
-  grid-template: 1fr 1fr;
-  background-color: $white;
-  box-shadow: $shadow;
-  padding: 20px;
-  margin: 20px;
-  border-radius: 20px;
+  width: 100%;
+  display: flex;
+  flex-flow: column wrap;
+  background-color: yellow; //$secondary_bg;
+  padding-top: 15px;
+  grid-row-gap: 15px;
+  height: 2000px;
 }

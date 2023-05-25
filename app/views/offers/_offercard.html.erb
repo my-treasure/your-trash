@@ -1,14 +1,21 @@
-<div class="postcard">
+<div class="offercard">
+
+  <%# main image display %>
   <div class= "img-container">
     <% if offer.images.attached? %>
       <% offer.images.each do |photo| %>
-      <%= cl_image_tag photo.key, :gravity => "center", :class => "img_cl", crop: :fill %>
+      <%= cl_image_tag photo.key,
+        :gravity => "center",
+        :width => [200, 250, 300, 350].sample,
+        :height => [200, 250, 300, 350].sample,
+        :class => "offercard_image", crop: :fill %>
     <% end %>
     <% else %>
       <h5>PlaceHolder</h5>
     <% end %>
   </div>
 
+  <%# user information %>
   <div class= "card-header">
       <% if offer.user.profile_picture.attached? %>
           <%= cl_image_tag offer.user.profile_picture.key,
@@ -21,6 +28,7 @@
       <span class="username"><%= offer.user.username %></span>
   </div>
 
+  <%# offer information %>
   <div class="card-title">
     <div>
       <h6><strong><%= link_to offer.title, offer %></strong></h6>
@@ -31,21 +39,6 @@
       <button type="button" class="btn btn-dark btn-circle btn-sm"><i class="fa-solid fa-comment icon-detail"></i></button>
       <%#= offer.likes.count %> <%#= (offer.likes.count) == 1 ? 'Like' : 'Likes'%>
     </div>
-  </div>
-
-  <div class="overlay-container" >
-    <div class="overlay-top">
-      <div class="overlay-top-left">
-        <i class="fa-solid fa-heart"></i>
-      </div>
-      <div class="overlay-top-right">
-        <i class="fa-solid fa-comment"></i>
-      </div>
-    </div>
-
-    <div class="overlay-bottom">
-    </div>
-
   </div>
 
 </div>
