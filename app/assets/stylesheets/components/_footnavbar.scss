@@ -2,7 +2,7 @@
   left: 0;
   bottom: 0;
   position: fixed;
-  height: 50px;
+  height: 70px;
   width: 100%;
   z-index: 1000;
   background-color: rgb(247, 247, 152);
@@ -12,13 +12,12 @@
   width: 100%;
   overflow: auto;
   text-align: center;
+  padding-bottom: 10px;
 }
 
 .navbar a {
   display: inline-block;
-  text-align: center;
   color: black;
   text-decoration: none;
-  font-size: 25px;
-  padding: 25px;
+  font-size: 27px;
 }
