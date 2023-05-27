@@ -7,12 +7,24 @@
   z-index: 1000;
   background-color: #41644A;
   box-shadow: $shadow;
+}
+.container_fluid {
+  width: 100%;
+  overflow: auto;
+  display: flex;
+  justify-content: space-between;
 
-  .navbar-collapse {
-    flex-grow: 0;
-  }
+}
 
-  .navbar-brand img {
-    width: 40px;
-  }
+.navbar a {
+  float: left;
+  text-align: center;
+  padding: 5px;
+  color: white;
+  text-decoration: none;
+  font-size: 25px;
+}
+
+.navbar a:hover {
+  background-color: #000;
 }
