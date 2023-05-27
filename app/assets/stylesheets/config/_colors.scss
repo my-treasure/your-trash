@@ -13,11 +13,13 @@ $secondary_dark: #ff2a2a;
 $tertiary_dark: #ff9d2a;
 $quaternary_dark: #2aff2a;
 
-$primary_bg: #f90101;
-$secondary_bg: #001aff;
+$primary_bg: #e0eaec;
+$secondary_bg: #f6ffff;
 
-$shadow: 0 3px 6px rgba(65, 65, 65, 0.16);
-$shadow_dark: 0 3px 6px rgba(0, 0, 0, 0.16);
+$shadow: 0 3px 6px rgba(65, 65, 65, 0.36);
+$shadow_dark: 0 3px 6px rgba(0, 0, 0, 0.36);
+
+$black_gradient: linear-gradient(0deg, rgba(0,0,0,0.50) 30%, rgba(0,0,0,0.45) 46%, rgba(0,0,0,0.40) 67%, rgba(0,0,0,0.31761207901129207) 80%, rgba(0,0,0,0) 100%);
 
 
 // For example:

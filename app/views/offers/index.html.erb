@@ -1,4 +1,4 @@
-<div class="offergrid">
+<div class="offergrid" style="height: <%= @offers.count / 2 * 310 %>px">
 <% @offers.each do |offer| %>
   <%= render "offercard", offer: offer %>
 <% end %>
