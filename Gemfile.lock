@@ -341,6 +341,7 @@ DEPENDENCIES
   jbuilder
   jsbundling-rails
   pg (~> 1.1)
+  popper_js (~> 2.11.7)
   pry-byebug
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.3)

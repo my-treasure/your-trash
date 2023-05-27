@@ -19888,3 +19888,1051 @@ Processing by BookingsController#show as HTML
 Completed 200 OK in 46ms (Views: 19.3ms | ActiveRecord: 8.5ms | Allocations: 22960)
 
 
+Started GET "/bookings/5" for 127.0.0.1 at 2023-05-27 17:12:44 +0200
+Processing by BookingsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.5ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:24:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/show.html.erb within layouts/application
+  Rendered bookings/_bookingbutton.html.erb (Duration: 0.4ms | Allocations: 100)
+  Rendered bookings/show.html.erb within layouts/application (Duration: 1.3ms | Allocations: 372)
+  Rendered shared/_flashes.html.erb (Duration: 0.9ms | Allocations: 205)
+  Rendered shared/_searchbar.html.erb (Duration: 0.9ms | Allocations: 471)
+  Rendered shared/_footnavbar.html.erb (Duration: 0.8ms | Allocations: 602)
+  Rendered layout layouts/application.html.erb (Duration: 19.0ms | Allocations: 11275)
+Completed 200 OK in 39ms (Views: 21.0ms | ActiveRecord: 6.7ms | Allocations: 17584)
+
+
+Started GET "/bookings/5" for 127.0.0.1 at 2023-05-27 17:12:45 +0200
+Processing by BookingsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.3ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:24:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/show.html.erb within layouts/application
+  Rendered bookings/_bookingbutton.html.erb (Duration: 0.0ms | Allocations: 9)
+  Rendered bookings/show.html.erb within layouts/application (Duration: 0.2ms | Allocations: 71)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 24)
+  Rendered shared/_searchbar.html.erb (Duration: 0.3ms | Allocations: 226)
+  Rendered shared/_footnavbar.html.erb (Duration: 0.2ms | Allocations: 230)
+  Rendered layout layouts/application.html.erb (Duration: 14.3ms | Allocations: 9523)
+Completed 200 OK in 19ms (Views: 14.7ms | ActiveRecord: 0.5ms | Allocations: 12081)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-27 17:20:05 +0200
+Processing by OffersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering offers/index.html.erb within layouts/application
+  [1m[36mOffer Count (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "offers"[0m
+  ↳ app/views/offers/index.html.erb:1
+  [1m[36mOffer Load (0.4ms)[0m  [1m[34mSELECT "offers".* FROM "offers"[0m
+  ↳ app/views/offers/index.html.erb:2
+  [1m[36mActiveStorage::Attachment Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Offer"], ["name", "images"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:4
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 1], ["record_type", "Offer"], ["name", "images"]]
+  ↳ app/views/offers/_offercard.html.erb:5
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:6
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:22
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:22
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:23
+  Rendered offers/_offercard.html.erb (Duration: 41.6ms | Allocations: 19825)
+  [1m[36mActiveStorage::Attachment Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Offer"], ["name", "images"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:4
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 2], ["record_type", "Offer"], ["name", "images"]]
+  ↳ app/views/offers/_offercard.html.erb:5
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:6
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:22
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:22
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:23
+  Rendered offers/_offercard.html.erb (Duration: 10.9ms | Allocations: 5318)
+  [1m[36mActiveStorage::Attachment Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Offer"], ["name", "images"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:4
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 3], ["record_type", "Offer"], ["name", "images"]]
+  ↳ app/views/offers/_offercard.html.erb:5
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:6
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:22
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:22
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:23
+  Rendered offers/_offercard.html.erb (Duration: 11.3ms | Allocations: 5298)
+  [1m[36mActiveStorage::Attachment Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Offer"], ["name", "images"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:4
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 4], ["record_type", "Offer"], ["name", "images"]]
+  ↳ app/views/offers/_offercard.html.erb:5
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:22
+  [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:22
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:23
+  Rendered offers/_offercard.html.erb (Duration: 7.8ms | Allocations: 5054)
+  [1m[36mActiveStorage::Attachment Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "Offer"], ["name", "images"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:4
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:22
+  [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:22
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:23
+  Rendered offers/_offercard.html.erb (Duration: 5.2ms | Allocations: 3342)
+  Rendered offers/index.html.erb within layouts/application (Duration: 110.2ms | Allocations: 47340)
+Started GET "/offers/" for 127.0.0.1 at 2023-05-27 17:20:10 +0200
+Processing by OffersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering offers/index.html.erb within layouts/application
+  [1m[36mOffer Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "offers"[0m
+  ↳ app/views/offers/index.html.erb:1
+  [1m[36mOffer Load (0.2ms)[0m  [1m[34mSELECT "offers".* FROM "offers"[0m
+  ↳ app/views/offers/index.html.erb:2
+  [1m[36mActiveStorage::Attachment Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Offer"], ["name", "images"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:4
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 1], ["record_type", "Offer"], ["name", "images"]]
+  ↳ app/views/offers/_offercard.html.erb:5
+  [1m[36mActiveStorage::Blob Load (0.6ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:6
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:22
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:22
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:23
+  Rendered offers/_offercard.html.erb (Duration: 20.7ms | Allocations: 5343)
+  [1m[36mActiveStorage::Attachment Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Offer"], ["name", "images"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:4
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 2], ["record_type", "Offer"], ["name", "images"]]
+  ↳ app/views/offers/_offercard.html.erb:5
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:6
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:22
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:22
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:23
+  Rendered offers/_offercard.html.erb (Duration: 15.0ms | Allocations: 5301)
+  [1m[36mActiveStorage::Attachment Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Offer"], ["name", "images"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:4
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 3], ["record_type", "Offer"], ["name", "images"]]
+  ↳ app/views/offers/_offercard.html.erb:5
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:6
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:22
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:22
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:23
+  Rendered offers/_offercard.html.erb (Duration: 12.1ms | Allocations: 5298)
+  [1m[36mActiveStorage::Attachment Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Offer"], ["name", "images"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:4
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 4], ["record_type", "Offer"], ["name", "images"]]
+  ↳ app/views/offers/_offercard.html.erb:5
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:22
+  [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:22
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:23
+  Rendered offers/_offercard.html.erb (Duration: 11.5ms | Allocations: 5053)
+  [1m[36mActiveStorage::Attachment Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "Offer"], ["name", "images"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:4
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:22
+  [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:22
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:23
+  Rendered offers/_offercard.html.erb (Duration: 7.2ms | Allocations: 3342)
+  Rendered offers/index.html.erb within layouts/application (Duration: 84.0ms | Allocations: 28968)
+  Rendered shared/_flashes.html.erb (Duration: 0.8ms | Allocations: 212)
+  Rendered shared/_searchbar.html.erb (Duration: 1.1ms | Allocations: 455)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_footnavbar.html.erb:18
+  Rendered shared/_footnavbar.html.erb (Duration: 5.2ms | Allocations: 1719)
+  Rendered layout layouts/application.html.erb (Duration: 6735.6ms | Allocations: 169245)
+Completed 200 OK in 6745ms (Views: 6738.4ms | ActiveRecord: 29.7ms | Allocations: 172734)
+
+
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 24)
+  Rendered shared/_searchbar.html.erb (Duration: 0.3ms | Allocations: 217)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_footnavbar.html.erb:18
+  Rendered shared/_footnavbar.html.erb (Duration: 2.8ms | Allocations: 1155)
+  Rendered layout layouts/application.html.erb (Duration: 1565.9ms | Allocations: 56773)
+Completed 200 OK in 1567ms (Views: 1550.0ms | ActiveRecord: 16.6ms | Allocations: 57065)
+
+
+Started GET "/offers/3" for 127.0.0.1 at 2023-05-27 17:23:05 +0200
+Processing by OffersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mOffer Load (0.3ms)[0m  [1m[34mSELECT "offers".* FROM "offers" WHERE "offers"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/offers_controller.rb:21:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering offers/show.html.erb within layouts/application
+  Rendered offers/_map.html.erb (Duration: 1.6ms | Allocations: 793)
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 3], ["record_type", "Offer"], ["name", "images"]]
+  ↳ app/views/offers/show.html.erb:8
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/offers/show.html.erb:8
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/offers/show.html.erb:14
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  ↳ app/views/offers/show.html.erb:14
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/offers/show.html.erb:15
+  Rendered bookings/_bookingbutton.html.erb (Duration: 0.4ms | Allocations: 102)
+  Rendered offers/show.html.erb within layouts/application (Duration: 14.7ms | Allocations: 7470)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 24)
+  Rendered shared/_searchbar.html.erb (Duration: 0.3ms | Allocations: 217)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_footnavbar.html.erb:18
+  Rendered shared/_footnavbar.html.erb (Duration: 2.1ms | Allocations: 1153)
+  Rendered layout layouts/application.html.erb (Duration: 29.6ms | Allocations: 17687)
+Completed 200 OK in 34ms (Views: 28.9ms | ActiveRecord: 1.6ms | Allocations: 19114)
+
+
+Started POST "/offers/3/bookings" for 127.0.0.1 at 2023-05-27 17:23:09 +0200
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"pick_up_time"=>"12-15hrs"}, "commit"=>"Create Booking", "offer_id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mOffer Load (0.3ms)[0m  [1m[34mSELECT "offers".* FROM "offers" WHERE "offers"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/bookings_controller.rb:14:in `create'
+  [1m[36mBooking Create (1.0ms)[0m  [1m[32mINSERT INTO "bookings" ("user_id", "offer_id", "pick_up_time", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 1], ["offer_id", 3], ["pick_up_time", "12-15hrs"], ["created_at", "2023-05-27 15:23:09.175413"], ["updated_at", "2023-05-27 15:23:09.175413"]]
+  ↳ app/controllers/bookings_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/bookings_controller.rb:14:in `create'
+Redirected to http://127.0.0.1:3000/bookings/6
+Completed 302 Found in 11ms (ActiveRecord: 2.5ms | Allocations: 5306)
+
+
+Started GET "/bookings/6" for 127.0.0.1 at 2023-05-27 17:23:09 +0200
+Processing by BookingsController#show as TURBO_STREAM
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.3ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:24:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/show.html.erb within layouts/application
+  Rendered bookings/_bookingbutton.html.erb (Duration: 0.0ms | Allocations: 12)
+  Rendered bookings/show.html.erb within layouts/application (Duration: 0.8ms | Allocations: 273)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 35)
+  Rendered shared/_searchbar.html.erb (Duration: 0.4ms | Allocations: 283)
+  Rendered shared/_footnavbar.html.erb (Duration: 0.3ms | Allocations: 389)
+  Rendered layout layouts/application.html.erb (Duration: 13.8ms | Allocations: 10161)
+Completed 200 OK in 20ms (Views: 15.8ms | ActiveRecord: 0.6ms | Allocations: 12963)
+
+
+Started GET "/offers/new" for 127.0.0.1 at 2023-05-27 17:23:57 +0200
+Processing by OffersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering offers/new.html.erb within layouts/application
+  Rendered offers/new.html.erb within layouts/application (Duration: 9.9ms | Allocations: 7568)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 25)
+  Rendered shared/_searchbar.html.erb (Duration: 0.3ms | Allocations: 217)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_footnavbar.html.erb:18
+  Rendered shared/_footnavbar.html.erb (Duration: 2.3ms | Allocations: 1249)
+  Rendered layout layouts/application.html.erb (Duration: 26.3ms | Allocations: 18039)
+Completed 200 OK in 27ms (Views: 26.5ms | ActiveRecord: 0.3ms | Allocations: 18406)
+
+
+Started POST "/offers" for 127.0.0.1 at 2023-05-27 17:24:14 +0200
+Processing by OffersController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "offer"=>{"title"=>"<sxsxasd", "body"=>"sacasd", "address"=>"sdasdasdasd", "pickupslots"=>["", "15-18hrs"], "typeofoffer"=>"vegan", "foodtype"=>"mexican", "allergen"=>["", "nuts"], "images"=>["", #<ActionDispatch::Http::UploadedFile:0x000000010a291750 @tempfile=#<Tempfile:/var/folders/_5/_sd4kh4144nc07wc3hz0wcc40000gn/T/RackMultipart20230527-17989-gkmcy6.png>, @original_filename="map-static.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"offer[images][]\"; filename=\"map-static.png\"\r\nContent-Type: image/png\r\n">]}, "commit"=>"Create Offer"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[31mUnpermitted parameters: :pickupslots, :allergen. Context: { controller: OffersController, action: create, request: #<ActionDispatch::Request:0x000000010a298e60>, params: {"authenticity_token"=>"[FILTERED]", "offer"=>{"title"=>"<sxsxasd", "body"=>"sacasd", "address"=>"sdasdasdasd", "pickupslots"=>["", "15-18hrs"], "typeofoffer"=>"vegan", "foodtype"=>"mexican", "allergen"=>["", "nuts"], "images"=>["", #<ActionDispatch::Http::UploadedFile:0x000000010a291750 @tempfile=#<Tempfile:/var/folders/_5/_sd4kh4144nc07wc3hz0wcc40000gn/T/RackMultipart20230527-17989-gkmcy6.png>, @original_filename="map-static.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"offer[images][]\"; filename=\"map-static.png\"\r\nContent-Type: image/png\r\n">]}, "commit"=>"Create Offer", "controller"=>"offers", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/offers_controller.rb:40:in `create'
+  [1m[36mOffer Create (0.6ms)[0m  [1m[32mINSERT INTO "offers" ("title", "body", "user_id", "address", "created_at", "updated_at", "longitude", "latitude", "pickupslots", "typeofoffer", "foodtype", "allergen") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["title", "<sxsxasd"], ["body", "sacasd"], ["user_id", 1], ["address", "sdasdasdasd"], ["created_at", "2023-05-27 15:24:15.115943"], ["updated_at", "2023-05-27 15:24:15.115943"], ["longitude", nil], ["latitude", nil], ["pickupslots", "15-18hrs"], ["typeofoffer", "vegan"], ["foodtype", "mexican"], ["allergen", "nuts"]]
+  ↳ app/controllers/offers_controller.rb:40:in `create'
+  [1m[36mActiveStorage::Blob Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "z25tpnwjfekb5crjajo6ooqs6ta3"], ["filename", "map-static.png"], ["content_type", "image/png"], ["metadata", "{\"identified\":true}"], ["service_name", "cloudinary"], ["byte_size", 57163], ["checksum", "9yKO/V+sUmg/Iim3918lQQ=="], ["created_at", "2023-05-27 15:24:15.121358"]]
+  ↳ app/controllers/offers_controller.rb:40:in `create'
+  [1m[36mActiveStorage::Attachment Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "images"], ["record_type", "Offer"], ["record_id", 6], ["blob_id", 8], ["created_at", "2023-05-27 15:24:15.123828"]]
+  ↳ app/controllers/offers_controller.rb:40:in `create'
+  [1m[36mOffer Update (0.3ms)[0m  [1m[33mUPDATE "offers" SET "updated_at" = $1 WHERE "offers"."id" = $2[0m  [["updated_at", "2023-05-27 15:24:15.125894"], ["id", 6]]
+  ↳ app/controllers/offers_controller.rb:40:in `create'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/offers_controller.rb:40:in `create'
+[36m  Cloudinary Storage (1250.2ms) [0m[32mUploaded file to key: z25tpnwjfekb5crjajo6ooqs6ta3 (checksum: 9yKO/V+sUmg/Iim3918lQQ==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 4271b80b-4f60-4dc7-87da-cef8833b42c7) to Async(default) with arguments: #<GlobalID:0x0000000109ff8c28 @uri=#<URI::GID gid://your-trash/ActiveStorage::Blob/8>>
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 1422ms (ActiveRecord: 2.9ms | Allocations: 18510)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-27 17:24:16 +0200
+[ActiveJob] [ActiveStorage::AnalyzeJob] [4271b80b-4f60-4dc7-87da-cef8833b42c7]   [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [4271b80b-4f60-4dc7-87da-cef8833b42c7] Performing ActiveStorage::AnalyzeJob (Job ID: 4271b80b-4f60-4dc7-87da-cef8833b42c7) from Async(default) enqueued at 2023-05-27T15:24:16Z with arguments: #<GlobalID:0x0000000109f3afc0 @uri=#<URI::GID gid://your-trash/ActiveStorage::Blob/8>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [4271b80b-4f60-4dc7-87da-cef8833b42c7] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [4271b80b-4f60-4dc7-87da-cef8833b42c7]   [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [4271b80b-4f60-4dc7-87da-cef8833b42c7]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 8]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [4271b80b-4f60-4dc7-87da-cef8833b42c7]   [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [4271b80b-4f60-4dc7-87da-cef8833b42c7] Performed ActiveStorage::AnalyzeJob (Job ID: 4271b80b-4f60-4dc7-87da-cef8833b42c7) from Async(default) in 11.18ms
+Processing by OffersController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering offers/index.html.erb within layouts/application
+  [1m[36mOffer Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "offers"[0m
+  ↳ app/views/offers/index.html.erb:1
+  [1m[36mOffer Load (0.2ms)[0m  [1m[34mSELECT "offers".* FROM "offers"[0m
+  ↳ app/views/offers/index.html.erb:2
+  [1m[36mActiveStorage::Attachment Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Offer"], ["name", "images"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:4
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 1], ["record_type", "Offer"], ["name", "images"]]
+  ↳ app/views/offers/_offercard.html.erb:5
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:6
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:22
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:22
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:23
+  Rendered offers/_offercard.html.erb (Duration: 11.4ms | Allocations: 5406)
+  [1m[36mActiveStorage::Attachment Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Offer"], ["name", "images"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:4
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 2], ["record_type", "Offer"], ["name", "images"]]
+  ↳ app/views/offers/_offercard.html.erb:5
+  [1m[36mActiveStorage::Blob Load (5.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:6
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:22
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:22
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:23
+  Rendered offers/_offercard.html.erb (Duration: 19.5ms | Allocations: 5301)
+  [1m[36mActiveStorage::Attachment Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Offer"], ["name", "images"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:4
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 3], ["record_type", "Offer"], ["name", "images"]]
+  ↳ app/views/offers/_offercard.html.erb:5
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:6
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:22
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:22
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:23
+  Rendered offers/_offercard.html.erb (Duration: 11.5ms | Allocations: 5298)
+  [1m[36mActiveStorage::Attachment Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Offer"], ["name", "images"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:4
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 4], ["record_type", "Offer"], ["name", "images"]]
+  ↳ app/views/offers/_offercard.html.erb:5
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:22
+  [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:22
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:23
+  Rendered offers/_offercard.html.erb (Duration: 9.3ms | Allocations: 5054)
+  [1m[36mActiveStorage::Attachment Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "Offer"], ["name", "images"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:4
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:22
+  [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:22
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:23
+  Rendered offers/_offercard.html.erb (Duration: 6.6ms | Allocations: 3342)
+  [1m[36mActiveStorage::Attachment Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 6], ["record_type", "Offer"], ["name", "images"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:4
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 6], ["record_type", "Offer"], ["name", "images"]]
+  ↳ app/views/offers/_offercard.html.erb:5
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:22
+  [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:22
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:23
+  Rendered offers/_offercard.html.erb (Duration: 7.9ms | Allocations: 5053)
+  Rendered offers/index.html.erb within layouts/application (Duration: 69.9ms | Allocations: 31006)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 29)
+  Rendered shared/_searchbar.html.erb (Duration: 0.3ms | Allocations: 229)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_footnavbar.html.erb:18
+  Rendered shared/_footnavbar.html.erb (Duration: 2.0ms | Allocations: 1176)
+  Rendered layout layouts/application.html.erb (Duration: 85.0ms | Allocations: 42036)
+Completed 200 OK in 86ms (Views: 73.4ms | ActiveRecord: 11.9ms | Allocations: 42342)
+
+
+Started GET "/offers/6" for 127.0.0.1 at 2023-05-27 17:24:22 +0200
+Processing by OffersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mOffer Load (0.2ms)[0m  [1m[34mSELECT "offers".* FROM "offers" WHERE "offers"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/offers_controller.rb:21:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering offers/show.html.erb within layouts/application
+  Rendered offers/_map.html.erb (Duration: 1.1ms | Allocations: 677)
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 6], ["record_type", "Offer"], ["name", "images"]]
+  ↳ app/views/offers/show.html.erb:8
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/offers/show.html.erb:8
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/offers/show.html.erb:14
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  ↳ app/views/offers/show.html.erb:14
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/offers/show.html.erb:15
+  Rendered bookings/_bookingbutton.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered offers/show.html.erb within layouts/application (Duration: 13.3ms | Allocations: 6634)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 24)
+  Rendered shared/_searchbar.html.erb (Duration: 0.3ms | Allocations: 217)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_footnavbar.html.erb:18
+  Rendered shared/_footnavbar.html.erb (Duration: 2.0ms | Allocations: 1153)
+  Rendered layout layouts/application.html.erb (Duration: 27.2ms | Allocations: 16851)
+Completed 200 OK in 29ms (Views: 26.4ms | ActiveRecord: 1.4ms | Allocations: 17640)
+
+
+Started POST "/offers/6/bookings" for 127.0.0.1 at 2023-05-27 17:24:29 +0200
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"pick_up_time"=>"15-18hrs"}, "commit"=>"Create Booking", "offer_id"=>"6"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mOffer Load (0.2ms)[0m  [1m[34mSELECT "offers".* FROM "offers" WHERE "offers"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/bookings_controller.rb:14:in `create'
+  [1m[36mBooking Create (0.4ms)[0m  [1m[32mINSERT INTO "bookings" ("user_id", "offer_id", "pick_up_time", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 1], ["offer_id", 6], ["pick_up_time", "15-18hrs"], ["created_at", "2023-05-27 15:24:29.075200"], ["updated_at", "2023-05-27 15:24:29.075200"]]
+  ↳ app/controllers/bookings_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/bookings_controller.rb:14:in `create'
+Redirected to http://127.0.0.1:3000/bookings/7
+Completed 302 Found in 7ms (ActiveRecord: 1.2ms | Allocations: 4191)
+
+
+Started GET "/bookings/7" for 127.0.0.1 at 2023-05-27 17:24:29 +0200
+Processing by BookingsController#show as TURBO_STREAM
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.2ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:24:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/show.html.erb within layouts/application
+  Rendered bookings/_bookingbutton.html.erb (Duration: 0.0ms | Allocations: 9)
+  Rendered bookings/show.html.erb within layouts/application (Duration: 0.1ms | Allocations: 74)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 24)
+  Rendered shared/_searchbar.html.erb (Duration: 0.3ms | Allocations: 226)
+  Rendered shared/_footnavbar.html.erb (Duration: 0.4ms | Allocations: 362)
+  Rendered layout layouts/application.html.erb (Duration: 11.9ms | Allocations: 9658)
+Completed 200 OK in 15ms (Views: 12.3ms | ActiveRecord: 0.4ms | Allocations: 12015)
+
+
+Started GET "/bookings/7" for 127.0.0.1 at 2023-05-27 17:29:34 +0200
+Processing by BookingsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.3ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:24:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/show.html.erb within layouts/application
+  Rendered bookings/show.html.erb within layouts/application (Duration: 18.8ms | Allocations: 2731)
+  Rendered layout layouts/application.html.erb (Duration: 21.2ms | Allocations: 2819)
+Completed 500 Internal Server Error in 44ms (ActiveRecord: 0.4ms | Allocations: 5756)
+
+
+  
+ActionView::Template::Error (Missing partial bookings/_bookingbutton with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :jbuilder]}.
+
+Searched in:
+  * "/Users/admin/code/my-treasure/your-trash/app/views"
+  * "/Users/admin/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/devise-4.9.2/app/views"
+  * "/Users/admin/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/turbo-rails-1.4.0/app/views"
+  * "/Users/admin/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actiontext-7.0.4.3/app/views"
+  * "/Users/admin/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actionmailbox-7.0.4.3/app/views"
+
+Did you mean?  layouts/action_text/contents/content
+               active_storage/blobs/blob
+               action_text/contents/content
+               devise/shared/links
+               shared/bookingbutton
+               offers/offercard):
+    1: <div class="bookingbutton">
+    2:         <% render "bookings/bookingbutton" %> 
+    3:     </div>
+  
+app/views/bookings/show.html.erb:2
+Started GET "/bookings/7" for 127.0.0.1 at 2023-05-27 17:30:07 +0200
+Processing by BookingsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.2ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:24:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/show.html.erb within layouts/application
+  Rendered shared/_bookingbutton.html.erb (Duration: 0.3ms | Allocations: 106)
+  Rendered bookings/show.html.erb within layouts/application (Duration: 1.0ms | Allocations: 380)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 208)
+  Rendered shared/_searchbar.html.erb (Duration: 0.8ms | Allocations: 480)
+  Rendered shared/_footnavbar.html.erb (Duration: 1.1ms | Allocations: 900)
+  Rendered layout layouts/application.html.erb (Duration: 24.2ms | Allocations: 11922)
+Completed 200 OK in 32ms (Views: 27.4ms | ActiveRecord: 0.4ms | Allocations: 15070)
+
+
+Started GET "/bookings/7" for 127.0.0.1 at 2023-05-27 17:31:02 +0200
+Processing by BookingsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.2ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:24:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/show.html.erb within layouts/application
+  Rendered shared/_bookingbutton.html.erb (Duration: 0.6ms | Allocations: 105)
+  Rendered bookings/show.html.erb within layouts/application (Duration: 1.4ms | Allocations: 374)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 205)
+  Rendered shared/_searchbar.html.erb (Duration: 0.8ms | Allocations: 480)
+  Rendered shared/_footnavbar.html.erb (Duration: 1.3ms | Allocations: 900)
+  Rendered layout layouts/application.html.erb (Duration: 18.3ms | Allocations: 11586)
+Completed 200 OK in 24ms (Views: 20.1ms | ActiveRecord: 0.4ms | Allocations: 14712)
+
+
+Started GET "/bookings/7" for 127.0.0.1 at 2023-05-27 17:32:14 +0200
+Processing by BookingsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.2ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:24:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/show.html.erb within layouts/application
+  Rendered bookings/show.html.erb within layouts/application (Duration: 0.3ms | Allocations: 130)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 210)
+  Rendered shared/_searchbar.html.erb (Duration: 0.9ms | Allocations: 481)
+  Rendered shared/_footnavbar.html.erb (Duration: 1.1ms | Allocations: 900)
+  Rendered layout layouts/application.html.erb (Duration: 18.0ms | Allocations: 11358)
+Completed 200 OK in 24ms (Views: 20.0ms | ActiveRecord: 0.4ms | Allocations: 14481)
+
+
+Started GET "/bookings/7" for 127.0.0.1 at 2023-05-27 17:32:15 +0200
+Processing by BookingsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.2ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:24:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/show.html.erb within layouts/application
+  Rendered bookings/show.html.erb within layouts/application (Duration: 0.0ms | Allocations: 7)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 25)
+  Rendered shared/_searchbar.html.erb (Duration: 0.3ms | Allocations: 226)
+  Rendered shared/_footnavbar.html.erb (Duration: 0.3ms | Allocations: 362)
+  Rendered layout layouts/application.html.erb (Duration: 13.8ms | Allocations: 9590)
+Completed 200 OK in 18ms (Views: 14.2ms | ActiveRecord: 0.3ms | Allocations: 12118)
+
+
+Started GET "/bookings/7" for 127.0.0.1 at 2023-05-27 17:33:39 +0200
+Processing by BookingsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.2ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:24:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/show.html.erb within layouts/application
+  Rendered shared/_bookingbutton.html.erb (Duration: 0.3ms | Allocations: 105)
+  Rendered bookings/show.html.erb within layouts/application (Duration: 1.1ms | Allocations: 376)
+  Rendered shared/_flashes.html.erb (Duration: 0.7ms | Allocations: 207)
+  Rendered shared/_searchbar.html.erb (Duration: 0.9ms | Allocations: 481)
+  Rendered shared/_footnavbar.html.erb (Duration: 1.3ms | Allocations: 900)
+  Rendered layout layouts/application.html.erb (Duration: 19.0ms | Allocations: 11589)
+Completed 200 OK in 25ms (Views: 20.8ms | ActiveRecord: 0.3ms | Allocations: 14522)
+
+
+Started GET "/bookings/7" for 127.0.0.1 at 2023-05-27 17:34:48 +0200
+Processing by BookingsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.1ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:24:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/show.html.erb within layouts/application
+  Rendered shared/_bookingbutton.html.erb (Duration: 0.3ms | Allocations: 105)
+  Rendered bookings/show.html.erb within layouts/application (Duration: 1.0ms | Allocations: 369)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 207)
+  Rendered shared/_searchbar.html.erb (Duration: 0.7ms | Allocations: 481)
+  Rendered shared/_footnavbar.html.erb (Duration: 1.4ms | Allocations: 900)
+  Rendered layout layouts/application.html.erb (Duration: 18.7ms | Allocations: 11582)
+Completed 200 OK in 24ms (Views: 20.4ms | ActiveRecord: 0.3ms | Allocations: 14720)
+
+
+Started GET "/bookings/7" for 127.0.0.1 at 2023-05-27 17:39:16 +0200
+Processing by BookingsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.1ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:24:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/show.html.erb within layouts/application
+  Rendered shared/_bookingbutton.html.erb (Duration: 0.6ms | Allocations: 1251)
+  Rendered bookings/show.html.erb within layouts/application (Duration: 1.3ms | Allocations: 1517)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | Allocations: 1603)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.3ms | Allocations: 4698)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <div class="bookingbutton">
+  <%= <i class="fa-solid fa-circle-check"></i> %>
+
+
+</div>
+
+):
+1:    <div class="bookingbutton">
+2:      <%= <i class="fa-solid fa-circle-check"></i> %>
+3:    
+4:    
+5:    </div>
+  
+app/views/shared/_bookingbutton.html.erb:2: syntax error, unexpected '<'
+app/views/shared/_bookingbutton.html.erb:2: syntax error, unexpected '<'
+app/views/shared/_bookingbutton.html.erb:5: unknown regexp options - dv
+app/views/shared/_bookingbutton.html.erb:5: unmatched close parenthesis: /i> );@output_buffer.safe_append='
+app/views/shared/_bookingbutton.html.erb:8: unterminated string meets end of file
+app/views/shared/_bookingbutton.html.erb:8: syntax error, unexpected end-of-input, expecting ')'
+app/views/shared/_bookingbutton.html.erb:2: syntax error, unexpected '<'
+app/views/shared/_bookingbutton.html.erb:2: syntax error, unexpected '<'
+app/views/shared/_bookingbutton.html.erb:5: unknown regexp options - dv
+app/views/shared/_bookingbutton.html.erb:5: unmatched close parenthesis: /i> );@output_buffer.safe_append='
+app/views/shared/_bookingbutton.html.erb:8: unterminated string meets end of file
+app/views/shared/_bookingbutton.html.erb:8: syntax error, unexpected end-of-input, expecting ')'
+app/views/shared/_bookingbutton.html.erb:2: syntax error, unexpected '<'
+app/views/shared/_bookingbutton.html.erb:2: syntax error, unexpected '<'
+app/views/shared/_bookingbutton.html.erb:5: unknown regexp options - dv
+app/views/shared/_bookingbutton.html.erb:5: unmatched close parenthesis: /i> );@output_buffer.safe_append='
+app/views/shared/_bookingbutton.html.erb:8: unterminated string meets end of file
+app/views/shared/_bookingbutton.html.erb:8: syntax error, unexpected end-of-input, expecting ')'
+app/views/shared/_bookingbutton.html.erb:2: syntax error, unexpected '<'
+app/views/shared/_bookingbutton.html.erb:2: syntax error, unexpected '<'
+app/views/shared/_bookingbutton.html.erb:5: unknown regexp options - dv
+app/views/shared/_bookingbutton.html.erb:5: unmatched close parenthesis: /i> );@output_buffer.safe_append='
+app/views/shared/_bookingbutton.html.erb:8: unterminated string meets end of file
+app/views/shared/_bookingbutton.html.erb:8: syntax error, unexpected end-of-input, expecting ')'
+app/views/shared/_bookingbutton.html.erb:2: syntax error, unexpected '<'
+app/views/shared/_bookingbutton.html.erb:2: syntax error, unexpected '<'
+app/views/shared/_bookingbutton.html.erb:5: unknown regexp options - dv
+app/views/shared/_bookingbutton.html.erb:5: unmatched close parenthesis: /i> );@output_buffer.safe_append='
+app/views/shared/_bookingbutton.html.erb:8: unterminated string meets end of file
+app/views/shared/_bookingbutton.html.erb:8: syntax error, unexpected end-of-input, expecting ')'
+app/views/shared/_bookingbutton.html.erb:2: syntax error, unexpected '<'
+app/views/shared/_bookingbutton.html.erb:2: syntax error, unexpected '<'
+app/views/shared/_bookingbutton.html.erb:5: unknown regexp options - dv
+app/views/shared/_bookingbutton.html.erb:5: unmatched close parenthesis: /i> );@output_buffer.safe_append='
+app/views/shared/_bookingbutton.html.erb:8: unterminated string meets end of file
+app/views/shared/_bookingbutton.html.erb:8: syntax error, unexpected end-of-input, expecting ')'
+app/views/bookings/show.html.erb:2
+Started GET "/offers/6" for 127.0.0.1 at 2023-05-27 17:39:49 +0200
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by OffersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mOffer Load (0.4ms)[0m  [1m[34mSELECT "offers".* FROM "offers" WHERE "offers"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/offers_controller.rb:21:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering offers/show.html.erb within layouts/application
+  Rendered offers/_map.html.erb (Duration: 215.7ms | Allocations: 58778)
+  [1m[36mActiveStorage::Attachment Load (1.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 6], ["record_type", "Offer"], ["name", "images"]]
+  ↳ app/views/offers/show.html.erb:8
+  [1m[36mActiveStorage::Blob Load (0.8ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/offers/show.html.erb:8
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/offers/show.html.erb:14
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  ↳ app/views/offers/show.html.erb:14
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/offers/show.html.erb:15
+  Rendered shared/_bookingbutton.html.erb (Duration: 2.0ms | Allocations: 1483)
+  Rendered offers/show.html.erb within layouts/application (Duration: 645.9ms | Allocations: 381930)
+  Rendered layout layouts/application.html.erb (Duration: 646.0ms | Allocations: 382027)
+Completed 500 Internal Server Error in 690ms (ActiveRecord: 23.9ms | Allocations: 403197)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <div class="bookingbutton">
+  <%= <i class="fa-solid fa-circle-check"></i> %>
+
+
+</div>
+
+):
+1:    <div class="bookingbutton">
+2:      <%= <i class="fa-solid fa-circle-check"></i> %>
+3:    
+4:    
+5:    </div>
+  
+app/views/shared/_bookingbutton.html.erb:2: syntax error, unexpected '<'
+app/views/shared/_bookingbutton.html.erb:2: syntax error, unexpected '<'
+app/views/shared/_bookingbutton.html.erb:5: unknown regexp options - dv
+app/views/shared/_bookingbutton.html.erb:5: unmatched close parenthesis: /i> );@output_buffer.safe_append='
+app/views/shared/_bookingbutton.html.erb:8: unterminated string meets end of file
+app/views/shared/_bookingbutton.html.erb:8: syntax error, unexpected end-of-input, expecting ')'
+app/views/shared/_bookingbutton.html.erb:2: syntax error, unexpected '<'
+app/views/shared/_bookingbutton.html.erb:2: syntax error, unexpected '<'
+app/views/shared/_bookingbutton.html.erb:5: unknown regexp options - dv
+app/views/shared/_bookingbutton.html.erb:5: unmatched close parenthesis: /i> );@output_buffer.safe_append='
+app/views/shared/_bookingbutton.html.erb:8: unterminated string meets end of file
+app/views/shared/_bookingbutton.html.erb:8: syntax error, unexpected end-of-input, expecting ')'
+app/views/shared/_bookingbutton.html.erb:2: syntax error, unexpected '<'
+app/views/shared/_bookingbutton.html.erb:2: syntax error, unexpected '<'
+app/views/shared/_bookingbutton.html.erb:5: unknown regexp options - dv
+app/views/shared/_bookingbutton.html.erb:5: unmatched close parenthesis: /i> );@output_buffer.safe_append='
+app/views/shared/_bookingbutton.html.erb:8: unterminated string meets end of file
+app/views/shared/_bookingbutton.html.erb:8: syntax error, unexpected end-of-input, expecting ')'
+app/views/shared/_bookingbutton.html.erb:2: syntax error, unexpected '<'
+app/views/shared/_bookingbutton.html.erb:2: syntax error, unexpected '<'
+app/views/shared/_bookingbutton.html.erb:5: unknown regexp options - dv
+app/views/shared/_bookingbutton.html.erb:5: unmatched close parenthesis: /i> );@output_buffer.safe_append='
+app/views/shared/_bookingbutton.html.erb:8: unterminated string meets end of file
+app/views/shared/_bookingbutton.html.erb:8: syntax error, unexpected end-of-input, expecting ')'
+app/views/shared/_bookingbutton.html.erb:2: syntax error, unexpected '<'
+app/views/shared/_bookingbutton.html.erb:2: syntax error, unexpected '<'
+app/views/shared/_bookingbutton.html.erb:5: unknown regexp options - dv
+app/views/shared/_bookingbutton.html.erb:5: unmatched close parenthesis: /i> );@output_buffer.safe_append='
+app/views/shared/_bookingbutton.html.erb:8: unterminated string meets end of file
+app/views/shared/_bookingbutton.html.erb:8: syntax error, unexpected end-of-input, expecting ')'
+app/views/shared/_bookingbutton.html.erb:2: syntax error, unexpected '<'
+app/views/shared/_bookingbutton.html.erb:2: syntax error, unexpected '<'
+app/views/shared/_bookingbutton.html.erb:5: unknown regexp options - dv
+app/views/shared/_bookingbutton.html.erb:5: unmatched close parenthesis: /i> );@output_buffer.safe_append='
+app/views/shared/_bookingbutton.html.erb:8: unterminated string meets end of file
+app/views/shared/_bookingbutton.html.erb:8: syntax error, unexpected end-of-input, expecting ')'
+app/views/offers/show.html.erb:81
+Started GET "/offers/7" for 127.0.0.1 at 2023-05-27 17:39:51 +0200
+Processing by OffersController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mOffer Load (0.3ms)[0m  [1m[34mSELECT "offers".* FROM "offers" WHERE "offers"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/offers_controller.rb:21:in `show'
+Completed 404 Not Found in 3ms (ActiveRecord: 0.3ms | Allocations: 1060)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Offer with 'id'=7):
+  
+app/controllers/offers_controller.rb:21:in `show'
+Started GET "/offers/1" for 127.0.0.1 at 2023-05-27 17:40:00 +0200
+Processing by OffersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mOffer Load (0.2ms)[0m  [1m[34mSELECT "offers".* FROM "offers" WHERE "offers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/offers_controller.rb:21:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering offers/show.html.erb within layouts/application
+  Rendered offers/_map.html.erb (Duration: 1.2ms | Allocations: 790)
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 1], ["record_type", "Offer"], ["name", "images"]]
+  ↳ app/views/offers/show.html.erb:8
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/offers/show.html.erb:8
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/offers/show.html.erb:14
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  ↳ app/views/offers/show.html.erb:14
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/offers/show.html.erb:15
+  Rendered shared/_bookingbutton.html.erb (Duration: 0.7ms | Allocations: 1241)
+  Rendered offers/show.html.erb within layouts/application (Duration: 15.0ms | Allocations: 8360)
+  Rendered layout layouts/application.html.erb (Duration: 15.1ms | Allocations: 8441)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 1.7ms | Allocations: 9319)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <div class="bookingbutton">
+  <%= <i class="fa-solid fa-circle-check"></i> %>
+
+
+</div>
+
+):
+1:    <div class="bookingbutton">
+2:      <%= <i class="fa-solid fa-circle-check"></i> %>
+3:    
+4:    
+5:    </div>
+  
+app/views/shared/_bookingbutton.html.erb:2: syntax error, unexpected '<'
+app/views/shared/_bookingbutton.html.erb:2: syntax error, unexpected '<'
+app/views/shared/_bookingbutton.html.erb:5: unknown regexp options - dv
+app/views/shared/_bookingbutton.html.erb:5: unmatched close parenthesis: /i> );@output_buffer.safe_append='
+app/views/shared/_bookingbutton.html.erb:8: unterminated string meets end of file
+app/views/shared/_bookingbutton.html.erb:8: syntax error, unexpected end-of-input, expecting ')'
+app/views/shared/_bookingbutton.html.erb:2: syntax error, unexpected '<'
+app/views/shared/_bookingbutton.html.erb:2: syntax error, unexpected '<'
+app/views/shared/_bookingbutton.html.erb:5: unknown regexp options - dv
+app/views/shared/_bookingbutton.html.erb:5: unmatched close parenthesis: /i> );@output_buffer.safe_append='
+app/views/shared/_bookingbutton.html.erb:8: unterminated string meets end of file
+app/views/shared/_bookingbutton.html.erb:8: syntax error, unexpected end-of-input, expecting ')'
+app/views/shared/_bookingbutton.html.erb:2: syntax error, unexpected '<'
+app/views/shared/_bookingbutton.html.erb:2: syntax error, unexpected '<'
+app/views/shared/_bookingbutton.html.erb:5: unknown regexp options - dv
+app/views/shared/_bookingbutton.html.erb:5: unmatched close parenthesis: /i> );@output_buffer.safe_append='
+app/views/shared/_bookingbutton.html.erb:8: unterminated string meets end of file
+app/views/shared/_bookingbutton.html.erb:8: syntax error, unexpected end-of-input, expecting ')'
+app/views/shared/_bookingbutton.html.erb:2: syntax error, unexpected '<'
+app/views/shared/_bookingbutton.html.erb:2: syntax error, unexpected '<'
+app/views/shared/_bookingbutton.html.erb:5: unknown regexp options - dv
+app/views/shared/_bookingbutton.html.erb:5: unmatched close parenthesis: /i> );@output_buffer.safe_append='
+app/views/shared/_bookingbutton.html.erb:8: unterminated string meets end of file
+app/views/shared/_bookingbutton.html.erb:8: syntax error, unexpected end-of-input, expecting ')'
+app/views/shared/_bookingbutton.html.erb:2: syntax error, unexpected '<'
+app/views/shared/_bookingbutton.html.erb:2: syntax error, unexpected '<'
+app/views/shared/_bookingbutton.html.erb:5: unknown regexp options - dv
+app/views/shared/_bookingbutton.html.erb:5: unmatched close parenthesis: /i> );@output_buffer.safe_append='
+app/views/shared/_bookingbutton.html.erb:8: unterminated string meets end of file
+app/views/shared/_bookingbutton.html.erb:8: syntax error, unexpected end-of-input, expecting ')'
+app/views/shared/_bookingbutton.html.erb:2: syntax error, unexpected '<'
+app/views/shared/_bookingbutton.html.erb:2: syntax error, unexpected '<'
+app/views/shared/_bookingbutton.html.erb:5: unknown regexp options - dv
+app/views/shared/_bookingbutton.html.erb:5: unmatched close parenthesis: /i> );@output_buffer.safe_append='
+app/views/shared/_bookingbutton.html.erb:8: unterminated string meets end of file
+app/views/shared/_bookingbutton.html.erb:8: syntax error, unexpected end-of-input, expecting ')'
+app/views/offers/show.html.erb:81
+Started GET "/offers/1" for 127.0.0.1 at 2023-05-27 17:41:39 +0200
+Processing by OffersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mOffer Load (0.2ms)[0m  [1m[34mSELECT "offers".* FROM "offers" WHERE "offers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/offers_controller.rb:21:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering offers/show.html.erb within layouts/application
+  Rendered offers/_map.html.erb (Duration: 1.6ms | Allocations: 949)
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 1], ["record_type", "Offer"], ["name", "images"]]
+  ↳ app/views/offers/show.html.erb:8
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/offers/show.html.erb:8
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/offers/show.html.erb:14
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  ↳ app/views/offers/show.html.erb:14
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/offers/show.html.erb:15
+  Rendered shared/_bookingbutton.html.erb (Duration: 0.4ms | Allocations: 101)
+  Rendered offers/show.html.erb within layouts/application (Duration: 16.5ms | Allocations: 8100)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 222)
+  Rendered shared/_searchbar.html.erb (Duration: 0.7ms | Allocations: 461)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_footnavbar.html.erb:18
+  Rendered shared/_footnavbar.html.erb (Duration: 3.7ms | Allocations: 1924)
+  Rendered layout layouts/application.html.erb (Duration: 35.7ms | Allocations: 20280)
+Completed 200 OK in 40ms (Views: 36.0ms | ActiveRecord: 2.0ms | Allocations: 21673)
+
+
+Started GET "/offers/" for 127.0.0.1 at 2023-05-27 17:41:46 +0200
+Processing by OffersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering offers/index.html.erb within layouts/application
+  [1m[36mOffer Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "offers"[0m
+  ↳ app/views/offers/index.html.erb:1
+  [1m[36mOffer Load (0.4ms)[0m  [1m[34mSELECT "offers".* FROM "offers"[0m
+  ↳ app/views/offers/index.html.erb:2
+  [1m[36mActiveStorage::Attachment Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Offer"], ["name", "images"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:4
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 1], ["record_type", "Offer"], ["name", "images"]]
+  ↳ app/views/offers/_offercard.html.erb:5
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:6
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:22
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:22
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:23
+  Rendered offers/_offercard.html.erb (Duration: 14.7ms | Allocations: 5906)
+  [1m[36mActiveStorage::Attachment Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Offer"], ["name", "images"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:4
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 2], ["record_type", "Offer"], ["name", "images"]]
+  ↳ app/views/offers/_offercard.html.erb:5
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:6
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:22
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:22
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:23
+  Rendered offers/_offercard.html.erb (Duration: 12.4ms | Allocations: 5401)
+  [1m[36mActiveStorage::Attachment Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Offer"], ["name", "images"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:4
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 3], ["record_type", "Offer"], ["name", "images"]]
+  ↳ app/views/offers/_offercard.html.erb:5
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:6
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:22
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:22
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:23
+  Rendered offers/_offercard.html.erb (Duration: 14.4ms | Allocations: 5395)
+  [1m[36mActiveStorage::Attachment Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Offer"], ["name", "images"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:4
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 4], ["record_type", "Offer"], ["name", "images"]]
+  ↳ app/views/offers/_offercard.html.erb:5
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:22
+  [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:22
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:23
+  Rendered offers/_offercard.html.erb (Duration: 13.3ms | Allocations: 5168)
+  [1m[36mActiveStorage::Attachment Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "Offer"], ["name", "images"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:4
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:22
+  [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:22
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:23
+  Rendered offers/_offercard.html.erb (Duration: 7.6ms | Allocations: 3388)
+  [1m[36mActiveStorage::Attachment Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 6], ["record_type", "Offer"], ["name", "images"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:4
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 6], ["record_type", "Offer"], ["name", "images"]]
+  ↳ app/views/offers/_offercard.html.erb:5
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:22
+  [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:22
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/offers/_offercard.html.erb:23
+  Rendered offers/_offercard.html.erb (Duration: 11.3ms | Allocations: 5147)
+  Rendered offers/index.html.erb within layouts/application (Duration: 79.8ms | Allocations: 32272)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 24)
+  Rendered shared/_searchbar.html.erb (Duration: 0.2ms | Allocations: 217)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_footnavbar.html.erb:18
+  Rendered shared/_footnavbar.html.erb (Duration: 2.1ms | Allocations: 1153)
+  Rendered layout layouts/application.html.erb (Duration: 97.2ms | Allocations: 43133)
+Completed 200 OK in 99ms (Views: 89.2ms | ActiveRecord: 8.5ms | Allocations: 43462)
+
+
+Started GET "/offers/6" for 127.0.0.1 at 2023-05-27 17:41:50 +0200
+Processing by OffersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mOffer Load (0.2ms)[0m  [1m[34mSELECT "offers".* FROM "offers" WHERE "offers"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/offers_controller.rb:21:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering offers/show.html.erb within layouts/application
+  Rendered offers/_map.html.erb (Duration: 1.3ms | Allocations: 676)
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 6], ["record_type", "Offer"], ["name", "images"]]
+  ↳ app/views/offers/show.html.erb:8
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/offers/show.html.erb:8
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/offers/show.html.erb:14
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "profile_picture"], ["LIMIT", 1]]
+  ↳ app/views/offers/show.html.erb:14
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/offers/show.html.erb:15
+  Rendered shared/_bookingbutton.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered offers/show.html.erb within layouts/application (Duration: 13.5ms | Allocations: 6624)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 24)
+  Rendered shared/_searchbar.html.erb (Duration: 0.2ms | Allocations: 217)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_footnavbar.html.erb:18
+  Rendered shared/_footnavbar.html.erb (Duration: 1.9ms | Allocations: 1153)
+  Rendered layout layouts/application.html.erb (Duration: 28.1ms | Allocations: 16842)
+Completed 200 OK in 30ms (Views: 27.2ms | ActiveRecord: 1.7ms | Allocations: 17632)
+
+
+Started POST "/offers/6/bookings" for 127.0.0.1 at 2023-05-27 17:41:52 +0200
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"pick_up_time"=>"15-18hrs"}, "commit"=>"Create Booking", "offer_id"=>"6"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mOffer Load (0.2ms)[0m  [1m[34mSELECT "offers".* FROM "offers" WHERE "offers"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/bookings_controller.rb:14:in `create'
+  [1m[36mBooking Create (1.0ms)[0m  [1m[32mINSERT INTO "bookings" ("user_id", "offer_id", "pick_up_time", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 1], ["offer_id", 6], ["pick_up_time", "15-18hrs"], ["created_at", "2023-05-27 15:41:52.822046"], ["updated_at", "2023-05-27 15:41:52.822046"]]
+  ↳ app/controllers/bookings_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/bookings_controller.rb:14:in `create'
+Redirected to http://127.0.0.1:3000/bookings/8
+Completed 302 Found in 12ms (ActiveRecord: 2.2ms | Allocations: 7413)
+
+
+Started GET "/bookings/8" for 127.0.0.1 at 2023-05-27 17:41:52 +0200
+Processing by BookingsController#show as TURBO_STREAM
+  Parameters: {"id"=>"8"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.3ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:24:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/show.html.erb within layouts/application
+  Rendered shared/_bookingbutton.html.erb (Duration: 0.0ms | Allocations: 12)
+  Rendered bookings/show.html.erb within layouts/application (Duration: 0.6ms | Allocations: 268)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 35)
+  Rendered shared/_searchbar.html.erb (Duration: 0.4ms | Allocations: 285)
+  Rendered shared/_footnavbar.html.erb (Duration: 0.3ms | Allocations: 389)
+  Rendered layout layouts/application.html.erb (Duration: 13.7ms | Allocations: 10165)
+Completed 200 OK in 20ms (Views: 15.3ms | ActiveRecord: 0.6ms | Allocations: 13744)
+
+
+Started GET "/bookings/8" for 127.0.0.1 at 2023-05-27 17:47:41 +0200
+Processing by BookingsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.2ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:24:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/show.html.erb within layouts/application
+  Rendered shared/_bookingbutton.html.erb (Duration: 0.3ms | Allocations: 104)
+  Rendered bookings/show.html.erb within layouts/application (Duration: 1.0ms | Allocations: 368)
+  Rendered shared/_flashes.html.erb (Duration: 0.6ms | Allocations: 207)
+  Rendered shared/_searchbar.html.erb (Duration: 0.9ms | Allocations: 481)
+  Rendered shared/_footnavbar.html.erb (Duration: 1.3ms | Allocations: 900)
+  Rendered layout layouts/application.html.erb (Duration: 18.5ms | Allocations: 11581)
+Completed 200 OK in 24ms (Views: 20.2ms | ActiveRecord: 0.4ms | Allocations: 14740)
+
+
+Started GET "/bookings/8" for 127.0.0.1 at 2023-05-27 17:47:42 +0200
+Processing by BookingsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.3ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:24:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/show.html.erb within layouts/application
+  Rendered shared/_bookingbutton.html.erb (Duration: 0.0ms | Allocations: 9)
+  Rendered bookings/show.html.erb within layouts/application (Duration: 0.2ms | Allocations: 71)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 24)
+  Rendered shared/_searchbar.html.erb (Duration: 0.3ms | Allocations: 226)
+  Rendered shared/_footnavbar.html.erb (Duration: 0.3ms | Allocations: 362)
+  Rendered layout layouts/application.html.erb (Duration: 13.7ms | Allocations: 9655)
+Completed 200 OK in 18ms (Views: 14.0ms | ActiveRecord: 0.4ms | Allocations: 12177)
+
+
+Started GET "/bookings/8" for 127.0.0.1 at 2023-05-27 17:48:44 +0200
+Processing by BookingsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.2ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:24:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/show.html.erb within layouts/application
+  Rendered shared/_bookingbutton.html.erb (Duration: 0.0ms | Allocations: 9)
+  Rendered bookings/show.html.erb within layouts/application (Duration: 0.1ms | Allocations: 71)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 24)
+  Rendered shared/_searchbar.html.erb (Duration: 0.3ms | Allocations: 226)
+  Rendered shared/_footnavbar.html.erb (Duration: 0.3ms | Allocations: 362)
+  Rendered layout layouts/application.html.erb (Duration: 6491.2ms | Allocations: 75829)
+Completed 200 OK in 6495ms (Views: 6491.6ms | ActiveRecord: 0.4ms | Allocations: 78167)
+
+
