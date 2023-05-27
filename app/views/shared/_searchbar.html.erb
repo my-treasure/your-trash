@@ -1,5 +1,5 @@
 <div class="search-bar-frame">
-  <%= form_with url: root_path, method: :get, class: "d-flex" do %>
+  <%= form_with url: root_path, method: :get, class: "d-flex search-box" do %>
     <%= text_field_tag :query,
           params[:query],
           class: "form-control search-form",
@@ -12,9 +12,13 @@
       </button>
     </div>
   <% end %>
-  <div class="search-bar-filter">
-    <button type="button" class="btn btn-transparent">
-      <i class="fas fa-filter"></i></i>
+  <div class="dropdown">
+    <button type="button" data-action="click->filter#toggleFilter" class="btn btn-transparent">
+      <i class="fas fa-filter"></i>
     </button>
   </div>
+</div>
+
+<div data-filter-target="filtercontainer" class="filter-container hiddennav">
+  <h1>Test Test Test...</h1>
 </div>

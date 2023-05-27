@@ -27,13 +27,16 @@ class OffersController < ApplicationController
         marker_html: render_to_string(partial: "marker", locals: { offer: @offer })
       }
     ]
+
+    @booking = Booking.new
   end
 
   def create
     @offer = Offer.new(offer_params)
-    @user = current_user
-    @offer.user = @user
-
+    @offer.pickupslots = params[:offer][:pickupslots].reject{|el| el === ''}.join(',')
+    @offer.allergen = params[:offer][:allergen].reject{|el| el === ''}.join(',')
+    @offer.user = current_user
+    
     if @offer.save
 
       redirect_to root_path
@@ -46,6 +49,6 @@ class OffersController < ApplicationController
   private
 
   def offer_params
-    params.require(:offer).permit(:title, :body, :address, images: [])
+    params.require(:offer).permit(:title, :body, :address, :pickupslots, :typeofoffer, :foodtype, :allergens, images: [])
   end
 end
