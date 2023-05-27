@@ -1,5 +1,5 @@
 <div class="search-bar-frame">
-  <%= form_with url: root_path, method: :get, class: "d-flex" do %>
+  <%= form_with url: root_path, method: :get, class: "d-flex search-box" do %>
     <%= text_field_tag :query,
           params[:query],
           class: "form-control search-form",
