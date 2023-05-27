@@ -10,6 +10,7 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "components/searchbar";
 
 
 
@@ -24,12 +25,6 @@
 }
 
 .main {
-  grid-area: main;
-  width: 100%;
   display: flex;
-  flex-flow: column wrap;
-  background-color: yellow; //$secondary_bg;
-  padding-top: 15px;
-  grid-row-gap: 15px;
-  height: 2000px;
+  flex-direction: column;
 }
