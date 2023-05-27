@@ -7,7 +7,9 @@
 # Ignore bundler config.
 /.bundle
 
-# Ignore all logfiles and tempfiles.
+# Ignore all logfiles and tempfiles.\
+log/*
+*.log
 /log/*
 /tmp/*
 !/log/.keep
