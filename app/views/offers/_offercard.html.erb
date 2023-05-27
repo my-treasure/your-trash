@@ -1,5 +1,4 @@
 <div class="offercard">
-
   <%# main image display %>
   <div class= "img-container">
     <% if offer.images.attached? %>
@@ -15,29 +14,29 @@
     <% end %>
   </div>
 
-  <%# user information %>
-  <div class= "card-header">
-      <% if offer.user.profile_picture.attached? %>
-          <%= cl_image_tag offer.user.profile_picture.key,
-            :gravity => "center",
-            :class => "avatar-bordered",
-            crop: :fit %>
-          <% else %>
-            <img src="https://res.cloudinary.com/dxdyu4tqu/image/upload/v1683908905/profile_pictures/photo-1583795128727-6ec3642408f8.jpg" alt="", class= "avatar-bordered">
-          <% end %>
-      <span class="username"><%= offer.user.username %></span>
-  </div>
 
-  <%# offer information %>
-  <div class="card-title">
-    <div>
-      <h6><strong><%= link_to offer.title, offer %></strong></h6>
-      <h6>Distance from user</h6>
+  <%# user information %>
+  <div class= "info-container">
+    <div class= "card-header">
+        <div>
+          <% if offer.user.profile_picture.attached? %>
+              <%= cl_image_tag offer.user.profile_picture.key,
+                :gravity => "center",
+                :class => "avatar-bordered-tiny",
+                crop: :fit %>
+              <% else %>
+                <img src="https://res.cloudinary.com/dxdyu4tqu/image/upload/v1683908905/profile_pictures/photo-1583795128727-6ec3642408f8.jpg" alt="", class= "avatar-bordered">
+              <% end %>
+          <span class="username"><%= offer.user.username %></span>
+        </div>
+        <span class="distance">1.2km</span>
     </div>
-    <div class="btn-set">
-      <button type="button" class="btn btn-dark btn-circle btn-sm"><i class="fa-solid fa-heart icon-detail"></i></button>
-      <button type="button" class="btn btn-dark btn-circle btn-sm"><i class="fa-solid fa-comment icon-detail"></i></button>
-      <%#= offer.likes.count %> <%#= (offer.likes.count) == 1 ? 'Like' : 'Likes'%>
+
+    <%# offer information %>
+    <div class="card-title">
+      <div>
+        <strong><%= link_to truncate(offer.title, length: 50), offer %></strong>
+      </div>
     </div>
   </div>
 

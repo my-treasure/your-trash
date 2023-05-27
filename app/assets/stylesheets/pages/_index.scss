@@ -6,8 +6,12 @@
   width: 100%;
   display: flex;
   flex-flow: column wrap;
-  background-color: yellow; //$secondary_bg;
-  padding-top: 15px;
-  grid-row-gap: 15px;
+  align-items: center;
+  background-color: $secondary_bg;
+  padding-top: 0.6rem;
+  grid-row-gap: 0.6rem;
+  padding-left: 0.6rem;
+  padding-right: 0.6rem;
+
   // height: 2000px;
 }
