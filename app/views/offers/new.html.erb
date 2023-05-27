@@ -11,7 +11,7 @@
       <%= f.input :typeofoffer %>
       <%= f.input :foodtype %>
       <%= f.input :allergen, as: :check_boxes, collection: ['gluten', 'nuts', 'fish', 'others'] %>
-      <%= f.input :post_image, as: :file %>
+      <%= f.input :images, as: :file, input_html: { multiple: true } %>
       <%= f.button :submit, class: "btn btn-primary" %>
     </div>
   <% end %>
