@@ -2,17 +2,36 @@
   left: 0;
   bottom: 0;
   position: fixed;
-  height: 50px;
+  height: 60px;
   width: 100%;
-  z-index: 1000;
   background-color: rgb(247, 247, 152);
-  box-shadow: $shadow;
 }
-.container_fluid {
+.footnav-bar-frame {
+  top: 5px;
+  left: 5px;
+  bottom: 5px;
+  right: 5px;
+  width: 100%;
+  display: flex;
+  padding: 2px;
+  position: absolute;
+  align-self: stretch;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background-color: var(--dl-color-default-background);
+}
+
+.button-div{
+display:flex;
+}
+
+
+/* .container_fluid {
   width: 100%;
   overflow: auto;
   text-align: center;
-}
+} */
 
 .navbar a {
   display: inline-block;
