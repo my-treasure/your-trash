@@ -7,27 +7,27 @@ class OffersController < ApplicationController
 
   def index
     @offers = Offer.all
-    # @markers = @posts.geocoded.map do |post|
-    #   {
-    #     lat: post.latitude,
-    #     lng: post.longitude,
-    #     info_window_html: render_to_string(partial: "info_window", locals: { post: post }),
-    #     marker_html: render_to_string(partial: "marker", locals: { post: post })
-    #   }
-    # end
+    @markers = @offers.geocoded.map do |offer|
+      {
+        lat: offer.latitude,
+        lng: offer.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: { offer: offer }),
+        marker_html: render_to_string(partial: "marker", locals: { offer: offer })
+      }
+    end
   end
 
   def show
     @offer = Offer.find(params[:id])
-    # @markers = [
-    #   {
-    #     lat: @post.latitude,
-    #     lng: @post.longitude,
-    #     info_window_html: render_to_string(partial: "info_window", locals: { post: @post }),
-    #     marker_html: render_to_string(partial: "marker", locals: { post: @post })
-    #   }]
+    @markers = [
+      {
+        lat: @offer.latitude,
+        lng: @offer.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: { offer: @offer }),
+        marker_html: render_to_string(partial: "marker", locals: { offer: @offer })
+      }
+    ]
   end
-
 
   def create
     @offer = Offer.new(offer_params)
