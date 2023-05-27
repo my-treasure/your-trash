@@ -1,0 +1,20 @@
+.map-holder{
+  grid-area: main;
+  height: 100% !important;
+  width: 100% !important;
+}
+
+.map-show{
+  height: 12% !important;
+  width: 100% !important;
+}
+
+.mapboxgl-canvas-container {
+    grid-area: main;
+    height: 100vh;
+
+}
+
+.mapboxgl-canvas {
+  left: 0;
+}
