@@ -11,22 +11,24 @@
   </head>
 
   <body data-controller="filter">
-  
+    <div class="main_grid">
 
-  <div class="main_grid">
+        <div class="main">
+          <%= yield %>
+        </div>
 
-      <div class="main">
-        <%= yield %>
-       </div>
+        <div class="searchbar">
+          <%= render "shared/flashes" %>
+          <%= render "shared/searchbar" %>
+        </div>
 
-      <div class="searchbar">
-        <%= render "shared/flashes" %>
-        <%= render "shared/searchbar" %>
+       <div data-filter-target="profileiconcontainer" class="profileicon-container hiddennav">
+        <h1>Test Test Test...</h1>
       </div>
+      <div class="footnavbar">
 
-    <div class="footnavbar">
-        <%= render "shared/footnavbar" %>
-    </div>
-    </div>
+          <%= render "shared/footnavbar" %>
+      </div>
+      </div>
   </body>
 </html>
