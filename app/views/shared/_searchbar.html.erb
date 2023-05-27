@@ -5,11 +5,16 @@
           class: "form-control search-form",
           placeholder: "Search..."
       %>
-    <%= submit_tag "Search", name: "", class: "btn btn-primary search-btn" %>
-    <i class="fa-solid fa-circle-xmark"></i>
+    <%= submit_tag "Search", name: "", class: "btn btn-light search-btn" %>
+    <div class="search-cancel-button">
+      <button type="button" class="btn btn-transparent">
+        <i class="fa-solid fa-circle-xmark"></i>
+      </button>
+    </div>
   <% end %>
   <div class="search-bar-filter">
-    <i class="fa-solid fa-filter"></i>
+    <button type="button" class="btn btn-transparent">
+      <i class="fas fa-filter"></i></i>
+    </button>
   </div>
 </div>
-

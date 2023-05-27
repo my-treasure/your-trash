@@ -12,6 +12,7 @@
   top: 5px;
   left: 5px;
   bottom: 5px;
+  right: 5px;
   width: 100%;
   display: flex;
   padding: 2px;
@@ -31,4 +32,15 @@
 .search-btn {
   border-radius: 0px 30px 30px 0px;
   cursor:pointer;
+}
+
+.search-bar-filter{
+  position: absolute;
+  right: 15px;
+}
+
+.search-cancel-button{
+  position: absolute;
+  right: 200px;
+  top: 8px;
 }
