@@ -18,6 +18,8 @@
     <div class="main_grid">
 
         <div class="main">
+          <%= link_to "index", root_path %>
+          <%= link_to "map", map_path%>
           <%= yield %>
         </div>
 
@@ -27,8 +29,6 @@
         </div>
 
 
-
-        <%= link_to "map", map_path%>
 
 
        <div data-filter-target="profileiconcontainer" class="profileicon-container hiddennav">
