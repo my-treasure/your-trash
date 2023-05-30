@@ -13,7 +13,7 @@ class BookingsController < ApplicationController
 
     if @booking.save
 
-      redirect_to offer_path(@booking)
+      redirect_to booking_path(@booking)
 
     else
       render :new
@@ -22,6 +22,7 @@ class BookingsController < ApplicationController
 
   def show
     @booking = Booking.find(params[:id])
+    @offer =  Offer.find(@booking.offer_id)
     # @markers = [
     #   {
     #     lat: @post.latitude,

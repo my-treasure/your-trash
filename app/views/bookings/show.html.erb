@@ -1,1 +1,72 @@
- <%= render "shared/bookingbutton" %>
+<h1>Booking Informations</h1>
+
+<div class="row justify-content-center">
+      <div class="offer_image" style="background-image: url('<%= cl_image_path @offer.images[0].key %>')">
+</div>
+
+
+
+<div class="user-details">
+  <% if @offer.user.profile_picture.attached? %>
+    <%= cl_image_tag @offer.user.profile_picture.key,
+        :gravity => "center",
+        crop: :fit,
+        class:"profile_image" %>
+  <% else %>
+    <img src="https://res.cloudinary.com/dxdyu4tqu/image/upload/v1683908905/profile_pictures/photo-1583795128727-6ec3642408f8.jpg" alt="", class= "profile_image">
+  <% end %>
+    <span class="username mt-2"> <%= @offer.user.username %> </span>
+    <span class="rating mt-2">Rating: 3.5 </span>
+    <div class="geocode mt-2">
+      <span class="distance">1.2km </span>
+      <i class="fa-solid fa-location-arrow"></i>
+    </div>
+</div>
+
+<div class="head-options mt-2">
+  <div class="head-content">
+  <h6> Vegan Burger </h6>
+  <div>
+   <i class="fa-solid fa-comment-medical"></i>
+   <i class="fa-solid fa-comment-medical"></i>
+  </div>
+  </div>
+</div>
+
+<h1><%= @offer.pickupslots.sub(/\A, /, '') %></h1>
+  <h6 class="mt-3"> Description: <%= @offer.body %> </h6>
+  </div>
+
+
+
+<div class="options-card mt-4">
+  <div>
+  <h6>Posted</h6>
+  <h6>3 Days ago</h6>
+  <i class="fa-regular fa-calendar-days"></i>
+  </div>
+
+  <div>
+  <h6>Posted</h6>
+  <h6>3 Days ago</h6>
+  <i class="fa-regular fa-calendar-days"></i>
+  </div>
+
+  <div>
+  <h6>Posted</h6>
+  <h6>3 Days ago</h6>
+  <i class="fa-regular fa-calendar-days"></i>
+  </div>
+
+  <div>
+  <h6>Posted</h6>
+  <h6>3 Days ago</h6>
+  <i class="fa-regular fa-calendar-days"></i>
+  </div>
+
+</div>
+
+</div>
+
+
+ <%# <%= render "shared/bookingbutton" %>

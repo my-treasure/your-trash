@@ -41,7 +41,7 @@
   <%# <i class="fa-solid fa-circle-check"></i> %>
   <%= simple_form_for([@offer, @booking]) do |f| %>
   <%= f.input :pick_up_time, as: :select, collection: @offer.pickupslots.split(",") %>
-  <%= f.submit %>
+  <%= f.submit '✔︎', class: "bookingbutton" %>
 <% end %>
 
 <h1><%= @offer.pickupslots.sub(/\A, /, '') %></h1>
@@ -78,8 +78,3 @@
 </div>
 
 </div>
-  <div class="bookingbutton">
-  <i class="fa-solid fa-circle-check buttonicon"></i>
-</div>
-
-
