@@ -5,16 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js"></script>
   </head>
 
   <body data-controller="filter">
-
     <div class="main_grid">
 
         <div class="main">
@@ -34,10 +31,17 @@
        <div data-filter-target="profileiconcontainer" class="profileicon-container hiddennav">
         <h1>Test Test Test...</h1>
       </div>
-      <div class="footnavbar">
 
-          <%= render "shared/footnavbar" %>
+      <div class="searchbar">
+        <%= render "shared/flashes" %>
+        <%= render "shared/searchbar" %>
       </div>
+
+      <%= link_to "map", map_path%>
+
+      <div class="footnavbar">
+        <%= render "shared/footnavbar" %>
       </div>
+    </div>
   </body>
 </html>

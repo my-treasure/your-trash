@@ -27,8 +27,6 @@
 
 .button-div{
 display:flex;
-
-
 }
 
 .navbar a {
@@ -40,15 +38,19 @@ display:flex;
 
 .profileicon-container{
   height: 30vh;
-  width: 100vh;
+  width: 20vh;
   background-color: rgb(34, 0, 255);
   transition: 1s;
   position: absolute;
   bottom: 0;
-
+  right:0;
 }
 
 .hiddennav{
   display: none;
   margin-top: 60px;
+}
+
+.profile-icon-content{
+  padding: 15px;
 }
