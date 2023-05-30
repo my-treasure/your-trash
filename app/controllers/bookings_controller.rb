@@ -13,7 +13,7 @@ class BookingsController < ApplicationController
 
     if @booking.save
 
-      redirect_to booking_path(@booking)
+      redirect_to offer_path(@booking)
 
     else
       render :new
