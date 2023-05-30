@@ -52,7 +52,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_20_153633) do
   create_table "bookings", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "offer_id", null: false
-    t.string "pick_up_time"
+    t.datetime "pick_up_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["offer_id"], name: "index_bookings_on_offer_id"
@@ -84,10 +84,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_20_153633) do
     t.datetime "updated_at", null: false
     t.float "longitude"
     t.float "latitude"
-    t.string "pickupslots"
+    t.datetime "pickupslots"
     t.string "typeofoffer"
     t.string "foodtype"
-    t.string "allergen"
+    t.boolean "allergen"
     t.index ["user_id"], name: "index_offers_on_user_id"
   end
 
