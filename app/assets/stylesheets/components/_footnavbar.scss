@@ -1,19 +1,54 @@
 .footnavbar {
-  grid-area: footnavbar;
   left: 0;
   bottom: 0;
   position: fixed;
-  height: 50px;
+
+  height: 60px;
+
   width: 100%;
-  z-index: 1000;
-  background-color: $primary_bg;
-  box-shadow: $shadow;
+  background-color: rgb(247, 247, 152);
+}
+.footnav-bar-frame {
+  top: 5px;
+  left: 5px;
+  bottom: 5px;
+  right: 5px;
+  width: 100%;
 
-  .navbar-collapse {
-    flex-grow: 0;
-  }
+  display: flex;
+  padding: 2px;
+  position: absolute;
+  align-self: stretch;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background-color: var(--dl-color-default-background);
+}
 
-  .navbar-brand img {
-    width: 40px;
-  }
+.button-div{
+display:flex;
+
+
+}
+
+.navbar a {
+  display: inline-block;
+  color: black;
+  text-decoration: none;
+  font-size: 27px;
+}
+
+.profileicon-container{
+  height: 30vh;
+  width: 100vh;
+  background-color: rgb(34, 0, 255);
+  transition: 1s;
+  position: absolute;
+  bottom: 0;
+
+}
+
+.hiddennav{
+  display: none;
+  margin-top: 60px;
 }

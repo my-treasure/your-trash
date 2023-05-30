@@ -10,6 +10,7 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "components/searchbar";
 
 
 
@@ -24,6 +25,7 @@
 }
 
 .main {
+  grid-area: main;
   display: flex;
   flex-direction: column;
 }

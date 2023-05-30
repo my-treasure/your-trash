@@ -23,33 +23,33 @@ CLIENT =
     request_timeout: 240
   )
 
+#emotional prompts
+EMOTIONAL_PROMPTS = [
+  "expresive",
+  "sad",
+  "happy",
+  "neutral",
+  "descriptive"
+]
+
 # topis for creating tweets
 TOPIC = [
-  "some vegetables",
+  "some boxes of vegetables",
   "cake",
   "leftovers from a party",
   "conserves",
   "needs to go",
-  "some fruit",
-  "some bread",
-  "some meat",
-  "some fish",
-  "some cheese",
-  "some milk",
-  "some eggs",
-  "some pasta",
-  "some rice",
-  "some noodles",
-  "some beans",
-  "some lentils",
-  "some tofu",
-  "some tempeh",
-  "some homedmame bread",
-  "some homemade cake"
+  "food boxes",
+  "some food jars",
+  "some food cans",
+  "some boxes of fruit",
 ]
 
 TOPIC2 = [
-
+  "that I don't need",
+  "that is close to expire",
+  "that I don't like",
+  "becouse i have a lot of it"
 ]
 
 
@@ -72,11 +72,12 @@ def open_prompt(filename)
 end
 
 def select_prompt(filename, prompt_type)
+  emo = EMOTIONAL_PROMPTS.sample
   topic = TOPIC.sample
   topic2 = TOPIC2.sample
   where = WHEREIS.sample
   prompt_txt = open_prompt(filename)
-  "#{prompt_txt} Create #{prompt_type} about #{topic} and #{topic2} #{where}. (maximun of 250 characters)"
+  "#{prompt_txt} Create an #{emo} text for a #{prompt_type} about #{topic} and #{topic2} #{where}. (maximun of 250 characters)"
 end
 
 def ai_tweet(topic)
@@ -91,12 +92,12 @@ def ai_tweet(topic)
   response.dig("choices", 0, "message", "content")
 end
 
-def ai_tweet_description(ai_tweet)
+def ai_tweet_title(ai_tweet)
   response =
     CLIENT.completions(
       parameters: {
         model: "text-davinci-001", # Required.
-        prompt: ai_tweet[0..-80],
+        prompt: "Create a short title of maximun 10 words about this: #{ai_tweet}",
         max_tokens: 200
       }
     )
@@ -139,8 +140,8 @@ def ai_post_generator
   tweet = ai_tweet(prompt.split("Prompt:").last)
   puts "🤖 AI tweet: #{tweet}"
   sleep(2)
-  description = ai_tweet_description(tweet)
-  puts "🤖 AI description: #{description}"
+  title = ai_tweet_title(tweet)
+  puts "🤖 AI title: #{title}"
   sleep(5)
   image_prompt = prompt_from_tweet("db/seeds/prompt_text.txt", tweet)
   puts "🖼️ prompt image: #{image_prompt}"
@@ -153,7 +154,7 @@ def ai_post_generator
     image_id = image_uploader(image)["public_id"]
     puts "Uploading image to cloudinary..."
     sleep(5)
-    return tweet, description, image_id
+    return tweet, title, image_id
   end
 end
 
@@ -181,14 +182,14 @@ n_posts.times do
   reverse_geocode = Geocoder.search([rand_latitude, rand_longitude])
 
   if set_ai
-    tweet, description, image_id = ai_post_generator
+    tweet, title, image_id = ai_post_generator
     if image_id
       file = URI.open(Cloudinary::Utils.cloudinary_url(image_id, options = {}))
       sleep_time = rand(5..10)
     end
   else
     tweet = Faker::Lorem.sentence(word_count: 3)
-    description = Faker::Lorem.paragraph(sentence_count: 2)
+    title = Faker::Lorem.paragraph(sentence_count: 2)
     image = IMAGES["resources"].sample
     file = URI.open(image["url"])
     image_id = image["public_id"]
@@ -197,8 +198,8 @@ n_posts.times do
 
   if image_id
     new_offer = Offer.create(
-      title: tweet,
-      body: description,
+      title:,
+      body: tweet,
       pickupslots: ["mornings", "afternoons", "evenings"].sample,
       user_id: User.all.sample.id,
       address: reverse_geocode.first.address,

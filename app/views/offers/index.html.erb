@@ -1,17 +1,8 @@
-<div class="offergrid" style="height: <%= @offers.count / 2 * 550 %>px">
-<% @offers.each do |offer| %>
-  <%= render "offercard", offer: offer %>
-<% end %>
-<span class="offercard_break"></span>
+
+<div class="offergrid" style="height: <%= @offers.count / 2 * 230 %>px">
+  <% @offers.each do |offer| %>
+    <%= render "offercard", offer: offer %>
+  <% end %>
+  <span class="offercard_break"></span>
 </div>
 
-<%#
-  <div class="album py-5" data-controller="visibility">
-    <div class="" data-visibility-target="hideable" hidden>
-      <%= render "offers/map" %
-    </div>
-
-    <div class="grid" data-visibility-target="hideable">
-    </div>
-  </div>
-%>

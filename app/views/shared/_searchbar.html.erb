@@ -1,3 +1,24 @@
-<div class="">
-  <p>ssssssss</p>
+<div class="search-bar-frame">
+  <%= form_with url: root_path, method: :get, class: "d-flex search-box" do %>
+    <%= text_field_tag :query,
+          params[:query],
+          class: "form-control search-form",
+          placeholder: "Search..."
+      %>
+    <%= submit_tag "Search", name: "", class: "btn btn-light search-btn" %>
+    <div class="search-cancel-button">
+      <button type="button" class="btn btn-transparent">
+        <i class="fa-solid fa-circle-xmark"></i>
+      </button>
+    </div>
+  <% end %>
+  <div class="dropdown">
+    <button type="button" data-action="click->filter#toggleFilter" class="btn btn-transparent">
+      <i class="fas fa-filter"></i>
+    </button>
+  </div>
+</div>
+
+<div data-filter-target="filtercontainer" class="filter-container hiddennav">
+  <h1>Test Test Test...</h1>
 </div>

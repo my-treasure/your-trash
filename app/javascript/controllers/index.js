@@ -4,5 +4,17 @@
 
 import { application } from "./application"
 
+import FilterController from "./filter_controller"
+application.register("filter", FilterController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import MapController from "./map_controller"
+application.register("map", MapController)
+
+import VisibilityController from "./visibility_controller"
+application.register("visibility", VisibilityController)
+
+import ProfiledropdownController from "./profiledropdown_controller"
+application.register("profiledropdown", ProfiledropdownController)
