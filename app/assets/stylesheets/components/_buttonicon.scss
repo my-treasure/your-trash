@@ -1,7 +1,10 @@
 .bookingbutton {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  background-color: black;
+  border: none;
+  color: white;
 }
 
 .buttonicon {
