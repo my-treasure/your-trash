@@ -6,8 +6,6 @@ export default class extends Controller {
   static targets = ['filtercontainer', 'profileiconcontainer']
 
   connect() {
-    console.log("Hello from filter")
-    console.log(this.profileiconcontainerTarget)
   }
 
   toggleFilter(){
@@ -24,6 +22,6 @@ export default class extends Controller {
     } else {
       this.profileiconcontainerTarget.classList.add("hiddennav")
     }
-    
+
   }
 }
