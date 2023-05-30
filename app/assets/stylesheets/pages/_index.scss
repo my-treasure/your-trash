@@ -1,5 +1,6 @@
 // Import page-specific CSS files here.
 @import "home";
+@import "show";
 
 .offergrid {
   grid-area: main;
@@ -14,4 +15,9 @@
   padding-right: 0.6rem;
 
   // height: 2000px;
+}
+
+#options {
+  height: 100vh;
+  width: 100%;
 }

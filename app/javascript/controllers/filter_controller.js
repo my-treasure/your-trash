@@ -3,11 +3,9 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="filter"
 export default class extends Controller {
 
-  static targets = ['filtercontainer']
+  static targets = ['filtercontainer', 'profileiconcontainer']
 
   connect() {
-    console.log("Hello from filter")
-    console.log(this.filtercontainerTarget)
   }
 
   toggleFilter(){
@@ -16,5 +14,14 @@ export default class extends Controller {
     } else {
       this.filtercontainerTarget.classList.add("hiddennav")
     }
+  }
+
+  toggleProfileicon(){
+    if (this.profileiconcontainerTarget.classList.contains("hiddennav")){
+      this.profileiconcontainerTarget.classList.remove("hiddennav")
+    } else {
+      this.profileiconcontainerTarget.classList.add("hiddennav")
+    }
+
   }
 }
