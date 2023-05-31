@@ -13,25 +13,16 @@
 
   <body data-controller="filter">
     <div class="main_grid">
-
-        <div class="main">
-          <%= link_to "index", root_path %>
-          <%= link_to "map", map_path%>
-          <%= yield %>
-        </div>
-
-        <div class="searchbar">
-          <%= render "shared/flashes" %>
-          <%= render "shared/searchbar" %>
-        </div>
-
-
-
-
-       <div data-filter-target="profileiconcontainer" class="profileicon-container hiddennav">
-        <h1>Test Test Test...</h1>
+      <div class="main">
+        <%= link_to "index", root_path %>
+        <%= link_to "map", map_path%>
+        <%= yield %>
       </div>
 
+      <div class="searchbar">
+        <%= render "shared/flashes" %>
+        <%= render "shared/searchbar" %>
+      </div>
       <div class="searchbar">
         <%= render "shared/flashes" %>
         <%= render "shared/searchbar" %>
