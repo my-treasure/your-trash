@@ -2,36 +2,40 @@
   <h5><a class="profileicon-container-a" href="#">My Orders</a></h5>
   <h5><a class="profileicon-container-a" href="#">Profile settings</a></h5>
   <% if user_signed_in? %>
-    <h6><a class="profileicon-container-a" href="#">Log out</a></h5>
+    <%= link_to destroy_user_session_path, method: :delete, class: "profileicon-container-a" do %>
+    <h5>Log out</h5>
+    <% end %>
   <% else %>
-    <h5><a class="profileicon-container-a" href="#">Log in</a></h5>
+    <%= link_to new_user_session_path, class: "profileicon-container-a" do %>
+    <h5>Log in</h5>
+    <% end %>
   <% end %>
 </div>
 
-<div class="navbar navbar-expand-sm footnavbar">
+<div class="navbar footnavbar">
   <div class="button-div">
     <%= link_to root_path, class: "btn btn-transparent" do %>
-      <i class="fa-solid fa-home fa-2x"></i>
+      <i class="fa-solid fa-home"></i>
+    <% end %>
+  </div>
+  <div class="button-div">
+    <%= link_to map_path, class: "btn btn-transparent" do %>
+      <i class="fa-solid fa-map-location-dot"></i>
+    <% end %>
+  </div>
+  <div class="button-div">
+    <%= link_to new_offer_path, class: "btn btn-transparent" do %>
+      <i class="fa-sharp fa-solid fa-plus"></i>
     <% end %>
   </div>
   <div class="button-div">
     <button type="button" class="btn btn-transparent">
-      <i class="fa-solid fa-map-location-dot fa-2x"></i>
-    </button>
-  </div>
-  <div class="button-div">
-    <button type="button" class="btn btn-transparent">
-      <i class="fa-sharp fa-solid fa-plus fa-2x"></i>
-    </button>
-  </div>
-  <div class="button-div">
-    <button type="button" class="btn btn-transparent">
-      <i class="fa-solid fa-message fa-2x"></i>
+      <i class="fa-solid fa-message"></i>
     </button>
   </div>
   <div class="button-div">
     <button type="button" data-action="click->filter#toggleProfileicon" class="btn btn-transparent">
-      <i class="fa-solid fa-user fa-2x"></i>
+      <i class="fa-solid fa-user"></i>
     </button>
   </div>
 </div>

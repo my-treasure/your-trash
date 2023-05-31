@@ -36,11 +36,9 @@ class OffersController < ApplicationController
     @offer.pickupslots = params[:offer][:pickupslots].reject{|el| el === ''}.join(',')
     @offer.allergen = params[:offer][:allergen].reject{|el| el === ''}.join(',')
     @offer.user = current_user
-    
+
     if @offer.save
-
       redirect_to root_path
-
     else
       render :new
     end
