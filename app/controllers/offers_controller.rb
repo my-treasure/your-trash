@@ -7,8 +7,16 @@ class OffersController < ApplicationController
 
   def index
     @offers = Offer.all
-    @offers_active = Offer.includes(:bookings).where.not(bookings: { booking_statuses: { completed: true } })
-    
+
+    # filter out the offers that are booked
+    completed_ids = BookingStatus.where(completed: true).pluck(:booking_id)
+    completed_bookings = Booking.where(id: completed_ids).pluck(:offer_id)
+    @offers_active = Offer.where.not(id: completed_bookings )
+
+    #@offers_unbooked = Offer.where.missing(:bookings)
+    #Offer.includes(bookings: :booking_status).where.not(booking_status: { completed: true } ) # returning only offers with bookings
+    #@offers_active = Offer.includes(:bookings).where.not(bookings: { booking_statuses: { completed: true } }) - not working
+
     @markers = @offers.geocoded.map do |offer|
       {
         lat: offer.latitude,
