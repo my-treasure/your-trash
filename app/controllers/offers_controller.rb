@@ -7,6 +7,8 @@ class OffersController < ApplicationController
 
   def index
     @offers = Offer.all
+    @offers_active = Offer.includes(:bookings).where.not(bookings: { booking_statuses: { completed: true } })
+    
     @markers = @offers.geocoded.map do |offer|
       {
         lat: offer.latitude,
