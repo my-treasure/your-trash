@@ -7,6 +7,8 @@ class OffersController < ApplicationController
 
   def index
     @offers = Offer.all
+    @offers_active = Offer.includes(:bookings).where.not(bookings: { booking_statuses: { completed: true } })
+    
     @markers = @offers.geocoded.map do |offer|
       {
         lat: offer.latitude,
@@ -36,11 +38,9 @@ class OffersController < ApplicationController
     @offer.pickupslots = params[:offer][:pickupslots].reject{|el| el === ''}.join(',')
     @offer.allergen = params[:offer][:allergen].reject{|el| el === ''}.join(',')
     @offer.user = current_user
-    
+
     if @offer.save
-
       redirect_to root_path
-
     else
       render :new
     end
