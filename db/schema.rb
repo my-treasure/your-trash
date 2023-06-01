@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_30_172256) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_31_152557) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -47,6 +47,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_30_172256) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "booking_id"
+    t.boolean "completed"
   end
 
   create_table "bookings", force: :cascade do |t|
@@ -93,13 +94,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_30_172256) do
 
   create_table "reviews", force: :cascade do |t|
     t.bigint "booking_id", null: false
-    t.bigint "user_id", null: false
     t.text "comment"
     t.integer "rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "reviewer_id"
+    t.bigint "reviewee_id"
     t.index ["booking_id"], name: "index_reviews_on_booking_id"
-    t.index ["user_id"], name: "index_reviews_on_user_id"
+    t.index ["reviewee_id"], name: "index_reviews_on_reviewee_id"
+    t.index ["reviewer_id"], name: "index_reviews_on_reviewer_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -128,5 +131,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_30_172256) do
   add_foreign_key "messages", "users"
   add_foreign_key "offers", "users"
   add_foreign_key "reviews", "bookings"
-  add_foreign_key "reviews", "users"
+  add_foreign_key "reviews", "users", column: "reviewee_id"
+  add_foreign_key "reviews", "users", column: "reviewer_id"
 end

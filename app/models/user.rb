@@ -5,9 +5,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :offers
-  has_many :reviews
+  # has_many :reviews
   has_many :followers
   has_many :messages
   has_many :bookings
   has_one_attached :profile_picture
+
+  has_many :reviews, foreign_key: :reviewer_id
+  has_many :received_reviews, foreign_key: :reviewee_id, class_name: "Review"
 end
