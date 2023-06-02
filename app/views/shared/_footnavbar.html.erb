@@ -1,13 +1,23 @@
 <div data-filter-target="profileiconcontainer" class="profileicon-container hiddennav">
-  <h5><a class="profileicon-container-a" href="#">My Orders</a></h5>
-  <h5><a class="profileicon-container-a" href="#">Profile settings</a></h5>
   <% if user_signed_in? %>
-    <%= link_to destroy_user_session_path, method: :delete, class: "profileicon-container-a" do %>
-    <h5>Log out</h5>
+    <%= link_to dashboard_index_path, class: "profileicon-container-a" do %>
+    <h6>My Dashboard</h6>
     <% end %>
+
+    <%= link_to edit_user_registration_path, class: "profileicon-container-a" do %>
+    <h6>Edit profile</h6>
+    <% end %>
+
+    <%= link_to destroy_user_session_path, data: {turbo_method: :delete}, class: "profileicon-container-a" do %>
+    <h6>Log out</h6>
+    <% end %>
+
   <% else %>
     <%= link_to new_user_session_path, class: "profileicon-container-a" do %>
     <h5>Log in</h5>
+    <% end %>
+    <%= link_to new_user_registration_path, class: "profileicon-container-a" do %>
+    <h5>Sign up</h5>
     <% end %>
   <% end %>
 </div>
