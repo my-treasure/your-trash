@@ -1,0 +1,22 @@
+<h1>My Dashboard</h1>
+
+<h2>Offers</h2>
+<% @offers.each do |offer| %>
+  <p>Title: <%= offer.title %></p>
+  <p>Status: <%= offer.body %></p>
+  <!-- Display other offer details -->
+  <%= link_to 'edit', edit_offer_path(offer) %>
+  <%#= link_to 'Delete', delete_offer_path(offer), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <%#= link_to 'Accept Booking', accept_booking_path(offer.booking) %>
+  <!-- Display other offer actions -->
+<% end %>
+
+<h2>Bookings</h2>
+<% @bookings.each do |booking| %>
+  <p>Title: <%= booking.offer.title %></p>
+  <p>Status: <%= booking.booking_status.accepted %></p>
+  <!-- Display other booking details -->
+  <%#= link_to 'Reject', reject_booking_path(booking) %>
+  <%#= link_to 'Confirm', confirm_booking_path(booking) %>
+  <!-- Display other booking actions -->
+<% end %>
