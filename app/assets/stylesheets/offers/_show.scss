@@ -1,32 +1,26 @@
 .offer_image {
   background-size: cover;
   background-position: center;
-  height: 246px;
+  height: 25vh;
   width: 100%;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  box-shadow: $shadow_top;
+  border-top-right-radius: 17px;
+  border-top-left-radius: 17px;
+  padding-top: -17px;
 }
 
-.profile_image {
-height: 50px;
-width: 50px;
-border-radius: 50px;
-box-shadow: 0 0 20px rgba($color: #921a1a, $alpha: 1.0);
-position: relative;
-top: -20px;
-
+.info-container{
+  z-index: 10;
 }
 
-.showmap {
-  width: 100%;
-  object-fit: cover;
-  height: 20vh;
-}
 
 .user-details{
 
   display: flex;
   justify-content: space-around;
+  align-items: center;
+  height: 35px;
+  background-color: $secondary_bg;
 
   .geocode{
     display: flex;
@@ -38,9 +32,8 @@ top: -20px;
 
   .head-content{
     display: flex;
-   margin-left: 65px;
-  justify-content: space-around;
-  align-items: center;
+    justify-content: space-around;
+    align-items: center;
   }
 }
 
@@ -71,11 +64,12 @@ top: -20px;
 .text-title {
   margin-bottom: 0;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 12px;
 }
 
 .text-description {
-  width: 40vw;
+  width: 50vw;
+  font-size: 10px;
 }
 
 .booking_pick_up_time .form-select {
@@ -95,4 +89,8 @@ top: -20px;
 .icon-form {
   align-items: center;
   justify-content: space-evenly;
+}
+
+.geocode {
+  align-items: baseline;
 }
