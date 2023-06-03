@@ -34,13 +34,38 @@
   cursor:pointer;
 }
 
-.search-bar-filter{
-  position: absolute;
-  right: 15px;
-}
-
 .search-cancel-button{
   position: absolute;
-  right: 200px;
+  right: 32%;
   top: 8px;
+}
+
+.search-box{
+  width: 89%;
+}
+
+.filter-container{
+  height: 30vh;
+  width: 100vh;
+  background-color: #98EECC;
+  transition: 1s;
+  margin-top: 60px;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.filters-content{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 20px;
+  padding: 10px;
+}
+
+.checkboxes-container{
+
+}
+
+.hiddennav{
+  display: none;
+  margin-top: 60px;
 }

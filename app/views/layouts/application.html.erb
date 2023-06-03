@@ -5,27 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js"></script>
   </head>
 
-  <body>
-
-  <div class="main_grid">
-
+  <body data-controller="filter">
+    <div class="main_grid">
       <div class="main">
         <%= yield %>
-       </div>
+      </div>
 
       <div class="searchbar">
-        <%= render "shared/flashes" %>
         <%= render "shared/searchbar" %>
       </div>
 
-    <div class="footnavbar">
+      <div class="footnavbar">
         <%= render "shared/footnavbar" %>
-    </div>
+        <%= render "shared/flashes" %>
+      </div>
     </div>
   </body>
 </html>

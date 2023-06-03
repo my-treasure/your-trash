@@ -1,0 +1,86 @@
+<div class="row justify-content-center">
+      <div class="offer_image" style="background-image: url('<%= cl_image_path @offer.images[0].key %>')">
+</div>
+
+
+
+<div class="user-details">
+  <% if @offer.user.profile_picture.attached? %>
+    <%= cl_image_tag @offer.user.profile_picture.key,
+        :gravity => "center",
+        crop: :fit,
+        class:"profile_image" %>
+  <% else %>
+    <img src="https://res.cloudinary.com/dxdyu4tqu/image/upload/v1683908905/profile_pictures/photo-1583795128727-6ec3642408f8.jpg" alt="", class= "profile_image">
+  <% end %>
+    <span class="username mt-2"> <%= @offer.user.username.capitalize %> </span>
+    <span class="rating mt-2">Rating: 3.5 </span>
+    <div class="geocode mt-2">
+      <span class="distance">1.2km </span>
+      <i class="fa-solid fa-location-arrow"></i>
+    </div>
+</div>
+
+<div class="head-options mt-2">
+  <div class="head-content">
+    <h6 class="text-title"> <%=@offer.title.capitalize%> </h6>
+
+    <div class="actionbuttons">
+      <i class="fa-solid fa-message"></i>
+      <i class="fa-solid fa-comment-medical"></i>
+    </div>
+  </div>
+</div>
+
+<h6 class="text-description mt-3 mb-3"><%= @offer.body.capitalize %> </h6>
+
+  </div>
+
+
+
+<div class="more-infos">
+      <div>
+      <h6>Posted</h6>
+      <h6>3 Days ago</h6>
+      <i class="fa-regular fa-calendar-days"></i>
+      </div>
+
+    <div>
+      <h6>Food Type</h6>
+      <h6>Vegan</h6>
+      <i class="fa-solid fa-leaf"></i>
+    </div>
+
+    <div>
+      <h6>Allergens</h6>
+      <h6>Nuts</h6>
+      <i class="fa-solid fa-circle-exclamation"></i></div>
+    </div>
+
+      <div class="status-container">
+        <div class="status d-flex">
+        <% if @booking.booking_status.present? %>
+        <% @booking.booking_status.completed = false %>
+        <% @booking.booking_status.accepted = true %>
+          <% if @booking.booking_status.completed%>
+              <%= link_to "Please leave us a review", root_path %>
+            <% elsif @booking.booking_status.accepted%>
+              <h5> Come and pick me up!</h5>
+              <i class="fa-solid fa-bowl-rice"></i>
+            <% else  %>
+              <h5>Waiting confirmation</h5>
+          <% end %>
+       <% end %>
+
+        </div>
+
+        <div class="bookingbutton2">
+
+        </div>
+
+        <div class="bookingbutton2">
+
+      </div>
+
+
+</div>

@@ -1,24 +1,52 @@
-<div class="navbar navbar-expand-sm footnavbar">
-  <div class="container-fluid">
-    <a class="active" href="#"><i class="fa fa-fw fa-home"></i></a>
-    <a href="#"><i class="fa-solid fa-map-location-dot"></i></a>
-    <a href="#"><i class="fa-sharp fa-solid fa-plus"></i></a>
-    <a href="#"><i class="fa-solid fa-message"></i></a>
- <% if user_signed_in? %>
-  <div class="dropup-center dropup">
-    <a class="btn btn-secondary dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropup" aria-expanded="false">
-      <i class="fa-solid fa-user"></i>
-    </a>
-    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-      <%= link_to "Action", "#", class: "dropdown-item" %>
-      <%= link_to "Another action", "#", class: "dropdown-item" %>
-      <%= link_to "Log out", destroy_user_session_path, method: :delete, data: { turbo_action: "replace" }, class: "dropdown-item" %>
-    </div>
-  </div>
-<% else %>
-  <%= link_to new_user_session_path, class: "nav-link" do %>
-    <i class="fa-solid fa-user"></i>
+<div data-filter-target="profileiconcontainer" class="profileicon-container hiddennav">
+  <% if user_signed_in? %>
+    <%= link_to dashboard_index_path, class: "profileicon-container-a" do %>
+    <h6>My Dashboard</h6>
+    <% end %>
+
+    <%= link_to edit_user_registration_path, class: "profileicon-container-a" do %>
+    <h6>Edit profile</h6>
+    <% end %>
+    <br>
+    <%= link_to destroy_user_session_path, data: {turbo_method: :delete}, class: "profileicon-container-a" do %>
+    <h6>Log out</h6>
+    <% end %>
+
+  <% else %>
+    <%= link_to new_user_session_path, class: "profileicon-container-a" do %>
+    <h6>Log in</h6>
+    <% end %>
+    <br>
+    <%= link_to new_user_registration_path, class: "profileicon-container-a" do %>
+    <h6>Sign up</h6>
+    <% end %>
   <% end %>
-<% end %>
+</div>
+
+<div class="navbar footnavbar">
+  <div class="button-div">
+    <%= link_to root_path, class: "btn btn-transparent" do %>
+      <i class="fa-solid fa-home"></i>
+    <% end %>
+  </div>
+  <div class="button-div">
+    <%= link_to map_path, class: "btn btn-transparent" do %>
+      <i class="fa-solid fa-map-location-dot"></i>
+    <% end %>
+  </div>
+  <div class="button-div">
+    <%= link_to new_offer_path, class: "btn btn-transparent" do %>
+      <i class="fa-sharp fa-solid fa-plus"></i>
+    <% end %>
+  </div>
+  <div class="button-div">
+    <button type="button" class="btn btn-transparent">
+      <i class="fa-solid fa-message"></i>
+    </button>
+  </div>
+  <div class="button-div">
+    <button type="button" data-action="click->filter#toggleProfileicon" class="btn btn-transparent">
+      <i class="fa-solid fa-user"></i>
+    </button>
   </div>
 </div>

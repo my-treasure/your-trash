@@ -1,0 +1,23 @@
+.bookingbutton {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  background-color: black;
+  border: none;
+  color: white;
+}
+
+.buttonicon {
+  font-size: 150px;
+}
+
+.bookingbutton2 button {
+  display: flex;
+      flex: 1;
+      margin-right: 10px; /* Adjust the margin as needed */
+      height: 60px;
+      border-radius: 50%;
+      background-color: black;
+      border: none;
+      color: white;
+}

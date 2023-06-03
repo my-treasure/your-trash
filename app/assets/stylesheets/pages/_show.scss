@@ -1,0 +1,147 @@
+.offer_image {
+  background-size: cover;
+  background-position: center;
+  height: 246px;
+  width: 100%;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.profile_image {
+height: 50px;
+width: 50px;
+border-radius: 50px;
+box-shadow: 0 0 20px rgba($color: #921a1a, $alpha: 1.0);
+position: relative;
+top: -20px;
+
+}
+
+.showmap {
+  width: 100%;
+  object-fit: cover;
+  height: 20vh;
+}
+
+.user-details{
+
+  display: flex;
+  justify-content: space-around;
+
+  .geocode{
+    display: flex;
+  }
+}
+
+.head-options{
+
+
+  .head-content{
+    display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h6{
+    margin-left: 15px;
+    }
+  }
+
+  .actionbuttons {
+    margin-right: 20px;
+
+    i {
+      font-size: 23px;
+    }
+
+    .fa-message {
+      margin-right: 20px;
+    }
+  }
+}
+
+.action{
+  margin-left: 31px;
+
+  i{
+    font-size: 30px;
+  }
+}
+
+.options-card{
+  display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 360px;
+
+    div{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+}
+
+.text-title {
+  margin-bottom: 0;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.text-description {
+  margin-left: 33px;
+
+    color: #747474;
+
+}
+
+.booking_pick_up_time .form-select {
+  width: 92%;
+}
+
+.form-food {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.options-card i {
+  font-size: 20px;
+}
+
+.icon-form {
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.button-wrapper{
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+position: relative;
+right: 13px;
+}
+
+.more-infos{
+  display: flex;
+    justify-content: space-between;
+    width: 90%;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+
+      h6 {
+        color: #747474;;
+      }
+    }
+}
+
+.fa-location-arrow {
+position: relative;
+top: 4px;
+right: -3px;
+}

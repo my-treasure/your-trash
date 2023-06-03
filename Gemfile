@@ -57,6 +57,9 @@ gem "simple_form", github: "heartcombo/simple_form"
 gem "bootstrap", '~> 5.2'
 gem 'pry-byebug'
 
+# management
+gem "rails_admin", "3.0"
+
 # maps
 gem 'geocoder'
 
@@ -67,7 +70,6 @@ gem "faker"
 # image hosting
 gem "cloudinary"
 gem 'unsplash'
-
 
 
 group :development, :test do
@@ -93,3 +95,4 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+gem "sassc-rails"

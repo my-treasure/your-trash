@@ -1,1 +1,6 @@
-  <%= image_tag('map-static.png', class: 'showmap', alt: 'Map') %>
+<div
+  class="map-show"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
