@@ -13,8 +13,11 @@ application.register("hello", HelloController)
 import MapController from "./map_controller"
 application.register("map", MapController)
 
-import VisibilityController from "./visibility_controller"
-application.register("visibility", VisibilityController)
-
 import ProfiledropdownController from "./profiledropdown_controller"
 application.register("profiledropdown", ProfiledropdownController)
+
+import SupersearchbarController from "./supersearchbar_controller"
+application.register("supersearchbar", SupersearchbarController)
+
+import VisibilityController from "./visibility_controller"
+application.register("visibility", VisibilityController)
