@@ -1,4 +1,4 @@
-<h1>Booking Informations</h1>
+<h1></h1>
 
 <div class="row justify-content-center">
       <div class="offer_image" style="background-image: url('<%= cl_image_path @offer.images[0].key %>')">
@@ -33,7 +33,7 @@
   </div>
 </div>
 
-<h1><%= @offer.pickupslots.sub(/\A, /, '') %></h1>
+<h6><%= @offer.pickupslots.sub(/\A, /, '') %></h6>
   <h6 class="mt-3"> Description: <%= @offer.body %> </h6>
   </div>
 
@@ -46,27 +46,16 @@
   <i class="fa-regular fa-calendar-days"></i>
   </div>
 
-  <div>
-  <h6>Posted</h6>
-  <h6>3 Days ago</h6>
-  <i class="fa-regular fa-calendar-days"></i>
-  </div>
+<div>
+  <h6>Food Type</h6>
+  <h6>Vegan</h6>
+  <i class="fa-solid fa-leaf"></i>
+</div>
 
-  <div>
-  <h6>Posted</h6>
-  <h6>3 Days ago</h6>
-  <i class="fa-regular fa-calendar-days"></i>
-  </div>
-
-  <div>
-  <h6>Posted</h6>
-  <h6>3 Days ago</h6>
-  <i class="fa-regular fa-calendar-days"></i>
-  </div>
-
+<div>
+  <h6>Allergens</h6>
+  <h6>Nuts</h6>
+  <i class="fa-solid fa-circle-exclamation"></i></div>
 </div>
 
 </div>
-
-
- <%# <%= render "shared/bookingbutton" %>
