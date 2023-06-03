@@ -64,6 +64,16 @@
   }
 }
 
+.offer-reserved {
+  color: $red;
+  font-size: 0.6rem;
+}
+
+.offer-available {
+  color: $green;
+  font-size: 0.6rem;
+}
+
 
 // masonry grid layout
 .offercard:nth-last-of-type(2n+1) {order: 0;}
