@@ -58,6 +58,7 @@ top: -20px;
   display: flex;
     justify-content: space-evenly;
     align-items: center;
+    width: 360px;
 
     div{
       display: flex;
@@ -65,4 +66,33 @@ top: -20px;
       align-items: center;
       justify-content: center;
     }
+}
+
+.text-title {
+  margin-bottom: 0;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.text-description {
+  width: 40vw;
+}
+
+.booking_pick_up_time .form-select {
+  width: 70%;
+}
+
+.form-food {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.options-card i {
+  font-size: 20px;
+}
+
+.icon-form {
+  align-items: center;
+  justify-content: space-evenly;
 }
