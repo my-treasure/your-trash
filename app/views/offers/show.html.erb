@@ -28,45 +28,49 @@
 
 <div class="head-options mt-2">
   <div class="head-content">
-  <h6> Vegan Burger </h6>
-  <div>
-   <i class="fa-solid fa-comment-medical"></i>
-   <i class="fa-solid fa-comment-medical"></i>
-  </div>
+    <h6 class="text-title"> <%=@offer.title%> </h6>
+
+    <div>
+      <i class="fa-solid fa-message"></i>
+      <i class="fa-solid fa-comment-medical"></i>
+    </div>
   </div>
 </div>
 
 
-<div class="action mt-2">
-  <%# <i class="fa-solid fa-circle-check"></i> %>
+<div class="action mt-2 mx-2">
   <%= simple_form_for([@offer, @booking]) do |f| %>
+  <div class="d-flex icon-form">
+   <div class="d-flex form-food">
   <%= f.input :pick_up_time, as: :select, collection: @offer.pickupslots.split(",") %>
+  <h6><%= @offer.pickupslots.sub(/\A, /, '') %></h6>
+   </div>
+  <h6 class="text-description"> Description: <%= @offer.body %> </h6>
+  </div>
+  <div class="food-info">
+    <div class="options-card mt-4">
   <%= f.submit '✔︎', class: "bookingbutton" %>
+      <div>
+      <h6>Posted</h6>
+      <h6>3 Days ago</h6>
+      <i class="fa-regular fa-calendar-days"></i>
+      </div>
+
+    <div>
+      <h6>Food Type</h6>
+      <h6>Vegan</h6>
+      <i class="fa-solid fa-leaf"></i>
+    </div>
+
+    <div>
+      <h6>Allergens</h6>
+      <h6>Nuts</h6>
+      <i class="fa-solid fa-circle-exclamation"></i></div>
+    </div>
+  </div>
 <% end %>
 
-<h1><%= @offer.pickupslots.sub(/\A, /, '') %></h1>
-  <h6 class="mt-3"> Description: <%= @offer.body %> </h6>
+
+
+
   </div>
-
-
-
-<div class="options-card mt-4">
-  <div>
-  <h6>Posted</h6>
-  <h6>3 Days ago</h6>
-  <i class="fa-regular fa-calendar-days"></i>
-  </div>
-
-<div>
-  <h6>Food Type</h6>
-  <h6>Vegan</h6>
-  <i class="fa-solid fa-leaf"></i>
-</div>
-
-<div>
-  <h6>Allergens</h6>
-  <h6>3 Days ago</h6>
-  <i class="fa-light fa-diamond-exclamation"></i>
-</div>
-
-</div>
