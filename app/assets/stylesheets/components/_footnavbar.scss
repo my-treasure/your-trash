@@ -23,7 +23,7 @@
   background-color: var(--dl-color-default-background);
 }
 
-.button-div{
+.button-div {
 display:flex;
 }
 
@@ -31,6 +31,10 @@ display:flex;
   display: inline-block;
   color: black;
   text-decoration: none;
+  font-size: 27px;
+}
+
+.button-div .btn-transparent {
   font-size: 27px;
 }
 
