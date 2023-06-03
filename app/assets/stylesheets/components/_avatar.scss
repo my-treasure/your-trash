@@ -13,7 +13,17 @@
   height: 40px;
   border-radius: 50%;
   box-shadow: $shadow;
+  border: white 2px solid;
+}
+
+.avatar-show {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  box-shadow: $shadow;
   border: white 3px solid;
+  position: relative;
+  top: -20px;
 }
 
 .avatar-bordered-tiny {
@@ -21,7 +31,7 @@
   height: 20px;
   border-radius: 50%;
   box-shadow: $shadow;
-  border: white 3px solid;
+  border: white 1px solid;
 }
 
 .avatar-square {

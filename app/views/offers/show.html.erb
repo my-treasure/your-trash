@@ -1,34 +1,37 @@
-
-<%= render "offers/map" %>
-
-
-
-<div class="row justify-content-center">
-      <div class="offer_image" style="background-image: url('<%= cl_image_path @offer.images[0].key %>')">
+<div
+  class="map-show"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
 
+<div class="info-container">
+  <div>
+        <div class="offer_image" style="background-image: url('<%= cl_image_path @offer.images[0].key %>')">
+  </div>
 
 
-<div class="user-details">
-  <% if @offer.user.profile_picture.attached? %>
-    <%= cl_image_tag @offer.user.profile_picture.key,
-        :gravity => "center",
-        crop: :fit,
-        class:"profile_image" %>
-  <% else %>
-    <img src="https://res.cloudinary.com/dxdyu4tqu/image/upload/v1683908905/profile_pictures/photo-1583795128727-6ec3642408f8.jpg" alt="", class= "profile_image">
-  <% end %>
-    <span class="username mt-2"> <%= @offer.user.username.capitalize %> </span>
-    <span class="rating mt-2">Rating: 3.5 </span>
-    <div class="geocode mt-2">
-      <span class="distance">1.2km </span>
-      <i class="fa-solid fa-location-arrow"></i>
-    </div>
-</div>
 
-<div class="head-options mt-2">
-  <div class="head-content">
-    <h6 class="text-title"> <%=@offer.title.capitalize%> </h6>
+  <div class="user-details">
+    <% if @offer.user.profile_picture.attached? %>
+      <%= cl_image_tag @offer.user.profile_picture.key,
+          :gravity => "center",
+          crop: :fit,
+          class:"avatar-show" %>
+    <% else %>
+      <img src="https://res.cloudinary.com/dxdyu4tqu/image/upload/v1683908905/profile_pictures/photo-1583795128727-6ec3642408f8.jpg" alt="", class= "profile_image">
+    <% end %>
+      <span class="username"> @<%= @offer.user.username %> </span>
+      <span class="rating">Rating: 3.5 </span>
+      <div class="geocode">
+        <span class="distance">1.2km </span>
+        <i class="fa-solid fa-location-arrow arrow"></i>
+      </div>
+  </div>
+
+  <div class="head-options">
+    <div class="head-content">
+      <h6 class="text-title"> <%=@offer.title%> </h6>
 
     <div class="actionbuttons">
       <i class="fa-solid fa-message"></i>
@@ -40,38 +43,37 @@
 <h6 class="text-description mt-3 mb-3"><%= @offer.body.capitalize %> </h6>
 
 
-<div class="action">
-  <%= simple_form_for([@offer, @booking]) do |f| %>
+  <div class="action">
+    <%= simple_form_for([@offer, @booking]) do |f| %>
+    <div class="d-flex icon-form">
+    <div class="d-flex form-food">
+    <%= f.input :pick_up_time, as: :select, collection: @offer.pickupslots.split(",") %>
+    <h6><%= @offer.pickupslots.sub(/\A, /, '') %></h6>
+    </div>
+    <h6 class="text-description"> <%= @offer.body %> </h6>
+    </div>
+    <div class="food-info">
+      <div class="options-card">
+    <%= f.submit '✔︎', class: "bookingbutton" %>
+        <div>
+        <h6>Posted</h6>
+        <h6>3 Days ago</h6>
+        <i class="fa-regular fa-calendar-days"></i>
+        </div>
 
-      <%= f.input :pick_up_time, as: :select, collection: @offer.pickupslots.split(","), prompt: "Select Your Timeslot ⏱️" %>
-
-
-  <div class="button-wrapper mt-5 mb-4">
-  <%= f.submit '✔︎', class: "bookingbutton" %>
-  <h2>Book</h2>
-
-</div>
-
-<div class="more-infos">
       <div>
-      <h6>Posted</h6>
-      <h6>3 Days ago</h6>
-      <i class="fa-regular fa-calendar-days"></i>
+        <h6>Food Type</h6>
+        <h6>Vegan</h6>
+        <i class="fa-solid fa-leaf"></i>
       </div>
 
-    <div>
-      <h6>Food Type</h6>
-      <h6>Vegan</h6>
-      <i class="fa-solid fa-leaf"></i>
+      <div>
+        <h6>Allergens</h6>
+        <h6>Nuts</h6>
+        <i class="fa-solid fa-circle-exclamation"></i></div>
+      </div>
     </div>
-
-    <div>
-      <h6>Allergens</h6>
-      <h6>Nuts</h6>
-      <i class="fa-solid fa-circle-exclamation"></i></div>
-    </div>
- </div>
-
-<% end %>
-
+  <% end %>
   </div>
+
+</div>
