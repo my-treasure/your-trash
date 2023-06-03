@@ -23,30 +23,35 @@
   <% end %>
 </div>
 
-<div class="navbar footnavbar">
-  <div class="button-div">
-    <%= link_to root_path, class: "btn btn-transparent" do %>
+<div class="footnavbar">
+  <%= link_to root_path do %>
+    <button type="button" class="button-div">
       <i class="fa-solid fa-home"></i>
-    <% end %>
-  </div>
-  <div class="button-div">
-    <%= link_to map_path, class: "btn btn-transparent" do %>
+      <span class = "navbar-text">Home</span>
+    </button>
+  <% end %>
+  <%= link_to map_path do %>
+    <button type="button" class="button-div">
       <i class="fa-solid fa-map-location-dot"></i>
+      <span class = "navbar-text">Map</span>
+    </button>
     <% end %>
-  </div>
-  <div class="button-div">
-    <%= link_to new_offer_path, class: "btn btn-transparent" do %>
+  <%= link_to new_offer_path do %>
+    <button type="button" class="button-div">
       <i class="fa-sharp fa-solid fa-plus"></i>
-    <% end %>
-  </div>
-  <div class="button-div">
-    <button type="button" class="btn btn-transparent">
-      <i class="fa-solid fa-message"></i>
+      <span class = "navbar-text">Add offer</span>
     </button>
-  </div>
-  <div class="button-div">
-    <button type="button" data-action="click->filter#toggleProfileicon" class="btn btn-transparent">
+  <% end %>
+  <%= link_to new_offer_path do %>
+    <button type="button" class="button-div">
+      <i class="fa-sharp fa-solid fa-plus"></i>
+      <span class = "navbar-text">Messages</span>
+    </button>
+  <% end %>
+  <button type="button" data-action="click->filter#toggleProfileicon">
+    <div class="button-div">
       <i class="fa-solid fa-user"></i>
-    </button>
-  </div>
+      <span class = "navbar-text">User</span>
+    </div>
+  </button>
 </div>
