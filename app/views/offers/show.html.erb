@@ -10,6 +10,7 @@
 
 
 <div class="user-details">
+<%= link_to profile_path(@offer.user) do%>
   <% if @offer.user.profile_picture.attached? %>
     <%= cl_image_tag @offer.user.profile_picture.key,
         :gravity => "center",
@@ -18,6 +19,7 @@
   <% else %>
     <img src="https://res.cloudinary.com/dxdyu4tqu/image/upload/v1683908905/profile_pictures/photo-1583795128727-6ec3642408f8.jpg" alt="", class= "profile_image">
   <% end %>
+ <% end %>
     <span class="username mt-2"> <%= @offer.user.username.capitalize %> </span>
     <span class="rating mt-2">Rating: 3.5 </span>
     <div class="geocode mt-2">

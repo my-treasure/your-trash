@@ -12,4 +12,23 @@ class PagesController < ApplicationController
       }
     end
   end
+
+  def profiles
+    @user = User.find(params[:id])
+
+  end
+
+  def createprofile
+    @logged_in_user = current_user
+    @profile_owner = User.find(params[:id])
+
+    @follow = Follow.new
+    @follow.user_id = @logged_in_user.id
+    @follow.followed_id = @profile_owner.id
+
+    @follow.save
+
+    redirect_to profile_path(@profile_owner)
+  end
+
 end
