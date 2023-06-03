@@ -15,6 +15,10 @@
 
 
 
+body, html {
+  overflow-x: hidden;
+}
+
 .main_grid {
   width: 100vw;
   height: 100vh;

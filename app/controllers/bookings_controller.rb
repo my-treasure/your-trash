@@ -10,6 +10,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.offer = @offer
+    @booking.booking_status = BookingStatus.new(booking_id: @booking.id)
 
     if @booking.save
 
