@@ -1,7 +1,9 @@
 // Import page-specific CSS files here.
 @import "home";
 @import "show";
+@import "booking";
 @import "users";
+
 
 .offergrid {
   grid-area: main;

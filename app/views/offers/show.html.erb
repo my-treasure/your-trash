@@ -18,7 +18,7 @@
   <% else %>
     <img src="https://res.cloudinary.com/dxdyu4tqu/image/upload/v1683908905/profile_pictures/photo-1583795128727-6ec3642408f8.jpg" alt="", class= "profile_image">
   <% end %>
-    <span class="username mt-2"> <%= @offer.user.username %> </span>
+    <span class="username mt-2"> <%= @offer.user.username.capitalize %> </span>
     <span class="rating mt-2">Rating: 3.5 </span>
     <div class="geocode mt-2">
       <span class="distance">1.2km </span>
@@ -28,28 +28,31 @@
 
 <div class="head-options mt-2">
   <div class="head-content">
-    <h6 class="text-title"> <%=@offer.title%> </h6>
+    <h6 class="text-title"> <%=@offer.title.capitalize%> </h6>
 
-    <div>
+    <div class="actionbuttons">
       <i class="fa-solid fa-message"></i>
       <i class="fa-solid fa-comment-medical"></i>
     </div>
   </div>
 </div>
 
+<h6 class="text-description mt-3 mb-3"><%= @offer.body.capitalize %> </h6>
 
-<div class="action mt-2 mx-2">
+
+<div class="action">
   <%= simple_form_for([@offer, @booking]) do |f| %>
-  <div class="d-flex icon-form">
-   <div class="d-flex form-food">
-  <%= f.input :pick_up_time, as: :select, collection: @offer.pickupslots.split(",") %>
-  <h6><%= @offer.pickupslots.sub(/\A, /, '') %></h6>
-   </div>
-  <h6 class="text-description"> Description: <%= @offer.body %> </h6>
-  </div>
-  <div class="food-info">
-    <div class="options-card mt-4">
+
+      <%= f.input :pick_up_time, as: :select, collection: @offer.pickupslots.split(","), prompt: "Select Your Timeslot ⏱️" %>
+
+
+  <div class="button-wrapper mt-5 mb-4">
   <%= f.submit '✔︎', class: "bookingbutton" %>
+  <h2>Book</h2>
+
+</div>
+
+<div class="more-infos">
       <div>
       <h6>Posted</h6>
       <h6>3 Days ago</h6>
@@ -67,7 +70,8 @@
       <h6>Nuts</h6>
       <i class="fa-solid fa-circle-exclamation"></i></div>
     </div>
-  </div>
+ </div>
+
 <% end %>
 
   </div>
