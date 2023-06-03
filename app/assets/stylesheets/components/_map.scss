@@ -1,20 +1,21 @@
-.map-holder{
+.map-index{
   grid-area: main;
   height: 100% !important;
   width: 100% !important;
+
+  .mapboxgl-canvas-container {
+      grid-area: main;
+      height: 100vh;
+
+  }
+
+  .mapboxgl-canvas {
+    left: 0;
+  }
 }
 
 .map-show{
-  height: 12% !important;
-  width: 100% !important;
-}
-
-.mapboxgl-canvas-container {
-    grid-area: main;
-    height: 100vh;
-
-}
-
-.mapboxgl-canvas {
-  left: 0;
+  height: 25vh;
+  width: 100%;
+  margin-bottom: -30px;
 }
