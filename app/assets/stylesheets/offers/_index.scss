@@ -1,7 +1,6 @@
 // Import page-specific CSS files here.
-@import "home";
 @import "show";
-@import "booking";
+
 
 .offergrid {
   grid-area: main;
@@ -12,6 +11,7 @@
   background-color: $secondary_bg;
   padding-top: 0.6rem;
   grid-row-gap: 0.6rem;
+  grid-column-gap: 0.2rem;
   padding-left: 0.6rem;
   padding-right: 0.6rem;
 

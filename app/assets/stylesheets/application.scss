@@ -9,8 +9,9 @@
 
 // Your CSS partials
 @import "components/index";
-@import "pages/index";
 @import "components/searchbar";
+@import "offers/index";
+@import "devise/users";
 
 
 
@@ -33,12 +34,4 @@ body, html {
   display: flex;
   flex-direction: column;
   margin-top: 10px;
-}
-
-h2 {
-  margin: 10px;
-  font-weight: bold;
-}
-a {
-  text-decoration: none;
 }

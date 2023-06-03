@@ -1,16 +1,18 @@
 <div class="search-bar-frame">
   <%= form_with url: root_path, method: :get, class: "d-flex search-box" do %>
-    <%= text_field_tag :query,
-          params[:query],
-          class: "form-control search-form",
-          placeholder: "Search..."
-      %>
-    <%= submit_tag "Search", name: "", class: "btn btn-light search-btn" %>
-    <div class="search-cancel-button">
-      <button type="button" class="btn btn-transparent">
-        <i class="fa-solid fa-circle-xmark"></i>
-      </button>
+    <div class="input-group">
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control search-form",
+            placeholder: "Search..."
+        %>
+      <div class="search-cancel-button">
+        <button type="button" class="btn btn-transparent">
+          <i class="fa-solid fa-circle-xmark"></i>
+        </button>
+      </div>
     </div>
+    <%= submit_tag "Search", name: "", class: "btn btn-light search-btn" %>
   <% end %>
   <div class="dropdown">
     <button type="button" data-action="click->filter#toggleFilter" class="btn btn-transparent">
@@ -20,5 +22,99 @@
 </div>
 
 <div data-filter-target="filtercontainer" class="filter-container hiddennav">
-  <h1>Test Test Test...</h1>
+  <div class="filters-content">
+    <h5>Filters</h5>
+  </div>
+  <div class="filters-content">
+    <h6>Food Type</h6>
+      <div class="checkboxes-container">
+        <input
+          type="checkbox"
+          id="vegan"
+          name="food-type"
+          value="vegan">
+        <label for="vegan">Vegan</label>
+      </div>
+      <div class="checkboxes-container">
+        <input
+          type="checkbox"
+          id="vegetarian"
+          name="food-type"
+          value="vegetarian">
+        <label for="vegetarian">Vegetarian</label>
+      </div>
+  </div>
+  <div class="filters-content">
+    <h6>Pickup time</h6>
+      <div class="checkboxes-container">
+        <input
+          type="checkbox"
+          id="morning"
+          name="pickup-time"
+          value="morning">
+        <label for="morning">h09 - h12</label>
+      </div>
+      <div class="checkboxes-container">
+        <input
+          type="checkbox"
+          id="afternoon"
+          name="pickup-time"
+          value="afternoon">
+        <label for="afternoon">h12 - h18</label>
+      </div>
+      <div class="checkboxes-container">
+        <input
+          type="checkbox"
+          id="evening"
+          name="pickup-time"
+          value="evening">
+        <label for="evening">h18 - h22</label>
+      </div>
+  </div>
+  <div class="filters-content">
+    <h6>Distance</h6>
+    <div class="checkboxes-container">
+        <input
+          type="checkbox"
+          id="near"
+          name="distance"
+          value="near">
+        <label for="near">max 1km</label>
+      </div>
+      <div class="checkboxes-container">
+        <input
+          type="checkbox"
+          id="close"
+          name="distance"
+          value="close">
+        <label for="close">max 3km</label>
+      </div>
+      <div class="checkboxes-container">
+        <input
+          type="checkbox"
+          id="far"
+          name="distance"
+          value="far">
+        <label for="far">max 5km</label>
+      </div>
+  </div>
+  <div class="filters-content">
+    <h6>Giver Type</h6>
+    <div class="checkboxes-container">
+        <input
+          type="checkbox"
+          id="professional"
+          name="food-type"
+          value="professional">
+        <label for="professional">Professional</label>
+      </div>
+      <div class="checkboxes-container">
+        <input
+          type="checkbox"
+          id="private"
+          name="food-type"
+          value="private">
+        <label for="private">Private</label>
+      </div>
+  </div>
 </div>

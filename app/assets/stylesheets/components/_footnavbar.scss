@@ -6,6 +6,7 @@
   width: 100%;
   background-color: rgb(247, 247, 152);
   padding: 5px;
+  z-index: 1000;
 }
 .footnav-bar-frame {
   top: 5px;
@@ -23,7 +24,7 @@
   background-color: var(--dl-color-default-background);
 }
 
-.button-div{
+.button-div {
 display:flex;
 }
 
@@ -31,6 +32,10 @@ display:flex;
   display: inline-block;
   color: black;
   text-decoration: none;
+  font-size: 27px;
+}
+
+.button-div .btn-transparent {
   font-size: 27px;
 }
 
