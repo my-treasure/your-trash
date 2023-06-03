@@ -303,7 +303,6 @@ SimpleForm.setup do |config|
     end
   end
 
-
   # Input Group - custom component
   # see example app and config at https://github.com/heartcombo/simple_form-bootstrap
   config.wrappers :input_group, class: 'mb-3' do |b|
@@ -323,7 +322,6 @@ SimpleForm.setup do |config|
     end
     b.use :hint, wrap_with: { class: 'form-text' }
   end
-
 
   # Floating Labels form
   #

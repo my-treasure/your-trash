@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'follows/create'
+  get 'follows/destroy'
   devise_for :users
   root to: "offers#index"
   resources :offers
