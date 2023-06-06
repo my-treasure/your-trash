@@ -62,7 +62,7 @@
 
   <div class="button-div">
     <div class="button-items" data-action="click->filter#toggleProfileicon">
-        <% if current_user.profile_picture.attached? %>
+        <% if current_user && current_user.profile_picture.attached? %>
               <%= cl_image_tag current_user.profile_picture.key,
                 :gravity => "center",
                 :class => "avatar-bordered-tiny",
