@@ -36,7 +36,7 @@
     background: $black_gradient;
     flex-direction: column;
     justify-content: space-between;
-    padding: 0.8rem;
+    padding: 0.7rem;
     line-height: 70%;
   }
 
@@ -44,11 +44,11 @@
     display: flex;;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: baseline;
     color: $highligted_text;
     font-size: 0.8rem;
     font-weight: 600;
-    margin-bottom: 0.2rem;
+    margin-top: 0.2rem;
   }
 
   .distance {

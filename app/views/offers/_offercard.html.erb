@@ -17,21 +17,6 @@
 
   <%# user information %>
   <div class= "info-container">
-    <div class= "card-header">
-        <div>
-          <% if offer.user.profile_picture.attached? %>
-              <%= cl_image_tag offer.user.profile_picture.key,
-                :gravity => "center",
-                :class => "avatar-bordered-tiny",
-                crop: :fit %>
-              <% else %>
-                <img src="https://res.cloudinary.com/dxdyu4tqu/image/upload/v1683908905/profile_pictures/photo-1583795128727-6ec3642408f8.jpg" alt="", class= "avatar-bordered">
-              <% end %>
-          <span class="username"><%= offer.user.username %></span>
-        </div>
-        <span class="distance">1.2km</span>
-    </div>
-
     <%# offer information %>
     <div class="card-title">
         <div>
@@ -46,6 +31,23 @@
         <strong><%= link_to truncate(offer.title, length: 50), offer %></strong>
       </div>
     </div>
+
+    <%# user information  %>
+    <div class= "card-header">
+        <div>
+          <% if offer.user.profile_picture.attached? %>
+              <%= cl_image_tag offer.user.profile_picture.key,
+                :gravity => "center",
+                :class => "avatar-bordered-tiny",
+                crop: :fit %>
+              <% else %>
+                <img src="https://res.cloudinary.com/dxdyu4tqu/image/upload/v1683908905/profile_pictures/photo-1583795128727-6ec3642408f8.jpg" alt="", class= "avatar-bordered">
+              <% end %>
+          <span class="username">@<%= offer.user.username %></span>
+        </div>
+        <span class="distance">1.2km<i class="fa-solid fa-location-arrow arrow"></i></span>
+    </div>
+
   </div>
 
 </div>

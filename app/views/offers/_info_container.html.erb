@@ -1,0 +1,68 @@
+
+<div class="offer_image" style="background-image: url('<%= cl_image_path @offer.images[0].key %>')">
+</div>
+
+
+
+<div class="user-details">
+  <% if @offer.user.profile_picture.attached? %>
+    <%= cl_image_tag @offer.user.profile_picture.key,
+        :gravity => "center",
+        crop: :fit,
+        class:"avatar-show" %>
+  <% else %>
+    <img src="https://res.cloudinary.com/dxdyu4tqu/image/upload/v1683908905/profile_pictures/photo-1583795128727-6ec3642408f8.jpg" alt="", class= "profile_image">
+  <% end %>
+    <span class="username"> @<%= @offer.user.username %> </span>
+    <span class="rating">Rating: 3.5 </span>
+    <div class="geocode">
+      <span class="distance">1.2km </span>
+      <i class="fa-solid fa-location-arrow arrow"></i>
+    </div>
+</div>
+
+<div class="head-options">
+  <div class="head-content">
+    <h6 class="text-title"> <%=@offer.title%> </h6>
+
+  <div class="actionbuttons">
+    <i class="fa-solid fa-message"></i>
+    <i class="fa-solid fa-comment-medical"></i>
+  </div>
+</div>
+
+<h6 class="text-description"><%= @offer.body.capitalize %> </h6>
+
+
+
+<div class="action">
+  <%= simple_form_for([@offer, @booking]) do |f| %>
+    <% offer_option = @offer.pickupslots.blank? ? ["anytime"] : @offer.pickupslots.split(",")%>
+    <%= f.input :pick_up_time, as: :select, collection: offer_option , selected: 1, label: "Select Your Timeslot ⏱️" %>
+
+    <div class="more-infos">
+      <div class="button-wrapper">
+        <h6>Posted</h6>
+        <h6>3 Days ago</h6>
+        <i class="fa-regular fa-calendar-days"></i>
+      </div>
+
+      <div class="button-wrapper">
+        <h6>Food Type</h6>
+        <h6>Vegan</h6>
+        <i class="fa-solid fa-leaf"></i>
+      </div>
+
+      <div class="button-wrapper">
+        <h6>Allergens</h6>
+        <h6>Nuts</h6>
+        <i class="fa-solid fa-circle-exclamation"></i>
+      </div>
+
+      <div class="button-wrapper">
+        <%= f.submit "✔︎", class: "bookingbutton" %>
+        <h5>Book</h5>
+      </div>
+    </div>
+  <% end %>
+</div>
