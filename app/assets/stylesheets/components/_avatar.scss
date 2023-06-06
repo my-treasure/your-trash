@@ -35,10 +35,13 @@
 }
 
 .avatar-bordered-profile {
-  width: 25px;
-  height: 25px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  border: black 2px solid;
+  box-shadow: $shadow;
+  border: white 3px solid;
+  position: relative;
+  top: -10px;
 }
 
 
