@@ -16,5 +16,5 @@
     <% end %>
   </div>
 
-<h6><%= runcate(offer.body, length: 100) %></h6>
+<h6><%= truncate(offer.body, length: 100) %></h6>
 <p><%= offer.address.split(",")[-4..-2].join %></p>
