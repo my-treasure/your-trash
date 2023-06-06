@@ -5,75 +5,14 @@
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
 
-<div class="info-container">
-  <div>
-        <div class="offer_image" style="background-image: url('<%= cl_image_path @offer.images[0].key %>')">
-  </div>
+<div class="info-container-show">
+  <%= render "offers/info_container" %>
 
-
-
-  <div class="user-details">
-    <% if @offer.user.profile_picture.attached? %>
-      <%= cl_image_tag @offer.user.profile_picture.key,
-          :gravity => "center",
-          crop: :fit,
-          class:"avatar-show" %>
-    <% else %>
-      <img src="https://res.cloudinary.com/dxdyu4tqu/image/upload/v1683908905/profile_pictures/photo-1583795128727-6ec3642408f8.jpg" alt="", class= "profile_image">
-    <% end %>
-      <span class="username"> @<%= @offer.user.username %> </span>
-      <span class="rating">Rating: 3.5 </span>
-      <div class="geocode">
-        <span class="distance">1.2km </span>
-        <i class="fa-solid fa-location-arrow arrow"></i>
-      </div>
-  </div>
-
-  <div class="head-options">
-    <div class="head-content">
-      <h6 class="text-title"> <%=@offer.title%> </h6>
-
-    <div class="actionbuttons">
-      <i class="fa-solid fa-message"></i>
-      <i class="fa-solid fa-comment-medical"></i>
-    </div>
-  </div>
+  <!-- render bookings/show component if the offer is booked -->
+  <% if @offer.bookings.present? %>
+    <%= render "bookings/show" %>
+  <% end %>
 </div>
 
-<h6 class="text-description mt-3 mb-3"><%= @offer.body.capitalize %> </h6>
-
-
-  <div class="action">
-    <%= simple_form_for([@offer, @booking]) do |f| %>
-    <div class="d-flex icon-form">
-    <div class="d-flex form-food">
-    <%= f.input :pick_up_time, as: :select, collection: @offer.pickupslots.split(",") %>
-    <h6><%= @offer.pickupslots.sub(/\A, /, '') %></h6>
-    </div>
-    <h6 class="text-description"> <%= @offer.body %> </h6>
-    </div>
-    <div class="food-info">
-      <div class="options-card">
-    <%= f.submit '✔︎', class: "bookingbutton" %>
-        <div>
-        <h6>Posted</h6>
-        <h6>3 Days ago</h6>
-        <i class="fa-regular fa-calendar-days"></i>
-        </div>
-
-      <div>
-        <h6>Food Type</h6>
-        <h6>Vegan</h6>
-        <i class="fa-solid fa-leaf"></i>
-      </div>
-
-      <div>
-        <h6>Allergens</h6>
-        <h6>Nuts</h6>
-        <i class="fa-solid fa-circle-exclamation"></i></div>
-      </div>
-    </div>
-  <% end %>
-  </div>
-
+<div class = "blankline"> </div>
 </div>

@@ -1,15 +1,27 @@
-<h1>My Dashboard</h1>
+<div class="dashboard-offerheader">
+  <div>
+    <% if current_user.profile_picture.attached? %>
+        <%= cl_image_tag current_user.profile_picture.key,
+          :gravity => "center",
+          :class => "avatar-square",
+          crop: :fit %>
+        <% else %>
+          <img src="https://res.cloudinary.com/dxdyu4tqu/image/upload/v1683908905/profile_pictures/photo-1583795128727-6ec3642408f8.jpg" alt="", class= "avatar-bordered">
+        <% end %>
+  </div>
+  <div class="dashboard-userinfo">
+    <span class="dashboard-username">Hello @<%= current_user.username %></span>
+    <span class="dashboard-details"><i class="fa-solid fa-location-arrow arrow"></i> <%= current_user.address.split(",")[-4..-2].join %></span>
+    <span class="dashboard-details">Rating <%= current_user.reviews[0] %></span>
+  </div>
+</div>
 
-<h2>Offers</h2>
-<% @offers.each do |offer| %>
-  <p>Title: <%= offer.title %></p>
-  <p>Status: <%= offer.body %></p>
-  <!-- Display other offer details -->
-  <%= link_to 'edit', edit_offer_path(offer) %>
-  <%#= link_to 'Delete', delete_offer_path(offer), method: :delete, data: { confirm: 'Are you sure?' } %>
-  <%#= link_to 'Accept Booking', accept_booking_path(offer.booking) %>
-  <!-- Display other offer actions -->
-<% end %>
+<div class="dashboard-title">
+  <h3>Offers</h3>
+  <% @offers.each do |offer| %>
+    <%= render "offercard", offer: offer %>
+  <% end %>
+</div>
 
 <h2>Bookings</h2>
 <% @bookings.each do |booking| %>

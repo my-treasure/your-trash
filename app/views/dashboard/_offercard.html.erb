@@ -1,0 +1,29 @@
+<div class = "dashboard-offercard-container">
+
+  <div class= "dashboard-img-container">
+    <% if offer.images.attached? %>
+      <% offer.images.each do |photo| %>
+      <%= cl_image_tag photo.key,
+        :gravity => "center",
+        :width => 150,
+        :height => 150,
+        :class => "dashboard-offercard_image", crop: :fill %>
+    <% end %>
+    <% else %>
+      <h5>PlaceHolder</h5>
+    <% end %>
+  </div>
+
+  <div class = "dashboard-offer-container">
+    <p>Title: <%= offer.title %></p>
+    <p>Status: <%= offer.body %></p>
+    <!-- Display other offer details -->
+    <%= link_to 'edit', edit_offer_path(offer) %>
+    <%#= link_to 'Delete', delete_offer_path(offer), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%#= link_to 'Accept Booking', accept_booking_path(offer.booking) %>
+    <!-- Display other offer actions -->
+
+  </div>
+
+
+</div>

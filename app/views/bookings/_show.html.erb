@@ -1,0 +1,27 @@
+<div class="more-infos">
+
+      <div class="status-container">
+        <div class="status d-flex">
+        <% if @booking.booking_status.present? %>
+          <% @booking.booking_status.completed = false %>
+          <% @booking.booking_status.accepted = true %>
+            <% if @booking.booking_status.completed%>
+                <%= link_to "Please leave us a review", root_path %>
+              <% elsif @booking.booking_status.accepted%>
+                <h5> Come and pick me up!</h5>
+                <i class="fa-solid fa-bowl-rice"></i>
+              <% else  %>
+                <h5>Waiting confirmation</h5>
+            <% end %>
+       <% end %>
+
+        </div>
+
+        <div class="bookingbutton2">
+
+        </div>
+
+        <div class="bookingbutton2">
+
+      </div>
+</div>
