@@ -1,16 +1,22 @@
-<div class="search-bar-frame">
+<div class="search-bar-frame" data-controller="supersearchbar">
   <%= form_with url: root_path, method: :get, class: "d-flex search-box" do %>
-    <%= text_field_tag :query,
-          params[:query],
-          class: "form-control search-form",
-          placeholder: "Search..."
-      %>
-    <%= submit_tag "Search", name: "", class: "btn btn-light search-btn" %>
-    <div class="search-cancel-button">
-      <button type="button" class="btn btn-transparent">
-        <i class="fa-solid fa-circle-xmark"></i>
+    <div class="input-group">
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control search-form",
+            placeholder: "Search...",
+            data: {supersearchbar_target: "input"}
+        %>
+      <div class="search-cancel-button">
+      <button  class="btn btn-primary" data-supersearchbar-target="button" data-action="click->supersearchbar#clickMe">
+             <i class="fa-solid fa-circle-xmark"></i>
       </button>
+       <%# <%= button_tag(class:"btn btn-primary", wrapper_html: {data: {searchbar_target: "clear", action: "click->searchbar#clearMe"}}) do %>
+
+        <%# end %>
+      </div>
     </div>
+    <%= submit_tag "Search", name: "", class: "btn btn-light search-btn" %>
   <% end %>
   <div class="dropdown">
     <button type="button" data-action="click->filter#toggleFilter" class="btn btn-transparent">

@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
+
+  # get 'follows/destroy'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   root to: "offers#index"
 
   get "/map", to: "pages#map"
+
+
 
   resources :bookings, except: %i[new create]
 
@@ -20,6 +24,9 @@ Rails.application.routes.draw do
     # patch 'bookings/:id/reject', to: 'dashboard#reject_booking', as: :reject_booking
     # patch 'bookings/:id/confirm', to: 'dashboard#confirm_booking', as: :confirm_booking
   end
+
+  get "profiles/:id", to: "pages#profiles", as: 'profile'
+  post 'profiles/:id', to: "pages#createprofile"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

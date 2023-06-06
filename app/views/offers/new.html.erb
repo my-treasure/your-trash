@@ -1,4 +1,4 @@
-<h1>Create an Offer</h1>
+<h1>Share your food 😄</h1>
 <div class="mt-5 mb-5">
   <%= simple_form_for(@offer) do |f| %>
 
@@ -8,7 +8,6 @@
       <%= f.input :body %>
       <%= f.input :address %>
       <%= f.input :pickupslots, as: :check_boxes, collection: ['12-15hrs', '15-18hrs', '18-20hrs'] %>
-      <%= f.input :typeofoffer %>
       <%= f.input :foodtype %>
       <%= f.input :allergen, as: :check_boxes, collection: ['gluten', 'nuts', 'fish', 'others'] %>
       <%= f.input :images, as: :file, input_html: { multiple: true } %>
