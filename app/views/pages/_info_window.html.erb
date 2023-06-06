@@ -18,8 +18,8 @@
 
   <h6><%= truncate(offer.body, length: 100) %></h6>
 
-  <% if offer.address.present? %>
-  <p><%= offer.address&.split(",")[-4..-2]&.join %></p>
+  <% if offer.address.present? && offer.address.include?(",") %>
+  <p><%= offer.address.split(",") & [-4..-2].join %></p>
   <P>ASKNALKNSLA</P>
   <% end %>
 
