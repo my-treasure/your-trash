@@ -1,6 +1,6 @@
 <div>
         <strong><%= link_to truncate(offer.title, length: 50), offer %></strong>
-      </div>
+
 
   <div class= "img-container">
     <% if offer.images.attached? %>
@@ -16,5 +16,11 @@
     <% end %>
   </div>
 
-<h6><%= truncate(offer.body, length: 100) %></h6>
-<p><%= offer.address.split(",")[-4..-2].join %></p>
+  <h6><%= truncate(offer.body, length: 100) %></h6>
+
+  <% if offer.address.present? %>
+  <p><%= offer.address.split(",")[-4..-2].join %></p>
+  <P>ASKNALKNSLA</P>
+  <% end %>
+
+</div>
