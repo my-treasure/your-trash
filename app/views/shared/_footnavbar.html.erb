@@ -23,30 +23,54 @@
   <% end %>
 </div>
 
-<div class="navbar footnavbar">
+<div class="footnavbar">
   <div class="button-div">
-    <%= link_to root_path, class: "btn btn-transparent" do %>
-      <i class="fa-solid fa-home"></i>
+    <%= link_to root_path do %>
+    <div class="button-items">
+        <i class="bi bi-columns-gap"></i>
+        <span class = "navbar-text">Home</span>
+    </div>
     <% end %>
   </div>
+
   <div class="button-div">
-    <%= link_to map_path, class: "btn btn-transparent" do %>
-      <i class="fa-solid fa-map-location-dot"></i>
+    <%= link_to map_path do %>
+    <div class="button-items">
+      <i class="bi bi-compass"></i>
+      <span class = "navbar-text">Map</span>
+    </div>
     <% end %>
   </div>
+
   <div class="button-div">
-    <%= link_to new_offer_path, class: "btn btn-transparent" do %>
-      <i class="fa-sharp fa-solid fa-plus"></i>
+    <%= link_to new_offer_path do %>
+    <div class="button-items">
+      <i class="bi bi-plus-circle"></i>
+      <span class = "navbar-text">Add offer</span>
+    </div>
     <% end %>
   </div>
+
   <div class="button-div">
-    <button type="button" class="btn btn-transparent">
-      <i class="fa-solid fa-message"></i>
-    </button>
+    <%= link_to new_offer_path do %>
+    <div class="button-items">
+      <i class="bi bi-chat-left"></i>
+      <span class = "navbar-text">Messages</span>
+    </div>
+    <% end %>
   </div>
+
   <div class="button-div">
-    <button type="button" data-action="click->filter#toggleProfileicon" class="btn btn-transparent">
-      <i class="fa-solid fa-user"></i>
-    </button>
+    <div class="button-items" data-action="click->filter#toggleProfileicon">
+        <% if current_user.profile_picture.attached? %>
+              <%= cl_image_tag current_user.profile_picture.key,
+                :gravity => "center",
+                :class => "avatar-bordered-tiny",
+                crop: :fit %>
+              <% else %>
+                <img src="https://res.cloudinary.com/dxdyu4tqu/image/upload/v1683908905/profile_pictures/photo-1583795128727-6ec3642408f8.jpg" alt="", class= "avatar-bordered">
+        <% end %>
+        <span class = "navbar-text">User</span>
+    </div>
   </div>
 </div>
