@@ -17,11 +17,6 @@ export default class extends Controller {
   }
 
   toggleProfileicon(){
-    if (this.profileiconcontainerTarget.classList.contains("hiddennav")){
-      this.profileiconcontainerTarget.classList.remove("hiddennav")
-    } else {
-      this.profileiconcontainerTarget.classList.add("hiddennav")
-    }
-
+    this.profileiconcontainerTarget.classList.toggle("hiddennav");
   }
 }
