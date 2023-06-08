@@ -46,21 +46,21 @@ module ApplicationHelper
   end
 
   def offer_image_background(offer)
-  if offer.nil?
-    'default_pic.png'
-  elsif offer.images.attached?
-    url = cloudinary_url(offer.images[0].key)
-    uri = URI.parse(url)
-    response = Net::HTTP.get_response(uri)
-    if response.code.to_i == 404
-      image_tag('default_pic.png')
+    if offer.nil?
+      'default_pic.png'
+    elsif offer.images.attached?
+      url = cloudinary_url(offer.images[0].key)
+      uri = URI.parse(url)
+      response = Net::HTTP.get_response(uri)
+      if response.code.to_i == 404
+        image_tag('default_pic.png')
+      else
+        cl_image_path(offer.images[0].key)
+      end
     else
-      cl_image_path(offer.images[0].key)
+      image_tag('default_pic.png')
     end
-  else
-    image_tag('default_pic.png')
   end
-end
 
   # geocoder helpers
   def make_abstract_request
@@ -79,9 +79,7 @@ end
     return 1
     rescue StandardError => error
       puts "Error (#{ error.message })"
-    end
   end
-
 
   def get_ip_coordinates
     response = make_abstract_request
@@ -93,5 +91,6 @@ end
       "-"
     else
       Geocoder::Calculations.distance_between([start.latitude, start.longitude], [finish.latitude, finish.longitude]).round(2)
+    end
   end
 end
