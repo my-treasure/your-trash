@@ -8,7 +8,7 @@
       <%= f.input :body, label: "Description" %>
       <%= f.input :address, input_html: {value: long_address_text(current_user)}%>
       <%= f.input :pickupslots, as: :check_boxes, collection: ['12-15hrs', '15-18hrs', '18-20hrs'] %>
-      <%= f.input :foodtype, as: :check_boxes, collection: ['Vegan', 'Vegetarian', 'Any']%>
+      <%= f.input :typeofoffer, label: "Type of food", as: :check_boxes, collection: ['Vegan', 'Vegetarian', 'Meat']%>
       <%= f.input :allergen, as: :check_boxes, collection: ['gluten', 'nuts', 'fish', 'others'] %>
       <%= f.input :images, as: :file, input_html: { multiple: true } %>
       <%= f.button :submit, class: "btn btn-primary mb-4" %>
