@@ -6,31 +6,30 @@ class DashboardController < ApplicationController
 
   def update_offer
     @offer = Offer.find(params[:id])
-    # Update offer logic here
     redirect_to dashboard_path
   end
 
   def delete_offer
     @offer = Offer.find(params[:id])
-    # Delete offer logic here
+    offer.destroy
     redirect_to dashboard_path
   end
 
   def accept_booking
     @booking = Booking.find(params[:id])
-    # Accept booking logic here
+    @booking.booking_status.update(accepted: true)
     redirect_to dashboard_path
   end
 
   def reject_booking
     @booking = Booking.find(params[:id])
-    # Reject booking logic here
+    @booking.booking_status.destroy
     redirect_to dashboard_path
   end
 
   def confirm_booking
     @booking = Booking.find(params[:id])
-    # Confirm booking logic here
+    @booking.booking_status.update(completed: true)
     redirect_to dashboard_path
   end
 end

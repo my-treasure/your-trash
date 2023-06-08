@@ -23,12 +23,11 @@
   <% end %>
 </div>
 
-<h2>Bookings</h2>
-<% @bookings.each do |booking| %>
-  <p>Title: <%= booking.offer.title %></p>
-  <p>Status: <%= booking.booking_status.accepted %></p>
-  <!-- Display other booking details -->
-  <%#= link_to 'Reject', reject_booking_path(booking) %>
-  <%#= link_to 'Confirm', confirm_booking_path(booking) %>
-  <!-- Display other booking actions -->
-<% end %>
+
+<div class="dashboard-title">
+  <h3>Offers</h3>
+  <% @bookings.each do |booking| %>
+    <%= render "bookingcard", booking: booking %>
+  <% end %>
+</div>
+

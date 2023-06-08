@@ -1,18 +1,9 @@
-
-<div class="offer_image" style="background-image: url('<%= cl_image_path @offer.images[0].key %>')">
-</div>
+<div class="offer_image" style="background-image: url('<%= offer_image_background(@offer) %>')"></div>
 
 
 
 <div class="user-details">
-  <% if @offer.user.profile_picture.attached? %>
-    <%= cl_image_tag @offer.user.profile_picture.key,
-        :gravity => "center",
-        crop: :fit,
-        class:"avatar-show" %>
-  <% else %>
-    <img src="https://res.cloudinary.com/dxdyu4tqu/image/upload/v1683908905/profile_pictures/photo-1583795128727-6ec3642408f8.jpg" alt="", class= "avatar-show">
-  <% end %>
+    <%= user_avatar(@offer.user) %>
     <span class="username"> @<%= @offer.user.username %> </span>
     <span class="rating">Rating: 3.5 </span>
     <div class="geocode">
