@@ -19,8 +19,8 @@
     <p>Status: <%= offer.body %></p>
     <!-- Display other offer details -->
     <%= link_to 'edit', edit_offer_path(offer) %>
-    <%#= link_to 'Delete', delete_offer_path(offer), method: :delete, data: { confirm: 'Are you sure?' } %>
-    <%#= link_to 'Accept Booking', accept_booking_path(offer.booking) %>
+    <%= link_to 'Delete', offer_path(offer), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%#= link_to 'Accept Booking', dashboard_accept_booking_path(offer.booking) %>
     <!-- Display other offer actions -->
 
   </div>

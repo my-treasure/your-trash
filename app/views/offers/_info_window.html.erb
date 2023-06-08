@@ -1,2 +1,26 @@
-<h6><%= offer.title %></h6>
-<p><%= offer.address %></p>
+<div>
+        <strong><%= link_to truncate(offer.title, length: 50), offer %></strong>
+
+
+  <div class= "img-container">
+    <% if offer.images.attached? %>
+      <% offer.images.each do |photo| %>
+      <%= cl_image_tag photo.key,
+                       :gravity => "center",
+                       :width => 100,
+                       :height => 100,
+                       :class => "offercard_image", crop: :fill %>
+    <% end %>
+    <% else %>
+      <h5>PlaceHolder</h5>
+    <% end %>
+  </div>
+
+  <h6><%= truncate(offer.body, length: 100) %></h6>
+
+  <% if offer.address.present? %>
+  <p><%= offer.address&.split(",")[-4..-2]&.join %></p>
+  <P>ASKNALKNSLA</P>
+  <% end %>
+
+</div>

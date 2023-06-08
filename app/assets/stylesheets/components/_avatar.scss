@@ -34,6 +34,15 @@
   border: white 1px solid;
 }
 
+.avatar-bordered-profile {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  box-shadow: $shadow;
+  border: white 3px solid;
+}
+
+
 .avatar-square {
   width: 60px;
   height: 60px;

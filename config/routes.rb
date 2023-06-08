@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     resources :bookings, only: %i[edit update destroy]
     # patch 'offers/:id/update', to: 'dashboard#update_offer', as: :update_offer
     # delete 'offers/:id/delete', to: 'dashboard#delete_offer', as: :delete_offer
-    # patch 'bookings/:id/accept', to: 'dashboard#accept_booking', as: :accept_booking
+    patch 'bookings/:id/accept', to: 'dashboard#accept_booking', as: :accept_booking
     # patch 'bookings/:id/reject', to: 'dashboard#reject_booking', as: :reject_booking
     # patch 'bookings/:id/confirm', to: 'dashboard#confirm_booking', as: :confirm_booking
   end
