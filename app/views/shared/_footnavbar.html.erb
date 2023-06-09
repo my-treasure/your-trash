@@ -1,18 +1,51 @@
 <div data-filter-target="profileiconcontainer" class="profileicon-container hiddennav">
   <% if user_signed_in? %>
-    <%= link_to dashboard_index_path, class: "profileicon-container-a" do %>
-    <h6>My Dashboard</h6>
+    <div class="button-div profile">
+    <%= link_to dashboard_index_path do %>
+      <div class="button-items">
+          <i class="bi bi-ui-checks-grid"></i>
+          <span class = "navbar-text">Dashboard</span>
+      </div>
     <% end %>
+    </div>
 
-    <%= link_to edit_user_registration_path, class: "profileicon-container-a" do %>
-    <h6>Edit profile</h6>
+    <div class="button-div profile">
+    <%= link_to edit_user_registration_path do %>
+      <div class="button-items">
+          <i class="bi bi-pencil-square"></i>
+          <span class = "navbar-text">EditUser</span>
+      </div>
     <% end %>
-    <br>
-    <%= link_to destroy_user_session_path, data: {turbo_method: :delete}, class: "profileicon-container-a" do %>
-    <h6>Log out</h6>
+    </div>
+
+    <div class="button-div profile">
+    <%= link_to destroy_user_session_path, data: {turbo_method: :delete} do %>
+      <div class="button-items">
+          <i class="bi bi-box-arrow-right"></i>
+          <span class = "navbar-text">LogOut</span>
+      </div>
     <% end %>
+    </div>
 
   <% else %>
+    <div class="button-div">
+    <%= link_to new_user_session_path do %>
+      <div class="button-items">
+          <i class="bi bi-box-arrow-in-right"></i>
+          <span class = "navbar-text">Login</span>
+      </div>
+    <% end %>
+    </div>
+
+    <div class="button-div">
+    <%= link_to new_user_registration_path do %>
+      <div class="button-items">
+          <i class="bi bi-person-plus"></i>
+          <span class = "navbar-text">Register</span>
+      </div>
+    <% end %>
+
+    </div>
     <%= link_to new_user_session_path, class: "profileicon-container-a" do %>
     <h6>Log in</h6>
     <% end %>
@@ -22,6 +55,8 @@
     <% end %>
   <% end %>
 </div>
+
+
 
 <div class="footnavbar">
   <div class="button-div">
@@ -62,15 +97,15 @@
 
   <div class="button-div">
     <div class="button-items" data-action="click->filter#toggleProfileicon">
-        <% if current_user && current_user.profile_picture.attached? %>
+          <% if current_user && current_user.profile_picture.attached? %>
               <%= cl_image_tag current_user.profile_picture.key,
                 :gravity => "center",
                 :class => "avatar-bordered-profile",
                 crop: :fit %>
               <% else %>
                 <img src="https://res.cloudinary.com/dxdyu4tqu/image/upload/v1683908905/profile_pictures/photo-1583795128727-6ec3642408f8.jpg" alt="", class= "avatar-bordered-profile">
-        <% end %>
-        <span class = "navbar-text">User</span>
+          <% end %>
+        <span class = "navbar-text user">User</span>
     </div>
   </div>
 </div>

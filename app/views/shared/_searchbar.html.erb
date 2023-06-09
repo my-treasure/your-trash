@@ -8,7 +8,7 @@
             data: {supersearchbar_target: "input"}
         %>
       <div class="search-cancel-button">
-      <button  class="btn btn-primary" data-supersearchbar-target="button" data-action="click->supersearchbar#clickMe">
+      <button  class="btn btn-light" data-supersearchbar-target="button" data-action="click->supersearchbar#clickMe">
              <i class="fa-solid fa-circle-xmark"></i>
       </button>
        <%# <%= button_tag(class:"btn btn-primary", wrapper_html: {data: {searchbar_target: "clear", action: "click->searchbar#clearMe"}}) do %>
@@ -20,105 +20,68 @@
   <% end %>
   <div class="dropdown">
     <button type="button" data-action="click->filter#toggleFilter" class="btn btn-transparent">
-      <i class="fas fa-filter"></i>
+      <i class="bi bi-sliders"></i>
     </button>
   </div>
 </div>
 
-<div data-filter-target="filtercontainer" class="filter-container hiddennav">
-  <div class="filters-content">
-    <h5>Filters</h5>
-  </div>
+<div data-filter-target="filtercontainer" data-action="click->filter-controller#toggleFilter" class="filter-container hiddennavsearch">
+
   <div class="filters-content">
     <h6>Food Type</h6>
       <div class="checkboxes-container">
-        <input
-          type="checkbox"
-          id="vegan"
-          name="food-type"
-          value="vegan">
-        <label for="vegan">Vegan</label>
-      </div>
-      <div class="checkboxes-container">
-        <input
-          type="checkbox"
-          id="vegetarian"
-          name="food-type"
-          value="vegetarian">
-        <label for="vegetarian">Vegetarian</label>
+        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+          <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+          <label class="btn btn-outline-dark" for="btnradio1">Vegan</label>
+
+          <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+          <label class="btn btn-outline-dark" for="btnradio2">Vegatarian</label>
+
+          <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+          <label class="btn btn-outline-dark" for="btnradio3">Flexible</label>
+        </div>
       </div>
   </div>
+
   <div class="filters-content">
     <h6>Pickup time</h6>
       <div class="checkboxes-container">
-        <input
-          type="checkbox"
-          id="morning"
-          name="pickup-time"
-          value="morning">
-        <label for="morning">h09 - h12</label>
-      </div>
-      <div class="checkboxes-container">
-        <input
-          type="checkbox"
-          id="afternoon"
-          name="pickup-time"
-          value="afternoon">
-        <label for="afternoon">h12 - h18</label>
-      </div>
-      <div class="checkboxes-container">
-        <input
-          type="checkbox"
-          id="evening"
-          name="pickup-time"
-          value="evening">
-        <label for="evening">h18 - h22</label>
+        <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+          <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+          <label class="btn btn-outline-success" for="btncheck1">Morning</label>
+
+          <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
+          <label class="btn btn-outline-info" for="btncheck2">Afternoon</label>
+
+          <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
+          <label class="btn btn-outline-info" for="btncheck3">Evening</label>
+        </div>
       </div>
   </div>
+
+  <div class="filters-content">
+    <h6>Giver Type</h6>
+      <div class="checkboxes-container">
+        <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+          <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off">
+          <label class="btn btn-outline-warning" for="btncheck4">Organizations</label>
+
+          <input type="checkbox" class="btn-check" id="btncheck5" autocomplete="off">
+          <label class="btn btn-outline-warning" for="btncheck5">Users</label>
+        </div>
+      </div>
+  </div>
+
   <div class="filters-content">
     <h6>Distance</h6>
     <div class="checkboxes-container">
-        <input
-          type="checkbox"
-          id="near"
-          name="distance"
-          value="near">
-        <label for="near">max 1km</label>
-      </div>
-      <div class="checkboxes-container">
-        <input
-          type="checkbox"
-          id="close"
-          name="distance"
-          value="close">
-        <label for="close">max 3km</label>
-      </div>
-      <div class="checkboxes-container">
-        <input
-          type="checkbox"
-          id="far"
-          name="distance"
-          value="far">
-        <label for="far">max 5km</label>
-      </div>
+        <h6>1km</h6>
+        <div class="slidecontainer">
+          <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+        </div>
+        <h6>10+km</h6>
+    </div>
   </div>
-  <div class="filters-content">
-    <h6>Giver Type</h6>
-    <div class="checkboxes-container">
-        <input
-          type="checkbox"
-          id="professional"
-          name="food-type"
-          value="professional">
-        <label for="professional">Professional</label>
-      </div>
-      <div class="checkboxes-container">
-        <input
-          type="checkbox"
-          id="private"
-          name="food-type"
-          value="private">
-        <label for="private">Private</label>
-      </div>
-  </div>
+
+
 </div>
