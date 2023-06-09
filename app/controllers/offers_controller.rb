@@ -43,6 +43,7 @@ class OffersController < ApplicationController
 
   def create
     @offer = Offer.new(offer_params)
+    @offer.typeofoffer = params[:offer][:typeofoffer].reject{|el| el === ''}.join(',')
     @offer.pickupslots = params[:offer][:pickupslots].reject{|el| el === ''}.join(',')
     @offer.allergen = params[:offer][:allergen].reject{|el| el === ''}.join(',')
     @offer.user = current_user

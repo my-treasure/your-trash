@@ -28,15 +28,9 @@
 
 <div class="action">
 
+  <h1>Congrats your food is waiting for you</h1>
 
 
-  <% if Booking.find_by(offer_id: @offer) %>
-       <h1>Congrats your food is waiting for you</h1>
- <% else %>
-
-  <%= simple_form_for([@offer, @booking]) do |f| %>
-    <% offer_option = @offer.pickupslots.blank? ? ["anytime"] : @offer.pickupslots.split(",")%>
-    <%= f.input :pick_up_time, as: :select, collection: offer_option , selected: 1, label: "Select Your Timeslot ⏱️" %>
 
 
 
@@ -61,12 +55,11 @@
       </div>
 
 
-      <div class="button-wrapper">
-        <%= f.submit "Book", class: "bookingbutton" %>
-        <h5>Book</h5>
-      </div>
+
+
+
 
     </div>
-  <% end %>
-  <% end %>
+
+
 </div>

@@ -16,11 +16,17 @@
 
   <div class = "dashboard-offer-container">
     <p>Title: <%= offer.title %></p>
-    <p>Status: <%= offer.body %></p>
+    <%# <p>Description: <%= offer.body %></p> %>
+    <p>Address: <%= offer.address %></p>
+    <p>Available pickup slots: <%= offer.pickupslots %></p>
+    <p>Type of food: <%= offer.typeofoffer %></p>
+    <p>Allergens: <%= offer.allergen %></p>
+    <p>Created at: <%= time_ago_in_words(offer.created_at) %></p>
+    <p>Booked?:<%= offer.booking_ids.blank? %></p>
     <!-- Display other offer details -->
     <%= link_to 'edit', edit_offer_path(offer) %>
-    <%#= link_to 'Delete', delete_offer_path(offer), method: :delete, data: { confirm: 'Are you sure?' } %>
-    <%#= link_to 'Accept Booking', accept_booking_path(offer.booking) %>
+    <%= link_to 'Delete', offer_path(offer), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%#= link_to 'Accept Booking', dashboard_accept_booking_path(offer.booking) %>
     <!-- Display other offer actions -->
 
   </div>
