@@ -2,7 +2,7 @@
   left: 0;
   bottom: 0;
   position: fixed;
-  height: 55px;
+  height: 58px;
   width: 100%;
   background-color: $primary_bg;
   // padding: 5px;
@@ -10,7 +10,7 @@
   display: flex;
 
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: flex-end;
   box-shadow: $shadow_top;
 
   a {
@@ -21,34 +21,27 @@
     line-height: 57%;
   }
 
+  i {
+    margin-bottom: 3px;
+  }
+
   .navbar-text {
     font-size: 12px;
     padding-top: 0px;
     padding-bottom: 0px;
-  }
-}
+    height: 20px;
 
-.footnav-bar-frame {
-  top: 5px;
-  left: 5px;
-  bottom: 5px;
-  right: 5px;
-  width: 100%;
-  display: flex;
-  padding: 2px;
-  position: absolute;
-  align-self: stretch;
-  align-items: center;
-  flex-shrink: 0;
-  border-radius: 10px;
-  background-color: var(--dl-color-default-background);
+  }
+  .user {
+    margin-bottom: 5px;
+  }
 }
 
 .button-div {
   display:flex;
   width: 20%;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: end;
   align-items: center;
 
   .button-items {
@@ -60,6 +53,7 @@
     font-weight: 400;
     font-size: 22px;
   }
+
 }
 
 
@@ -68,24 +62,38 @@
 }
 
 .profileicon-container {
-  height: 30vh;
-  width: 20vh;
-  background-color: rgb(247, 247, 152);
-  transition: 1s;
+  width: 24%;
   position: absolute;
-  bottom: 0;
+  bottom: 55px;
   right:0;
-  padding: 15px;
-  border-radius: 10px;
-}
+  border-top-left-radius: 12px;
+  padding: 3px;
+  padding-bottom: 12px;
+  padding-top: 12px;
+  box-shadow: $shadow_top;
+  background-color: $primary_bg;
 
-.profileicon-container-a {
-  display: inline-block;
-  color: black;
-  text-decoration: none;
+
+  // size
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  /* Initial state */
+  opacity: 1;
+  transform: translateY(0%);
+  transition: opacity 0.5s cubic-bezier(0.075, 0.82, 0.165, 1),
+  transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  .profile {
+    width: 100% !important;
+    height: 50px !important;
+  }
 }
 
 .hiddennav {
-  display: none;
-  margin-top: 60px;
+  /* Final state */
+  opacity: 0;
+  transform: translateY(100%);
 }
