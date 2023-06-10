@@ -16,7 +16,9 @@
         <%# end %>
       </div>
     </div>
-    <%= submit_tag "Search", name: "", class: "btn btn-light search-btn" %>
+    <button type="submit" name="" class="btn search-btn">
+      <i class="fa-solid fa-magnifying-glass"></i>
+</button>
   <% end %>
   <div class="dropdown">
     <button type="button" data-action="click->filter#toggleFilter" class="btn btn-transparent">
