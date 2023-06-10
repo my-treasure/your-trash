@@ -8,26 +8,22 @@
             data: {supersearchbar_target: "input"}
         %>
       <div class="search-cancel-button">
-      <button  class="btn btn-light" data-supersearchbar-target="button" data-action="click->supersearchbar#clickMe">
-             <i class="fa-solid fa-circle-xmark"></i>
-      </button>
-       <%# <%= button_tag(class:"btn btn-primary", wrapper_html: {data: {searchbar_target: "clear", action: "click->searchbar#clearMe"}}) do %>
-
-        <%# end %>
+        <button  class="btn btn-light" data-supersearchbar-target="button" data-action="click->supersearchbar#clickMe">
+          <i class="fa-solid fa-circle-xmark"></i>
+        </button>
       </div>
     </div>
-    <button type="submit" name="" class="btn search-btn">
-      <i class="fa-solid fa-magnifying-glass"></i>
-</button>
+    <%= hidden_field_tag :search_submit, "true" %>
   <% end %>
   <div class="dropdown">
-    <button type="button" data-action="click->filter#toggleFilter" class="btn btn-transparent">
-      <i class="bi bi-sliders"></i>
+    <button type="button" class="btn btn-transparent" >
+      <i class="bi bi-sliders" data-action="click->filter#toggleFilter" ></i>
     </button>
   </div>
 </div>
 
-<div data-filter-target="filtercontainer" data-action="click->filter-controller#toggleFilter" class="filter-container hiddennavsearch">
+
+<div data-filter-target="filtercontainer" data-action="click->filter-controller#toggleFilter"   class="filter-container hiddennavsearch">
 
   <div class="filters-content">
     <h6>Food Type</h6>
@@ -102,7 +98,7 @@
   </div>
 
   <div class="filters-content">
-    <h6>Distance</h6>
+    <h6>Distance - <span id="output"> 50 km</span></h6>
     <div class="checkboxes-container">
         <h6>1km</h6>
         <div class="slidecontainer">
