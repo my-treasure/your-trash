@@ -32,7 +32,7 @@
   }
 }
 
-.head-options{
+
 
 
   .head-content{
@@ -41,39 +41,84 @@
     align-items: center;
     padding-left: $padding-left;
     padding-right: $padding-right;
-    height: 35px;
-  }
-
-  }
-
-  .actionbuttons {
-    margin-right: 20px;
-
-    i {
-      font-size: 23px;
+    height: fit-content;
+    flex-wrap: wrap;
+    margin-top: 16px;
+    .text-title {
+      margin-bottom: 0;
+      font-weight: bold;
+      font-size: 20px;
+      flex-grow: 1;
+      width: 80%;
     }
 
-    .fa-message {
-      margin-right: 20px;
+    .actionbuttons {
+      width: 20%;
+
+      i {
+        font-size: 20px;
+        color: #222222;
+      }
+
+      .fa-message {
+        margin-right: 20px;
+      }
     }
-}
+
+  }
+  .text-description {
+    width: 100%;
+    font-size: 14px;
+    text-align: justify;
+    margin-top: 16px;
+    padding-left: 8%;
+    padding-right: 8%;
+
+  }
+// .head-options{
+// }
 
 .action{
   padding-left: $padding-left;
   padding-right: $padding-right;
+  h1 {
+    text-align: center;
+  }
+
+  .confirm-button {
+    text-align: center;
+    i {
+      font-size: 70px;
+      margin-top: 16px;
+      color: #2D882D;
+    }
+
+  }
 
   i{
-    font-size: 30px;
+    font-size: 20px;
   }
+  .fa-leaf {
+     color: green
+  }
+  .fa-circle-exclamation {
+    color: #d11736
+  }
+  .fa-calendar-days {
+    color: #2E4372;
+  }
+
+
   .button-wrapper{
-    width: 25%;
     flex-grow: 1;
+    color: black;
   }
 
   .more-infos{
     display: flex;
     justify-content: space-between;
     width: 100%;
+    margin-top: 24px;
 
     div {
       display: flex;
@@ -104,19 +149,7 @@
     }
 }
 
-.text-title {
-  margin-bottom: 0;
-  font-weight: bold;
-  font-size: 14px;
-  flex-grow: 1;
-}
 
-.text-description {
-  width: 100%;
-  font-size: 14px;
-  padding-left: $padding-left;
-  padding-right: $padding-right;
-}
 
 .booking_pick_up_time .form-select {
   width: 92%;
