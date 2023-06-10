@@ -3,41 +3,36 @@
 
 
 <div class="user-details">
-    <%= user_avatar(@offer.user) %>
-    <span class="username"> @<%= @offer.user.username %> </span>
-    <span class="rating">Rating: 3.5 </span>
-    <div class="geocode">
-      <span class="distance">1.2km </span>
-      <i class="fa-solid fa-location-arrow arrow"></i>
-    </div>
-</div>
-
-<div class="head-options">
-  <div class="head-content">
-    <h6 class="text-title"> <%=@offer.title%> </h6>
-
-  <div class="actionbuttons">
-    <i class="fa-solid fa-message"></i>
-    <i class="fa-solid fa-comment-medical"></i>
+  <%= user_avatar(@offer.user) %>
+  <span class="username"> @<%= @offer.user.username %> </span>
+  <span class="rating">Rating: 3.5 </span>
+  <div class="geocode">
+    <span class="distance">1.2km </span>
+    <i class="fa-solid fa-location-arrow arrow"></i>
   </div>
 </div>
 
-<h6 class="text-description"><%= @offer.body.capitalize %> </h6>
+  <div class="head-content">
+    <h5 class="text-title"> <%=@offer.title%> </h5>
 
+    <div class="actionbuttons">
+      <i class="fa-solid fa-message"></i>
+      <i class="fa-solid fa-comment-medical"></i>
+    </div>
 
+  </div>
+  <h6 class="text-description"> orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been <%= @offer.body.capitalize %> </h6>
 
-<div class="action">
+<div class="head-options">
 
-  <h1>Congrats your food is waiting for you</h1>
+  <div class="action">
 
-
-
-
-
-
+    <h1> Come and pick me up!</h1>
+    <div class="confirm-button"><i class="fa-solid fa-circle-check"></i>
+    </div>
     <div class="more-infos">
       <div class="button-wrapper">
-        <h6>Posted</h6>
+        <h6 class="fw-bolder">Posted</h6>
         <h6>3 Days ago</h6>
         <i class="fa-regular fa-calendar-days"></i>
       </div>
@@ -53,13 +48,8 @@
         <h6>Nuts</h6>
         <i class="fa-solid fa-circle-exclamation"></i>
       </div>
-
-
-
-
-
-
     </div>
 
+  </div>
 
 </div>
