@@ -7,7 +7,9 @@ Rails.application.routes.draw do
 
   get "/map", to: "pages#map"
 
-
+  resources :chatrooms, only: :show do
+    resources :messages, only: :create
+  end
 
   resources :bookings, except: %i[new create]
 
