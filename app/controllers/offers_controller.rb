@@ -6,12 +6,18 @@ class OffersController < ApplicationController
   end
 
   def index
-    @offers = Offer.all
 
-    # filter out the offers that are booked
     completed_ids = BookingStatus.where(completed: true).pluck(:booking_id)
     completed_bookings = Booking.where(id: completed_ids).pluck(:offer_id)
-    @offers_active = Offer.where.not(id: completed_bookings )
+
+    if params[:query].present?
+      @offers = Offer.where("title ILIKE :query or body ILIKE :query", query: "%#{params[:query]}%") #.where.not(id: completed_bookings )
+    else
+      @offers = Offer.all #where.not(id: completed_bookings )
+    end
+
+    # filter out the offers that are booked
+    #@offers_active = Offer.where.not(id: completed_bookings )
 
     #@offers_unbooked = Offer.where.missing(:bookings)
     #Offer.includes(bookings: :booking_status).where.not(booking_status: { completed: true } ) # returning only offers with bookings
@@ -43,7 +49,7 @@ class OffersController < ApplicationController
 
   def create
     @offer = Offer.new(offer_params)
-    @offer.typeofoffer = params[:offer][:typeofoffer].reject{|el| el === ''}.join(',')
+    @offer.typeofoffer = params[:offer][:foodtype].reject{|el| el === ''}.join(',')
     @offer.pickupslots = params[:offer][:pickupslots].reject{|el| el === ''}.join(',')
     @offer.allergen = params[:offer][:allergen].reject{|el| el === ''}.join(',')
     @offer.user = current_user
@@ -53,6 +59,25 @@ class OffersController < ApplicationController
     else
       render :new
     end
+  end
+
+  def edit
+    @offer = Offer.find(params[:id])
+  end
+
+  def update
+    @offer = Offer.find(params[:id])
+    @offer.update(offer_params)
+
+
+    redirect_to dashboard_index_path
+  end
+
+  def destroy
+    @offer = Offer.find(params[:id])
+    @offer.destroy
+
+    redirect_to dashboard_index_path
   end
 
   private

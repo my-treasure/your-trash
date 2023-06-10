@@ -8,37 +8,46 @@
             data: {supersearchbar_target: "input"}
         %>
       <div class="search-cancel-button">
-      <button  class="btn btn-light" data-supersearchbar-target="button" data-action="click->supersearchbar#clickMe">
-             <i class="fa-solid fa-circle-xmark"></i>
-      </button>
-       <%# <%= button_tag(class:"btn btn-primary", wrapper_html: {data: {searchbar_target: "clear", action: "click->searchbar#clearMe"}}) do %>
-
-        <%# end %>
+        <button  class="btn btn-light" data-supersearchbar-target="button" data-action="click->supersearchbar#clickMe">
+          <i class="fa-solid fa-circle-xmark"></i>
+        </button>
       </div>
     </div>
-    <%= submit_tag "Search", name: "", class: "btn btn-light search-btn" %>
+    <%= hidden_field_tag :search_submit, "true" %>
   <% end %>
   <div class="dropdown">
-    <button type="button" data-action="click->filter#toggleFilter" class="btn btn-transparent">
-      <i class="bi bi-sliders"></i>
+    <button type="button" class="btn btn-transparent" >
+      <i class="bi bi-sliders" data-action="click->filter#toggleFilter" ></i>
     </button>
   </div>
 </div>
 
-<div data-filter-target="filtercontainer" data-action="click->filter-controller#toggleFilter" class="filter-container hiddennavsearch">
+<%# IN CASE WE WOULD LIKE TO ACTIVATE THE FILTERS FUNCTIONALITIES WE NEED TO CANCEL OUT ALL THE COMMENTS BELOW AND START CODING FROM THERE%>
+
+<div data-filter-target="filtercontainer" data-action="click->filter-controller#toggleFilter"   class="filter-container hiddennavsearch">
 
   <div class="filters-content">
     <h6>Food Type</h6>
       <div class="checkboxes-container">
         <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-          <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-          <label class="btn btn-outline-dark" for="btnradio1">Vegan</label>
 
-          <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-          <label class="btn btn-outline-dark" for="btnradio2">Vegatarian</label>
+          <%# <form action="offers"> %>
+            <input type="radio" class="btn-check" name="filter" id="btnradio1" autocomplete="off" checked>
+            <%# <input type="hidden" name="filter" id="btnradio1" value="vegan"> %>
+            <label class="btn btn-outline-dark" for="btnradio1">Vegan</label>
+          <%# </form> %>
 
-          <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-          <label class="btn btn-outline-dark" for="btnradio3">Flexible</label>
+          <%# <form action="offers"> %>
+            <input type="radio" class="btn-check" name="filter" id="btnradio2" autocomplete="off">
+            <%# <input type="hidden" name="filter" id="btnradio1" value="vegetarian"> %>
+            <label class="btn btn-outline-dark" for="btnradio2">Vegetarian</label>
+          <%# </form> %>
+
+          <%# <form action="offers"> %>
+            <input type="radio" class="btn-check" name="filter" id="btnradio3" autocomplete="off">
+            <%# <input type="hidden" name="filter" id="btnradio1" value="flexible"> %>
+            <label class="btn btn-outline-dark" for="btnradio3">Flexible</label>
+          <%# </form> %>
         </div>
       </div>
   </div>
@@ -47,14 +56,24 @@
     <h6>Pickup time</h6>
       <div class="checkboxes-container">
         <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-          <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+
+        <%# <form action="offers"> %>
+          <input type="checkbox" class="btn-check" name="filter" id="btncheck1" autocomplete="off">
+          <%# <input type="hidden" name="filter" id="btnradio1" value="morning"> %>
           <label class="btn btn-outline-success" for="btncheck1">Morning</label>
+        <%# </form> %>
 
-          <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
+        <%# <form action="offers"> %>
+          <input type="checkbox" class="btn-check" name="filter" id="btncheck2" autocomplete="off">
+          <%# <input type="hidden" name="filter" id="btnradio1" value="afternoon"> %>
           <label class="btn btn-outline-info" for="btncheck2">Afternoon</label>
+        <%# </form> %>
 
-          <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
+        <%# <form action="offers"> %>
+          <input type="checkbox" class="btn-check" name="filter" id="btncheck3" autocomplete="off">
+          <%# <input type="hidden" name="filter" id="btnradio1" value="evening"> %>
           <label class="btn btn-outline-info" for="btncheck3">Evening</label>
+        <%# </form> %>
         </div>
       </div>
   </div>
@@ -63,17 +82,24 @@
     <h6>Giver Type</h6>
       <div class="checkboxes-container">
         <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-          <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off">
-          <label class="btn btn-outline-warning" for="btncheck4">Organizations</label>
 
-          <input type="checkbox" class="btn-check" id="btncheck5" autocomplete="off">
+        <%# <form action="offers"> %>
+          <input type="checkbox" class="btn-check" name="filter" id="btncheck4" autocomplete="off">
+          <%# <input type="hidden" name="filter" id="btnradio1" value="organizations"> %>
+          <label class="btn btn-outline-warning" for="btncheck4">Organizations</label>
+        <%# </form> %>
+
+        <%# <form action="offers"> %>
+          <input type="checkbox" class="btn-check" name="filter" id="btncheck5" autocomplete="off">
+          <%# <input type="hidden" name="filter" id="btnradio1" value="users"> %>
           <label class="btn btn-outline-warning" for="btncheck5">Users</label>
+        <%# </form> %>
         </div>
       </div>
   </div>
 
   <div class="filters-content">
-    <h6>Distance</h6>
+    <h6>Distance - <span id="output"> 50 km</span></h6>
     <div class="checkboxes-container">
         <h6>1km</h6>
         <div class="slidecontainer">

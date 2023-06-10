@@ -7,6 +7,7 @@
 // External libraries
 @import "bootstrap";
 @import "bootstrap/scss/bootstrap";
+@import "star-rating.js/dist/star-rating.css";
 
 // Your CSS partials
 @import "components/index";
@@ -41,4 +42,6 @@ body, html {
   display: flex;
   flex-direction: column;
   margin-top: 10px;
+  background-color: $secondary_bg;
+
 }
