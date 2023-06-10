@@ -1,0 +1,92 @@
+<div class="dashboard-offerheader">
+  <div>
+    <% if current_user.profile_picture.attached? %>
+        <%= cl_image_tag current_user.profile_picture.key,
+          :gravity => "center",
+          :class => "avatar-square",
+          crop: :fit %>
+        <% else %>
+          <img src="https://res.cloudinary.com/dxdyu4tqu/image/upload/v1683908905/profile_pictures/photo-1583795128727-6ec3642408f8.jpg" alt="", class= "avatar-bordered">
+        <% end %>
+  </div>
+  <div class="dashboard-userinfo">
+    <span class="dashboard-username">Hello @<%= current_user.username %></span>
+    <span class="dashboard-details"><i class="fa-solid fa-location-arrow arrow"></i> <%= current_user.address.split(",")[-4..-2].join %></span>
+    <span class="dashboard-details">Rating <%= current_user.reviews[0] %></span>
+  </div>
+</div>
+
+
+<div class = "dashboard-offercard-container">
+
+  <div class= "dashboard-img-container">
+    <% if offer.images.attached? %>
+      <% offer.images.each do |photo| %>
+      <%= cl_image_tag photo.key,
+        :gravity => "center",
+        :width => 150,
+        :height => 150,
+        :class => "dashboard-offercard_image", crop: :fill %>
+    <% end %>
+    <% else %>
+      <h5>PlaceHolder</h5>
+    <% end %>
+  </div>
+
+  <div class = "dashboard-offer-container">
+    <p>Title: <%= offer.title %></p>
+    <%# <p>Description: <%= offer.body %></p> %>
+   ≈
+    <p>Available pickup slots: <%= offer.pickupslots %></p>
+    <p>Type of food: <%= offer.typeofoffer %></p>
+    <p>Allergens: <%= offer.allergen %></p>
+    <p>Created at: <%= time_ago_in_words(offer.created_at) %></p>
+    <p>Booked?:<%= offer.booking_ids.blank? %></p>
+    <!-- Display other offer details -->
+    <%= link_to 'edit', edit_offer_path(offer) %>
+    <%= link_to 'Delete', offer_path(offer), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%#= link_to 'Accept Booking', dashboard_accept_booking_path(offer.booking) %>
+    <!-- Display other offer actions -->
+
+  </div>
+
+
+</div>
+
+
+
+
+_bookingcard(old one)
+
+
+
+<div class = "dashboard-offercard-container">
+
+  <div class= "dashboard-img-container">
+    <% if booking.offer.images.attached? %>
+      <% booking.offer.images.each do |photo| %>
+      <%= cl_image_tag photo.key,
+        :gravity => "center",
+        :width => 150,
+        :height => 150,
+        :class => "dashboard-offercard_image", crop: :fill %>
+    <% end %>
+    <% else %>
+      <h5>PlaceHolder</h5>
+    <% end %>
+  </div>
+
+  <div class = "dashboard-offer-container">
+    <p>Title: <%= booking.offer.title %></p>
+    <p>Status: <%= booking.offer.body %></p>
+    <!-- Display other booking details -->
+    <%#= link_to 'edit', edit_offer_path(offer) %>
+    <%#= link_to 'Delete', offer_path(offer), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%#= link_to 'Accept Booking', dashboard_accept_booking_path(offer.booking) %>
+    <!-- Display other offer actions -->
+
+  </div>
+
+
+</div>
+

@@ -49,7 +49,7 @@ class OffersController < ApplicationController
 
   def create
     @offer = Offer.new(offer_params)
-    @offer.typeofoffer = params[:offer][:typeofoffer].reject{|el| el === ''}.join(',')
+    @offer.typeofoffer = params[:offer][:foodtype].reject{|el| el === ''}.join(',')
     @offer.pickupslots = params[:offer][:pickupslots].reject{|el| el === ''}.join(',')
     @offer.allergen = params[:offer][:allergen].reject{|el| el === ''}.join(',')
     @offer.user = current_user
@@ -59,6 +59,25 @@ class OffersController < ApplicationController
     else
       render :new
     end
+  end
+
+  def edit
+    @offer = Offer.find(params[:id])
+  end
+
+  def update
+    @offer = Offer.find(params[:id])
+    @offer.update(offer_params)
+
+
+    redirect_to dashboard_index_path
+  end
+
+  def destroy
+    @offer = Offer.find(params[:id])
+    @offer.destroy
+
+    redirect_to dashboard_index_path
   end
 
   private

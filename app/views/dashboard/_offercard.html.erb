@@ -1,35 +1,35 @@
-<div class = "dashboard-offercard-container">
+<div class="offer-card">
+  <div class="right-content">
+    <div class="padding-wrapper">
+      <p><%= offer.typeofoffer ?  offer.typeofoffer : "Vegan" %></p>
+        <h6><%= offer.title[0...20] %></h6>
+        <p><%= offer.address[0...20] %></p>
+        <p><i class="fa-regular fa-clock"></i> <%= offer.pickupslots %></p>
 
-  <div class= "dashboard-img-container">
+    <div class="placeholder-offer-card">
+      <%= link_to offer_path(offer.id), data: {turbo_method: :delete} do %>
+        <i class="fa-regular fa-trash-can"></i>
+        <% end %>
+        <%= link_to edit_offer_path(offer.id) do %>
+        <i class="fa-solid fa-pencil"></i>
+        <% end %>
+    </div>
+
+
+    </div>
+  </div>
+
+   <div class="left-image">
     <% if offer.images.attached? %>
       <% offer.images.each do |photo| %>
       <%= cl_image_tag photo.key,
         :gravity => "center",
-        :width => 150,
-        :height => 150,
         :class => "dashboard-offercard_image", crop: :fill %>
     <% end %>
     <% else %>
       <h5>PlaceHolder</h5>
     <% end %>
-  </div>
-
-  <div class = "dashboard-offer-container">
-    <p>Title: <%= offer.title %></p>
-    <%# <p>Description: <%= offer.body %></p> %>
-    <p>Address: <%= offer.address %></p>
-    <p>Available pickup slots: <%= offer.pickupslots %></p>
-    <p>Type of food: <%= offer.typeofoffer %></p>
-    <p>Allergens: <%= offer.allergen %></p>
-    <p>Created at: <%= time_ago_in_words(offer.created_at) %></p>
-    <p>Booked?:<%= offer.booking_ids.blank? %></p>
-    <!-- Display other offer details -->
-    <%= link_to 'edit', edit_offer_path(offer) %>
-    <%= link_to 'Delete', offer_path(offer), method: :delete, data: { confirm: 'Are you sure?' } %>
-    <%#= link_to 'Accept Booking', dashboard_accept_booking_path(offer.booking) %>
-    <!-- Display other offer actions -->
-
-  </div>
+   </div>
 
 
 </div>
