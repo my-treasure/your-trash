@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   end
 
   resources :bookings, except: %i[new create]
+  resources :reviews
 
   resources :offers do
     resources :bookings, only: %i[new create]

@@ -1,7 +1,8 @@
   .avatar-profile{
-    height: 150px;
-    width: 150px;
-    border-radius: 50px;
+    height: 100px;
+    width: 100px;
+    border-radius: 40px;
+    border: 4px solid #efeded;
   }
 
   .first-profile-half {
@@ -13,6 +14,9 @@
     i {
       font-size: 50px;
     }
+  }
+  h3 {
+    font-size: 20px;
   }
 
   .profiles-grid{
@@ -36,6 +40,7 @@
     height: 80px;
     object-fit: cover;
     border-radius: 10px;
+    border: 4px solid #efeded;
   }
 
   h6{
@@ -45,5 +50,13 @@
     bottom: -1px;
     left: 8px;
     }
-
+  }
+  h1 {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .review-title {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
   }

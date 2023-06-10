@@ -7,6 +7,13 @@ export default class extends Controller {
 
   connect() {
     var slider = document.getElementById("myRange");
+    // var output = document.getElementById("demo");
+
+    // Update the current slider value (each time you drag the slider handle)
+    // slider.oninput = function () {
+    //   output.innerHTML = this.value;
+    // };
+
     var output = document.getElementById("output");
 
     // Update the current slider value (each time you drag the slider handle)
