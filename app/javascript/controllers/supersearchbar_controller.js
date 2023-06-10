@@ -11,8 +11,6 @@ export default class extends Controller {
 
   clickMe(event){
     event.preventDefault()
-    console.log("I have been clicked")
-    console.log(this.inputTarget.value)
-    this.inputTarget.value = " "
+    this.inputTarget.value = ""
   }
 }
