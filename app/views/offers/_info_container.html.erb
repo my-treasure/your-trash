@@ -30,15 +30,7 @@
 
 
 
-<<<<<<< HEAD
-  <% if Booking.find_by(offer_id: @offer) %>
-  <h1> Come and pick me up!</h1>
-  <i class="fa-solid fa-bowl-rice"></i>
- <% else %>
-=======
   <% if !Booking.find_by(offer_id: @offer) %>
->>>>>>> 8a2aa02dcc03cdb19ecfe27f5cca6f5d44fb2bc6
-
     <%= simple_form_for([@offer, @booking]) do |f| %>
       <% offer_option = @offer.pickupslots.blank? ? ["anytime"] : @offer.pickupslots.split(",")%>
       <%= f.input :pick_up_time, as: :select, collection: offer_option , selected: 1, label: "Select Your Timeslot ⏱️" %>
@@ -46,8 +38,12 @@
         <%= f.submit "Book", class: "bookingbutton" %>
       </div>
     <% end %>
-
-
+  <% else %>
+     <h1> Your Order has been booked</h1>
+    <div class="confirm-button">
+      <i class="fa-solid fa-circle-check"></i>
+    </div>
+  <% end %>
 
      <div class="more-infos">
       <div class="button-wrapper">
@@ -69,6 +65,5 @@
       </div>
     </div>
 
-  <% end %>
 
 </div>
