@@ -6,12 +6,18 @@ class OffersController < ApplicationController
   end
 
   def index
-    @offers = Offer.all
 
-    # filter out the offers that are booked
     completed_ids = BookingStatus.where(completed: true).pluck(:booking_id)
     completed_bookings = Booking.where(id: completed_ids).pluck(:offer_id)
-    @offers_active = Offer.where.not(id: completed_bookings )
+
+    if params[:query].present?
+      @offers = Offer.where("title ILIKE :query or body ILIKE :query", query: "%#{params[:query]}%") #.where.not(id: completed_bookings )
+    else
+      @offers = Offer.all #where.not(id: completed_bookings )
+    end
+
+    # filter out the offers that are booked
+    #@offers_active = Offer.where.not(id: completed_bookings )
 
     #@offers_unbooked = Offer.where.missing(:bookings)
     #Offer.includes(bookings: :booking_status).where.not(booking_status: { completed: true } ) # returning only offers with bookings
