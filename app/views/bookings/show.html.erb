@@ -16,7 +16,9 @@
     <h5 class="text-title"> <%=@offer.title%> </h5>
 
     <div class="actionbuttons">
-      <i class="fa-solid fa-message"></i>
+      <%= link_to chatroom_path(Chatroom.find_by(booking_id: Booking.find_by(offer_id: @offer.id))) do%>
+            <i class="fa-solid fa-message"></i>
+      <% end %>
       <i class="fa-solid fa-comment-medical"></i>
     </div>
 
