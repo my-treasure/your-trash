@@ -2,4 +2,35 @@
   margin-left: 10px;
   margin-top: 20px;
   font-size: 24px;
+  font-weight: 500;
+}
+.pickuptime fieldset {
+  display: flex;
+  justify-content: space-between;
+  legend {display: none;}
+  .form-check input{
+    padding-left: 8px;
+  }
+}
+.foodtype fieldset {
+  display: flex;
+  justify-content: space-between;
+  legend {display: none;}
+  .form-check input{
+    padding-left: 8px;
+  }
+}
+.allergen fieldset {
+  display: flex;
+  justify-content: space-between;
+  legend {display: none;}
+  .form-check input{
+    padding-left: 8px;
+  }
+}
+.pickupdetails {
+  margin-top: 30px;
+}
+.offer-title legend {
+   display: none;
 }
