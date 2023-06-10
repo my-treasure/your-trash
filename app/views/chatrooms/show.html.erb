@@ -1,5 +1,7 @@
-<div class="container chatroom" data-controller="chatroom-subscription" data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
-  <h1>#<%= @chatroom.name %></h1>
+<div class="chatroom" data-controller="chatroom-subscription" data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
+  <%= cl_image_tag @chatroom.booking.offer.images[0].key, :class => "avatar-square" %>
+  <h6> Arrange the details of your bookind here </h6>
+
 
   <div class="messages" data-chatroom-subscription-target="messages">
   <% @chatroom.messages.each do |message| %>
@@ -8,14 +10,17 @@
   </div>
 
   <%= simple_form_for [@chatroom, @message],
-  html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f|
+  html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex sendbox" } do |f|
   %>
     <%= f.input :content,
         label: false,
+        as: :text,
         placeholder: "Message ##{@chatroom.name}",
-        wrapper_html: {class: "flex-grow-1"}
+        wrapper_html: {class: "flex-grow-1 auto-resize writebox", rows: "4"}
     %>
-    <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+    <button type="submit" class="btn btn-primary mb-3 round" title="send">
+        <i class='fa-solid fa-location-arrow' style='color: #ffffff;'></i>
+    </button>
   <% end %>
 
   <div class = "blankline"> </div>

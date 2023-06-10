@@ -1,7 +1,25 @@
 <div id="message-<%= message.id %>">
-  <small>
-    <strong><%= message.user.username %></strong>
-    <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-  </small>
-  <p><%= message.content %></p>
+  <% if current_user.username == message.user.username %>
+  <div class = "messagesender">
+    <div class = "textsender">
+  <% else %>
+  <div class = "messagereceiver">
+    <div class = "profilepic">
+      <%= image_tag message.user.profile_picture, class: "avatar-bordered" %>
+    </div>
+    <div class = "textreciever">
+  <% end %>
+      <small>
+        <strong>@<%= message.user.username %></strong>
+        <i><%= time_ago_in_words(message.created_at) %> ago</i>
+      </small>
+      <p><%= message.content %></p>
+    </div>
+  <% if current_user.username == message.user.username %>
+        <div class = "profilepic">
+      <%= image_tag current_user.profile_picture, class: "avatar-bordered" %>
+    </div>
+  <% end %>
+  </div>
+
 </div>

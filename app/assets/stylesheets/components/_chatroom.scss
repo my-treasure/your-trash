@@ -14,7 +14,7 @@
   }
 
   .messages {
-    height: 50%;
+    height: 100%;
     overflow: scroll;
     padding: 1rem;
   }
@@ -27,4 +27,37 @@
       margin-bottom: 0;
     }
   }
+}
+
+.round {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  position: fixed;
+  bottom: 110px;
+  right: 26px;
+}
+
+.auto-resize {
+  resize: none;
+  overflow-y: hidden;
+}
+
+.auto-resize[rows="1"] {
+  height: 1.5em; /* Set the initial height for a single row */
+}
+
+.auto-resize:not(:focus) {
+  height: auto; /* Reset the height when not focused */
+}
+
+.sendbox {
+  padding: 5px !important;
+  justify-content: start;
+}
+
+.writebox {
+  border-radius: 12px;
+  border: 2px solid #e6e3e3;
+  width: 80%;
 }
