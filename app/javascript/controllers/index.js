@@ -16,6 +16,9 @@ application.register("map", MapController)
 import ProfiledropdownController from "./profiledropdown_controller"
 application.register("profiledropdown", ProfiledropdownController)
 
+import StarRatingController from "./star_rating_controller"
+application.register("star-rating", StarRatingController)
+
 import SupersearchbarController from "./supersearchbar_controller"
 application.register("supersearchbar", SupersearchbarController)
 

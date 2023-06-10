@@ -6,6 +6,14 @@ export default class extends Controller {
   static targets = ['filtercontainer', 'profileiconcontainer']
 
   connect() {
+    var slider = document.getElementById("myRange");
+    // var output = document.getElementById("demo");
+
+    // Update the current slider value (each time you drag the slider handle)
+    // slider.oninput = function () {
+    //   output.innerHTML = this.value;
+    // };
+
   }
 
   // toggleFilter(){

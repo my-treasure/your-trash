@@ -1,8 +1,8 @@
 class ReviewsController < ApplicationController
   def create
-    offer = Offer.find(params[:offer_id])
-    @message = offer.messages.build(message_params)
-    @message.user = current_user
+    user = User.find(params[:user_id])
+    raise
+    rating = Review.new(rating: params[:review][:rating], booking_id: params[:booking_id])
 
     if @message.save
       redirect_to offer_path(post)
