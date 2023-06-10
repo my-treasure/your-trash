@@ -22,6 +22,7 @@
   </div>
 </div>
 
+<%# IN CASE WE WOULD LIKE TO ACTIVATE THE FILTERS FUNCTIONALITIES WE NEED TO CANCEL OUT ALL THE COMMENTS BELOW AND START CODING FROM THERE%>
 
 <div data-filter-target="filtercontainer" data-action="click->filter-controller#toggleFilter"   class="filter-container hiddennavsearch">
 
@@ -30,23 +31,23 @@
       <div class="checkboxes-container">
         <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
 
-          <form action="offers">
+          <%# <form action="offers"> %>
             <input type="radio" class="btn-check" name="filter" id="btnradio1" autocomplete="off" checked>
-            <input type="hidden" name="filter" id="btnradio1" value="vegan">
-            <label class="btn btn-outline-dark" for="filter">Vegan</label>
-          </form>
+            <%# <input type="hidden" name="filter" id="btnradio1" value="vegan"> %>
+            <label class="btn btn-outline-dark" for="btnradio1">Vegan</label>
+          <%# </form> %>
 
-          <form action="offers">
+          <%# <form action="offers"> %>
             <input type="radio" class="btn-check" name="filter" id="btnradio2" autocomplete="off">
-            <input type="hidden" name="filter" id="btnradio1" value="vegetarian">
+            <%# <input type="hidden" name="filter" id="btnradio1" value="vegetarian"> %>
             <label class="btn btn-outline-dark" for="btnradio2">Vegetarian</label>
-          </form>
+          <%# </form> %>
 
-          <form action="offers">
+          <%# <form action="offers"> %>
             <input type="radio" class="btn-check" name="filter" id="btnradio3" autocomplete="off">
-            <input type="hidden" name="filter" id="btnradio1" value="flexible">
+            <%# <input type="hidden" name="filter" id="btnradio1" value="flexible"> %>
             <label class="btn btn-outline-dark" for="btnradio3">Flexible</label>
-          </form>
+          <%# </form> %>
         </div>
       </div>
   </div>
@@ -56,23 +57,23 @@
       <div class="checkboxes-container">
         <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
 
-        <form action="offers">
+        <%# <form action="offers"> %>
           <input type="checkbox" class="btn-check" name="filter" id="btncheck1" autocomplete="off">
-          <input type="hidden" name="filter" id="btnradio1" value="morning">
+          <%# <input type="hidden" name="filter" id="btnradio1" value="morning"> %>
           <label class="btn btn-outline-success" for="btncheck1">Morning</label>
-        </form>
+        <%# </form> %>
 
-        <form action="offers">
+        <%# <form action="offers"> %>
           <input type="checkbox" class="btn-check" name="filter" id="btncheck2" autocomplete="off">
-          <input type="hidden" name="filter" id="btnradio1" value="afternoon">
+          <%# <input type="hidden" name="filter" id="btnradio1" value="afternoon"> %>
           <label class="btn btn-outline-info" for="btncheck2">Afternoon</label>
-        </form>
+        <%# </form> %>
 
-        <form action="offers">
+        <%# <form action="offers"> %>
           <input type="checkbox" class="btn-check" name="filter" id="btncheck3" autocomplete="off">
-          <input type="hidden" name="filter" id="btnradio1" value="evening">
+          <%# <input type="hidden" name="filter" id="btnradio1" value="evening"> %>
           <label class="btn btn-outline-info" for="btncheck3">Evening</label>
-        </form>
+        <%# </form> %>
         </div>
       </div>
   </div>
@@ -82,17 +83,17 @@
       <div class="checkboxes-container">
         <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
 
-        <form action="offers">
+        <%# <form action="offers"> %>
           <input type="checkbox" class="btn-check" name="filter" id="btncheck4" autocomplete="off">
-          <input type="hidden" name="filter" id="btnradio1" value="organizations">
+          <%# <input type="hidden" name="filter" id="btnradio1" value="organizations"> %>
           <label class="btn btn-outline-warning" for="btncheck4">Organizations</label>
-        </form>
+        <%# </form> %>
 
-        <form action="offers">
+        <%# <form action="offers"> %>
           <input type="checkbox" class="btn-check" name="filter" id="btncheck5" autocomplete="off">
-          <input type="hidden" name="filter" id="btnradio1" value="users">
+          <%# <input type="hidden" name="filter" id="btnradio1" value="users"> %>
           <label class="btn btn-outline-warning" for="btncheck5">Users</label>
-        </form>
+        <%# </form> %>
         </div>
       </div>
   </div>
