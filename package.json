@@ -6,6 +6,7 @@
     "@hotwired/turbo-rails": "^7.3.0",
     "@mapbox/mapbox-gl-geocoder": "^5.0.1",
     "@popperjs/core": "^2.11.8",
+    "@rails/actioncable": "^7.0.5",
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.5",
     "star-rating.js": "^4.3.0",

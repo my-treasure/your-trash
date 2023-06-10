@@ -30,43 +30,40 @@
 
 
 
-  <% if Booking.find_by(offer_id: @offer) %>
-       <h1>Congrats your food is waiting for you</h1>
- <% else %>
-
-  <%= simple_form_for([@offer, @booking]) do |f| %>
-    <% offer_option = @offer.pickupslots.blank? ? ["anytime"] : @offer.pickupslots.split(",")%>
-    <%= f.input :pick_up_time, as: :select, collection: offer_option , selected: 1, label: "Select Your Timeslot ⏱️" %>
-
-
-
-
-    <div class="more-infos">
+  <% if !Booking.find_by(offer_id: @offer) %>
+    <%= simple_form_for([@offer, @booking]) do |f| %>
+      <% offer_option = @offer.pickupslots.blank? ? ["anytime"] : @offer.pickupslots.split(",")%>
+      <%= f.input :pick_up_time, as: :select, collection: offer_option , selected: 1, label: "Select Your Timeslot ⏱️" %>
       <div class="button-wrapper">
-        <h6>Posted</h6>
+        <%= f.submit "Book", class: "bookingbutton" %>
+      </div>
+    <% end %>
+  <% else %>
+     <h1> Your Order has been booked</h1>
+    <div class="confirm-button">
+      <i class="fa-solid fa-circle-check"></i>
+    </div>
+  <% end %>
+
+     <div class="more-infos">
+      <div class="button-wrapper">
+        <h6 class="fw-bold">Posted</h6>
         <h6>3 Days ago</h6>
         <i class="fa-regular fa-calendar-days"></i>
       </div>
 
       <div class="button-wrapper">
-        <h6>Food Type</h6>
+        <h6 class="fw-bold">Food Type</h6>
         <h6>Vegan</h6>
         <i class="fa-solid fa-leaf"></i>
       </div>
 
       <div class="button-wrapper">
-        <h6>Allergens</h6>
+        <h6 class="fw-bold">Allergens</h6>
         <h6>Nuts</h6>
         <i class="fa-solid fa-circle-exclamation"></i>
       </div>
-
-
-      <div class="button-wrapper">
-        <%= f.submit "Book", class: "bookingbutton" %>
-        <h5>Book</h5>
-      </div>
-
     </div>
-  <% end %>
-  <% end %>
+
+
 </div>

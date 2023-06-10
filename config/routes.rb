@@ -7,7 +7,9 @@ Rails.application.routes.draw do
 
   get "/map", to: "pages#map"
 
-
+  resources :chatrooms, only: :show do
+    resources :messages, only: :create
+  end
 
   resources :bookings, except: %i[new create]
   resources :reviews
@@ -17,7 +19,7 @@ Rails.application.routes.draw do
   end
 
   resources :dashboard, only: [:index] do
-    resources :offers, only: %i[edit update destroy]
+    resources :offers, only: %i[edit update]
     resources :bookings, only: %i[edit update destroy]
     # patch 'offers/:id/update', to: 'dashboard#update_offer', as: :update_offer
     # delete 'offers/:id/delete', to: 'dashboard#delete_offer', as: :delete_offer
@@ -30,6 +32,8 @@ Rails.application.routes.draw do
   post 'profiles/:id', to: "pages#createprofile"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
+
+  resources :offers, only: %i[destroy]
   # Defines the root path route ("/")
   # root "articles#index"
 end

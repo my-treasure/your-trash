@@ -14,31 +14,27 @@ export default class extends Controller {
     //   output.innerHTML = this.value;
     // };
 
+    var output = document.getElementById("output");
+
+    // Update the current slider value (each time you drag the slider handle)
+    slider.oninput = function () {
+      output.innerHTML = this.value + " km";
+    };
   }
 
-  // toggleFilter(){
-  //   if (this.filtercontainerTarget.classList.contains("hiddennavsearch")){
-  //     this.filtercontainerTarget.classList.remove("hiddennavsearch")
-  //   } else {
-  //     this.filtercontainerTarget.classList.add("hiddennavsearch")
-  //   }
-  // }
-
-  toggleFilter() {
+  toggleFilter(e) {
+    // e.preventDefault();
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+    console.log( this.filtercontainerTarget.classList)
     this.filtercontainerTarget.classList.toggle("hiddennavsearch");
-    // if (this.filtercontainerTarget.classList.contains("hiddennavsearch")) {
-    //   this.filtercontainerTarget.addEventListener("transitionend", this.hideContainer);
-    // } else {
-    //   this.containerTarget.removeEventListener("transitionend", this.hideContainer);
-    //   this.filtercontainerTarget.style.display = "block";
-    // }
+    console.log( this.filtercontainerTarget.classList)
+
   }
 
-  // hideContainer = () => {
-  //   this.filtercontainerTarget.style.display = "none";
-  // };
-
-  toggleProfileicon(){
+  toggleProfileicon(e){
+    e.stopPropagation();
+    e.stopImmediatePropagation();
     this.profileiconcontainerTarget.classList.toggle("hiddennav");
   }
 }

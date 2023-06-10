@@ -6,13 +6,25 @@ export default class extends Controller {
   static targets = ["button", "input"]
 
   connect() {
-    console.log(this.inputTarget)
+    const searchForm = document.querySelector(".search-box");
+    const searchInput = document.querySelector(".search-form");
+    const searchButton = document.querySelector("#search-button");
+
+    searchInput.addEventListener("keypress", function(event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        searchForm.submit();
+      }
+    });
+
+    searchButton.addEventListener("click", function(event) {
+      event.preventDefault();
+      searchForm.submit();
+    });
   }
 
   clickMe(event){
     event.preventDefault()
-    console.log("I have been clicked")
-    console.log(this.inputTarget.value)
-    this.inputTarget.value = " "
+    this.inputTarget.value = ""
   }
 }
