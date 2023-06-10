@@ -31,7 +31,8 @@
 
 
   <% if Booking.find_by(offer_id: @offer) %>
-       <h1>Congrats your food is waiting for you</h1>
+  <h1> Come and pick me up!</h1>
+  <i class="fa-solid fa-bowl-rice"></i>
  <% else %>
 
   <%= simple_form_for([@offer, @booking]) do |f| %>
