@@ -90,3 +90,35 @@ _bookingcard(old one)
 
 </div>
 
+
+
+
+murilo code
+
+<div class="booking-card">
+  <div class="right-content">
+    <div class="padding-wrapper">
+        <p><i class="fa-regular fa-clock"></i> <%= booking.pick_up_time %></p>
+
+      <div class="placeholder-booking-card">
+        <%= link_to booking_path(booking.id), data: {turbo_method: :delete} do %>
+          <i class="fa-regular fa-trash-can"></i>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class= "dashboard-img-container">
+    <% if booking.offer.images.attached? %>
+      <% booking.offer.images.each do |photo| %>
+        <%= cl_image_tag photo.key,
+          :gravity => "center",
+          :width => 150,
+          :height => 150,
+          :class => "dashboard-offercard_image", crop: :fill %>
+      <% end %>
+    <% else %>
+      <h5>PlaceHolder</h5>
+    <% end %>
+  </div>
+</div>

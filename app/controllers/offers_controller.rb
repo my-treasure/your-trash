@@ -76,8 +76,7 @@ class OffersController < ApplicationController
   def destroy
     @offer = Offer.find(params[:id])
     @offer.destroy
-
-    redirect_to dashboard_index_path
+    redirect_to(dashboard_index_path, status: :see_other)
   end
 
   private
