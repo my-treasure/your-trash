@@ -9,10 +9,10 @@
     <div class="placeholder-offer-card">
       <%= link_to offer_path(offer.id), data: {turbo_method: :delete} do %>
         <i class="fa-regular fa-trash-can"></i>
-        <% end %>
-        <%= link_to edit_offer_path(offer.id) do %>
+      <% end %>
+      <%= link_to edit_offer_path(offer.id) do %>
         <i class="fa-solid fa-pencil"></i>
-        <% end %>
+      <% end %>
     </div>
 
 

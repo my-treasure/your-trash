@@ -8,8 +8,14 @@ export default class extends Controller {
 
 
   connect() {
-    this.stars = new StarRating(this.element, {tooltip: false})
+    new StarRating(this.element)
+    const stars = document.querySelectorAll("span.gl-star-rating--stars span")
+    stars.forEach((s) => {
+      s.addEventListener("click", () => {
+        console.log("clicked")
+        this.element.submit();
+      })
+    })
+   }
 
-    console.log("Hello")
-  }
 }

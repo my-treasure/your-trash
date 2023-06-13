@@ -18,10 +18,11 @@ export default class extends Controller {
     this.map = new mapboxgl.Map({
       container: this.element,
       style: "mapbox://styles/jlgrobe/cjnpu54rp0h222srxnr5awqoz",
+      // center: [-90.96, -0.47],
     });
     this.#addMarkersToMap();
     this.#fitMapToMarkers();
-    this.map.resize();
+
     // this.map.addControl(
     //   new MapboxGeocoder({
     //     accessToken: mapboxgl.accessToken,
@@ -50,6 +51,6 @@ export default class extends Controller {
     this.markersValue.forEach((marker) =>
       bounds.extend([marker.lng, marker.lat])
     );
-    this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 });
+    this.map.fitBounds(bounds, { padding: 70, maxZoom: 16, duration: 0 });
   }
 }
