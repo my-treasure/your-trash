@@ -12,7 +12,7 @@
 .info-container-show{
   z-index: 10;
   font-size: 14px;
-  height: 75vh;
+  // height: 75vh;
 }
 
 
@@ -22,7 +22,7 @@
   justify-content: space-between;
   align-items: center;
   height: 35px;
-  background-color: $secondary_bg;
+  background-color: $primary_bg;
 
   padding-left: $padding-left;
   padding-right: $padding-right;
@@ -112,6 +112,7 @@
   .button-wrapper{
     flex-grow: 1;
     color: black;
+    margin-bottom: 8px;
   }
 
   .more-infos{
