@@ -18,6 +18,7 @@
   <div class = "dashboard-offer-container">
     <p>Title: <%= booking.offer.title %></p>
     <p>Status: <%= booking.offer.body %></p>
+    <%= link_to "Review", new_booking_review_path(booking) %>
     <!-- Display other booking details -->
     <%#= link_to 'edit', edit_offer_path(offer) %>
     <%#= link_to 'Delete', offer_path(offer), method: :delete, data: { confirm: 'Are you sure?' } %>

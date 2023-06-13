@@ -1,15 +1,25 @@
 class ReviewsController < ApplicationController
-  def create
-    user = User.find(params[:user_id])
-    raise
-    rating = Review.new(rating: params[:review][:rating], booking_id: params[:booking_id])
 
-    if @message.save
-      redirect_to offer_path(post)
+  def new
+    @booking = Booking.find(params[:booking_id])
+    @review = Review.new
+
+  end
+
+
+  def create
+
+    @review = Review.new(rating: params[:review][:rating], booking_id: params[:booking_id], reviewer_id: current_user.id)
+    @booking = Booking.find(params[:booking_id])
+
+    if @review.save
+
+      redirect_to new_booking_review_path(@booking)
     else
       render :new
     end
   end
+
 
     private
 

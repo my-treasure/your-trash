@@ -15,7 +15,7 @@ class PagesController < ApplicationController
 
   def profiles
     @user = User.find(params[:id])
-
+    @review = Review.new
   end
 
   def createprofile
