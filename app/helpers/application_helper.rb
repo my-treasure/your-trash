@@ -6,11 +6,11 @@ module ApplicationHelper
 
   # address helpers
   def short_address_text(entry)
-    entry.address&.split(",")[-4..-2]&.join
+    entry.address&.split(",")&.join
   end
 
   def long_address_text(entry)
-    entry.address&.split(",")[..-2]&.join(", ")
+    entry.address&.split(",")&.join(", ")
   end
 
   # check for unread messages in all user chatrooms
