@@ -6,16 +6,14 @@ class BookingsController < ApplicationController
   end
 
   def create
-
     @offer = Offer.find(params[:offer_id])
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.offer = @offer
     @booking.booking_status = BookingStatus.new(booking_id: @booking.id)
 
-
     if @booking.save
-      @chatroom = Chatroom.create(booking: @booking, name: @booking.offer.title)
+      @chatroom = Chatroom.create(booking: @booking, name: @booking.offer.title, booker_id: @booking.user.id, offerer_id: @booking.offer.user.id)
       @chatroom.save
       redirect_to booking_path(@booking)
 
@@ -27,7 +25,7 @@ class BookingsController < ApplicationController
   def show
     @booking = Booking.find(params[:id])
 
-    @offer =  Offer.find(@booking.offer_id)
+    @offer = Offer.find(@booking.offer_id)
     # @markers = [
     #   {
     #     lat: @post.latitude,

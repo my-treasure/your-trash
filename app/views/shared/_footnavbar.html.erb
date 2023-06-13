@@ -82,6 +82,9 @@
     <div class="button-items">
       <i class="bi bi-chat-left"></i>
       <span class = "navbar-text">Messages</span>
+      <div class="unread-messages-box" data-controller="unread-messages" %>
+        <%= unread_messages() %>
+      </div>
     </div>
     <% end %>
   </div>

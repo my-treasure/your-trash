@@ -5,3 +5,4 @@ class Booking < ApplicationRecord
   has_one :chatroom, dependent: :destroy
   has_one :review, dependent: :destroy
 end
+
