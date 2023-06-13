@@ -21,13 +21,12 @@
     <%# offer information %>
     <div class="card-title">
         <div>
-          <% unless offer.bookings %>
-          <span class = "offer-reserved"> Reserved <i class="fas fa-times-circle"></i> </span>
-          <% else %>
+          <% if offer.bookings.nil? %>
           <span class = "offer-available"> Available <i class="fas fa-check-circle"></i> </span>
+          <% else %>
+          <span class = "offer-reserved"> Reserved <i class="fas fa-times-circle"></i> </span>
           <% end %>
         </div>
-
       <div>
         <strong><%= link_to truncate(offer.title, length: 50), offer %></strong>
       </div>
