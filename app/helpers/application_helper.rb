@@ -6,11 +6,19 @@ module ApplicationHelper
 
   # address helpers
   def short_address_text(entry)
-    entry.address&.split(",")&.join
+    if entry.address.nil?
+      return "No address provided"
+    else
+      entry.address&.split(",")&.join
+    end
   end
 
   def long_address_text(entry)
-    entry.address&.split(",")&.join(", ")
+    if entry.address.nil?
+      return "No address provided"
+    else
+      entry.address&.split(",")&.join(", ")
+    end
   end
 
   # check for unread messages in all user chatrooms
