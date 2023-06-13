@@ -13,6 +13,15 @@ module ApplicationHelper
     entry.address&.split(",")[..-2]&.join(", ")
   end
 
+  # check for unread messages in all user chatrooms
+  def unread_messages
+    chatroom_ids_as_booker = Chatroom.where(booker_id: current_user.id).pluck(:id)
+    chatroom_ids_as_offerer = Chatroom.where(offerer_id: current_user.id).pluck(:id)
+    chatroom_ids = chatroom_ids_as_booker + chatroom_ids_as_offerer
+    unread_messages = Message.where(chatroom_id: chatroom_ids).where(read: false).where.not(user: current_user)
+    unread_messages.count
+  end
+
   # image helpers
   def user_avatar(user)
     if user.nil?

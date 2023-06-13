@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :offers
   # has_many :reviews
   has_many :followers
+  has_many :chatrooms
   has_many :messages
   has_many :bookings
   has_one_attached :profile_picture

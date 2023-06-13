@@ -25,5 +25,8 @@ application.register("star-rating", StarRatingController)
 import SupersearchbarController from "./supersearchbar_controller"
 application.register("supersearchbar", SupersearchbarController)
 
+import UnreadMessagesController from "./unread_messages_controller"
+application.register("unread-messages", UnreadMessagesController)
+
 import VisibilityController from "./visibility_controller"
 application.register("visibility", VisibilityController)
