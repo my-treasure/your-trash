@@ -11,12 +11,16 @@ Rails.application.routes.draw do
     resources :messages, only: :create
   end
 
-  resources :bookings, except: %i[new create]
-  resources :reviews
+  resources :bookings, except: %i[new create] do
+      resources :reviews
+  end
+
 
   resources :offers do
     resources :bookings, only: %i[new create]
   end
+
+
 
   resources :dashboard, only: [:index] do
     resources :offers, only: %i[edit update destroy]

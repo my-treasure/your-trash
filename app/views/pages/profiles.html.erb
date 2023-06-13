@@ -12,12 +12,7 @@
     <% end %>
   <% end %>
 </div>
-<div class="review-title">
- <%= simple_form_for( Review.new, data: {controller: "submit"} )do |f| %>
-    <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience", input_html: {data: {controller: "star-rating", action: "click->fsubmit#call"}}%>
-    <%= f.submit "", class: "d-none" %>
-<% end %>
-</div>
+
 
 <h1 class="mt-4" style="margin-left: 25px">Recent Posts</h1>
 

@@ -1,6 +1,6 @@
   .avatar-profile{
-    height: 150px;
-    width: 150px;
+    height: 100px;
+    width: 100px;
     border-radius: 50px;
   }
 
@@ -21,6 +21,7 @@
     width: 90%;
     margin: 0 auto;
     grid-gap: 14px;
+    margin-bottom: 10px;
   }
 
   .post-card{
@@ -28,6 +29,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
 
 
 
@@ -46,4 +48,11 @@
     left: 8px;
     }
 
+  }
+
+  .review_rating{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
   }
