@@ -106,6 +106,17 @@
     width: 100% !important;
     height: 50px !important;
   }
+
+  .blurring-bottomfilter{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    backdrop-filter: blur(2px);
+    z-index: -500;
+    top: 0;
+    left: 0;
+    bottom: 100%;
+  }
 }
 
 .hiddennav {
