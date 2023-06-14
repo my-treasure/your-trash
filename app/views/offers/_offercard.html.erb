@@ -21,7 +21,7 @@
     <%# offer information %>
     <div class="card-title">
         <div>
-          <% if offer.bookings.nil? %>
+          <% if offer.bookings.empty? %>
           <span class = "offer-available"> Available <i class="fas fa-check-circle"></i> </span>
           <% else %>
           <span class = "offer-reserved"> Reserved <i class="fas fa-times-circle"></i> </span>

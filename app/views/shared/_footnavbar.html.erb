@@ -78,12 +78,14 @@
     <% end %>
   </div>
 
-  <div class="button-div">
+  <div class="button-div"  data-controller="unread-messages">
     <%= link_to new_offer_path do %>
     <div class="button-items">
       <i class="bi bi-chat-left"></i>
       <span class = "navbar-text">Messages</span>
-      <div class="unread-messages-box" data-controller="unread-messages" %>
+      <%# <div class="unread-messages-box" data-controller="unread-messages"
+      </div> %>
+      <div class="unread-messages-box" id="unread-messages-box" data-unread-messages-target="count">
         <%= unread_messages() %>
       </div>
     </div>
