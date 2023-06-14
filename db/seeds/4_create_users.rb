@@ -49,7 +49,7 @@ n_users.times do
     role: "seed",
     address: reverse_geocode.first.address,
     latitude: rand_latitude,
-    longitude: rand_longitude
+    longitude: rand_longitude,
     admin: false
   )
   new_user.profile_picture.attach(io: file, filename: photo_blob["public_id"], content_type: "image/jpg")
