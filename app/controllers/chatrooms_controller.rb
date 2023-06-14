@@ -1,4 +1,9 @@
 class ChatroomsController < ApplicationController
+  def index
+    # list chatrooms messages belonging to user
+    @chatrooms = Chatroom.where(booker_id: current_user.id).or(Chatroom.where(offerer_id: current_user.id))
+  end
+
   def show
     @chatroom = Chatroom.find(params[:id])
     @message = Message.new
