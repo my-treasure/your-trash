@@ -27,6 +27,30 @@ class OffersController < ApplicationController
     end
   end
 
+  ##### DUPLICATED INDEX CODE FOR THE LANDING PAGE ###############################333333
+  def landing
+
+    completed_ids = BookingStatus.where(completed: true).pluck(:booking_id)
+    completed_bookings = Booking.where(id: completed_ids).pluck(:offer_id)
+    @offers_active = Offer.where.not(id: completed_bookings )
+
+    if params[:query].present?
+      @offers = Offer.where("title ILIKE :query or body ILIKE :query", query: "%#{params[:query]}%") # where.not(id: completed_bookings )
+    else
+      @offers = Offer.all # where.not(id: completed_bookings )
+    end
+
+    @markers = @offers.geocoded.map do |offer|
+      {
+        lat: offer.latitude,
+        lng: offer.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: { offer: offer }),
+        marker_html: render_to_string(partial: "marker", locals: { offer: offer })
+      }
+    end
+  end
+  ######################################################################################
+
   def show
     @offer = Offer.find(params[:id])
     @markers = [

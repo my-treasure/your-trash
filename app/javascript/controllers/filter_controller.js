@@ -20,6 +20,8 @@ export default class extends Controller {
     slider.oninput = function () {
       output.innerHTML = this.value + " km";
     };
+
+    console.log("Hello from the filter controller 🔍");
   }
 
   toggleFilter(e) {
@@ -37,4 +39,6 @@ export default class extends Controller {
     e.stopImmediatePropagation();
     this.profileiconcontainerTarget.classList.toggle("hiddennav");
   }
+
+
 }

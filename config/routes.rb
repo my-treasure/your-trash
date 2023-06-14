@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root to: "offers#index"
 
   get "/map", to: "pages#map"
+  get "/landing", to: "offers#landing"
 
   resources :chatrooms, only: %i[show new create] do
     resources :messages, only: :create
