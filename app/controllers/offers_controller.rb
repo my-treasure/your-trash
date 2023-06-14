@@ -14,7 +14,8 @@ class OffersController < ApplicationController
     if params[:query].present?
       @offers = Offer.where("title ILIKE :query or body ILIKE :query", query: "%#{params[:query]}%") # where.not(id: completed_bookings )
     else
-      @offers = Offer.all # where.not(id: completed_bookings )
+      # sort by created_at
+      @offers = Offer.all.order(created_at: :desc) 
     end
 
     @markers = @offers.geocoded.map do |offer|
