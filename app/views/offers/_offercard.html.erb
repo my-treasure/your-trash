@@ -5,8 +5,8 @@
       <% offer.images.each do |photo| %>
       <%= cl_image_tag photo.key,
         :gravity => "center",
-        :width => [200, 250, 300, 350].sample,
-        :height => [200, 250, 300, 350].sample,
+        :width => 200,
+        :height => [180, 200, 220, 250, 280, 310].sample,
         :effect=>"saturation:-25",
         :class => "offercard_image", crop: :fill %>
     <% end %>

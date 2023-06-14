@@ -16,6 +16,9 @@ application.register("form-submit", FormSubmitController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import HidelandingController from "./hidelanding_controller"
+application.register("hidelanding", HidelandingController)
+
 import MapController from "./map_controller"
 application.register("map", MapController)
 

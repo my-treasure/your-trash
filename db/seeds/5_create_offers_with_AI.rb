@@ -48,22 +48,19 @@ TOPIC = [
 TOPIC2 = [
   "that I don't need",
   "that is close to expire",
-  "that I don't like",
+  "that I would love to gift",
   "becouse i have a lot of it"
 ]
 
 
 WHEREIS = [
   "in the fridge",
-  "in the kitchen",
   "ready to eat",
   "saved from the trash",
   "collected from the supermarket",
   "collected from the bakery",
   "collected from the restaurant",
-  "collected from the market",
-  "bio",
-  "organic"
+  "collected from the market"
 ]
 
 #open text prompt from file:
@@ -177,8 +174,8 @@ puts "creating #{n_posts} offers..."
 post = 0
 n_posts.times do
   print post += 1
-  rand_latitude = rand(52.4901..52.5130)
-  rand_longitude = rand(13.3888..13.4449)
+  rand_latitude = rand(52.47203..52.54081)
+  rand_longitude = rand(13.35662..13.43633)
   reverse_geocode = Geocoder.search([rand_latitude, rand_longitude])
 
   if set_ai
