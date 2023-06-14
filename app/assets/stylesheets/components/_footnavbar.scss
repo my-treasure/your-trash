@@ -68,10 +68,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
   }
 
 }
 
+.active {
+  background-color: green;
+}
 
 .button-div .btn-transparent {
   font-size: 27px;

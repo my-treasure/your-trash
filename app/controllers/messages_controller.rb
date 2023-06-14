@@ -13,6 +13,9 @@ class MessagesController < ApplicationController
       render_to_string(partial: "message", locals: { message: @message })
     )
     head :ok
+
+    count = unread_messages()
+    UnreadMessagesChannel.broadcast_to("unread_messages_channel", count: count)
   end
 
   private
