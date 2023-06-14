@@ -21,3 +21,85 @@
   position: fixed;
   // z-index: 1;
 }
+
+.mapboxgl-popup-content {
+  padding: 0 !important;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background-color: #ffffff00 !important;
+  box-shadow: None !important;
+  border-radius: 12px !important;
+}
+
+.mapboxgl-popup-tip {
+  display: none !important;
+}
+
+.offercard-map {
+  font-size: 10px;
+  font-wrap: wrap;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: $secondary_bg;
+  box-shadow: $shadow;
+
+  .overlay {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40%;
+
+  }
+
+  .img-container {
+    overflow: hidden;
+  }
+
+  .offercard_image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .info-container {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: $black_gradient;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.7rem;
+    line-height: 70%;
+  }
+
+  .card-header {
+    display: flex;;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    color: $highligted_text;
+    font-weight: 600;
+    margin-top: 0.2rem;
+  }
+
+  .distance {
+    font-weight: 200;
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
+    font-weight: 200;
+    line-break: auto;
+  }
+}

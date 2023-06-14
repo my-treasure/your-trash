@@ -114,4 +114,14 @@ module ApplicationHelper
       Geocoder::Calculations.distance_between([start.latitude, start.longitude], [finish.latitude, finish.longitude]).round(2)
     end
   end
+
+  def user_location_to_json()
+    if current_user.nil?
+      return ""
+    else
+      user_location = current_user.dup
+      user_location.to_json
+    end
+  end
+
 end

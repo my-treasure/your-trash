@@ -8,7 +8,8 @@ export default class extends Controller {
 
   static values = {
     apiKey: String,
-    markers: Array
+    markers: Array,
+    currentUser: Object,
   }
 
   connect() {
@@ -21,15 +22,8 @@ export default class extends Controller {
       // center: [-90.96, -0.47],
     });
     this.#addMarkersToMap();
+    this.#adduserMarkerToMap();
     this.#fitMapToMarkers();
-
-    // this.map.addControl(
-    //   new MapboxGeocoder({
-    //     accessToken: mapboxgl.accessToken,
-    //     mapboxgl: mapboxgl,
-    //   })
-    // );
-
   }
 
   #addMarkersToMap() {
@@ -45,6 +39,19 @@ export default class extends Controller {
         .addTo(this.map);
     });
   }
+
+  #adduserMarkerToMap() {
+    const userLocation = JSON.parse(this.data.get("userLocation"));
+    if (userLocation) {
+      const userMarker = document.createElement("div");
+      userMarker.innerHTML = "user-marker";
+
+      new mapboxgl.Marker(userMarker)
+        .setLngLat([userLocation.longitude, userLocation.latitude])
+        .addTo(this.map);
+    }
+  }
+
 
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds();
