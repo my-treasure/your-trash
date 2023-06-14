@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get "/map", to: "pages#map"
   get "/landing", to: "offers#landing"
 
-  resources :chatrooms, only: %i[show new create] do
+  resources :chatrooms, only: %i[index show new create] do
     resources :messages, only: :create
   end
 

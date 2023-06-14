@@ -22,7 +22,7 @@ module ApplicationHelper
   end
 
   # check for unread messages in all user chatrooms
-  def unread_messages
+  def unread_messages()
     if current_user.nil?
       return 0
     else
