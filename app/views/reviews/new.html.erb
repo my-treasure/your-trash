@@ -1,17 +1,17 @@
 
-   <% if @booking.offer.images.attached? %>
-      <%= cl_image_tag offer_image(@booking.offer),
+
+<% if @booking.offer.images.attached? %>
+      <% @booking.offer.images.each do |photo| %>
+      <%= cl_image_tag photo.key,
         :gravity => "center",
-        :width => "100%",
-        :height => "150px",
-        crop: :fill %>
+        :class => "review-image", crop: :fill %>
+      <% end %>
     <% else %>
       <h5>PlaceHolder</h5>
     <% end %>
 
 
-
-<div style="margin: 50px;">
+<div style="margin: 50px 50px 10px 50px; font-size: 12px">
     <p>Title: <%= @booking.offer.title %></p>
     <p>Status: <%= @booking.offer.body %></p>
 </div>
@@ -26,9 +26,11 @@
     <h1 class="centre">Thanks for your review 🙂</h1>
     <% else %>
     <div class="review-title">
-  <%= simple_form_for( [@booking, @review] , data: { controller: "form-submit" }) do |f| %>
-    <%= f.input :rating, collection: (1..5).to_a, label: "Rate your Booking", input_html: {data: { controller: "star-rating", action: "click->form-submit#submit"} }  %>
-    <%= f.submit "Sumbit your review", class: "" %>
-  <% end %>
-</div>
+      <%= simple_form_for( [@booking, @review] , data: { controller: "form-submit" }) do |f| %>
+        <%= f.input :rating, collection: (1..5).to_a, label: "Rate your Booking", input_html: {data: { controller: "star-rating", action: "click->form-submit#submit"} }  %>
+        <%= f.submit "Sumbit your review", class: "btn btn-primary btnrounded" %>
+      <% end %>
+    </div>
 <% end %>
+
+<div class = "blankline"> </div>
