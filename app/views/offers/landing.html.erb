@@ -1,4 +1,4 @@
-<div data-cotroller="hidelanding">
+<div data-controller="hidelanding">
 <div data-hidelanding-target="landingcontainer" data-action="click->hidelanding-controller#hideIt" class="landing-container">
 
   <div class="landing-overlay">
@@ -59,7 +59,7 @@
 
 <%# -------------------- duplicated index -------------------------------%>
 
-<div class="offergrid" style="height: <%= (@offers.count / 2).round * 300 %>px">
+<div class="offergrid" style="height: <%= (@offers.count / 2).round * 500 %>px">
   <% @offers.each do |offer| %>
     <%= render "offercard", offer: offer%>
   <% end %>

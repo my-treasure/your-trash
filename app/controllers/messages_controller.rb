@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-
+  # helper ApplicationHelper
 
   def create
     @chatroom = Chatroom.find(params[:chatroom_id])
@@ -15,7 +15,7 @@ class MessagesController < ApplicationController
     )
     head :ok
 
-    count = unread_messages()
+    count = helpers.unread_messages()
     UnreadMessagesChannel.broadcast_to("unread_messages_channel", count: count)
   end
 
