@@ -10,7 +10,7 @@
         <%= f.input :body, label: "Description", input_html: {type:"text", class:"form-control", placeholder:"Description"},
         label_html: {class: "d-none"}
         %>
-        <%= f.input :address, input_html: {value: long_address_text(current_user)}, input_html: {type:"text", class:"form-control", placeholder:"Address"},
+        <%= f.input :address, input_html: {type:"text", class:"form-control", value: long_address_text(current_user)},
         label_html: {class: "d-none"} %>
   <div class="pickupdetails">
     <div class="pickuptime">
