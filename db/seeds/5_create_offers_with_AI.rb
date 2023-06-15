@@ -25,17 +25,16 @@ CLIENT =
 
 #emotional prompts
 EMOTIONAL_PROMPTS = [
-  "expresive",
-  "sad",
-  "happy",
-  "neutral",
-  "descriptive"
+  "expresive user",
+  "community association",
+  "supermarket announcemnt",
+  "restaurant announcement"
 ]
 
 # topis for creating tweets
 TOPIC = [
   "some boxes of vegetables",
-  "cake",
+  "cake, cookies and sweets",
   "leftovers from a party",
   "conserves",
   "needs to go",
@@ -46,21 +45,19 @@ TOPIC = [
 ]
 
 TOPIC2 = [
-  "that I don't need",
+  "that we don't need",
   "that is close to expire",
-  "that I would love to gift",
-  "becouse i have a lot of it"
+  "that we would love to gift",
+  "becouse we have a lot of it"
 ]
 
 
 WHEREIS = [
-  "in the fridge",
   "ready to eat",
   "saved from the trash",
   "collected from the supermarket",
   "collected from the bakery",
   "collected from the restaurant",
-  "collected from the market"
 ]
 
 #open text prompt from file:

@@ -92,7 +92,7 @@
   padding: 8px;
   background-color: #fff;
   overflow: hidden;
-  justify-content: space-between;
+  justify-content: space-around;
   box-shadow: $shadow;
 
   img {
@@ -105,15 +105,25 @@
   p {
     color: #b1b1b1;
     font-weight: 500;
+    margin-bottom: 0px;
   }
 
   h6 {
     color: black;
     font-weight: 600;
+    margin-bottom: 0px;
+  }
+
+  .right-content {
+    width: 50%;
   }
 
   .padding-wrapper{
     padding: 10px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   .left-image{
