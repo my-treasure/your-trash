@@ -16,6 +16,9 @@
        <%= link_to edit_offer_path(offer.id) do %>
         <i class="fa-regular fa-eye"></i>
       <% end %>
+      <%= link_to booking_path(booking.id), data: {turbo_method: :delete} do %>
+        <i class="fa-regular fa-message"></i>
+      <% end %>
     </div>
 
 
