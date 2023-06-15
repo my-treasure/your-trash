@@ -1,3 +1,4 @@
+<div class="newoffer-container">
 <h1 class="new-title">Share your food 😄</h1>
 <div class="mt-3 mb-5">
   <%= simple_form_for(@offer) do |f| %>
@@ -34,7 +35,8 @@
   </div>
         <%= f.input :images, as: :file, input_html: { multiple: true },
         label_html: {class: "fw-bolder"} %>
-        <%= f.button :submit, class: "btn btn-primary mb-4" %>
+        <%= f.button :submit, class: "btn btn-primary mb-4 btnrounded" %>
     </div>
   <% end %>
+</div>
 </div>

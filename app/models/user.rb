@@ -14,4 +14,6 @@ class User < ApplicationRecord
 
   has_many :reviews, foreign_key: :reviewer_id
   has_many :received_reviews, foreign_key: :reviewee_id, class_name: "Review"
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
 end

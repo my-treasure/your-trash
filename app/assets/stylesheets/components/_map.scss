@@ -103,3 +103,17 @@
     line-break: auto;
   }
 }
+
+.usermarker{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: $primary1;
+  font-size: 12px;
+  font-weight: 300;
+
+  i {
+    font-size: 28px;
+  }
+}

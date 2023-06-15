@@ -1,0 +1,11 @@
+.newoffer-container {
+  width: 89%;
+  border-radius: 10px;
+  box-shadow: $shadow;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5%;
+}

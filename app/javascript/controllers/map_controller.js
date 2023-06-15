@@ -8,14 +8,12 @@ export default class extends Controller {
 
   static values = {
     apiKey: String,
-    markers: Array,
-    userLocation: Object
+    markers: Array
   }
 
   connect() {
     console.log("Hello from the map controller 🫣");
     const userLocation = JSON.parse(this.data.get("userLocation"));
-    console.log(userLocation)
 
     mapboxgl.accessToken = this.apiKeyValue
     this.map = new mapboxgl.Map({
@@ -48,7 +46,7 @@ export default class extends Controller {
 
     if (userLocation2) {
       const userMarker = document.createElement("div");
-      userMarker.innerHTML = `<div class='usermarker'><i class='fas fa-map-marker-alt'></i>${userLocation2.username}</div>`;
+      userMarker.innerHTML = `<div class='usermarker'><i class="fa-solid fa-carrot"></i>${userLocation2.username}</div>`;
       new mapboxgl.Marker(userMarker)
         .setLngLat([userLocation2.longitude, userLocation2.latitude])
         .addTo(this.map);

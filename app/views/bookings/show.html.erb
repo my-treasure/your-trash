@@ -17,9 +17,9 @@
 
     <div class="actionbuttons">
       <%= link_to chatroom_path(Chatroom.find_by(booking_id: Booking.find_by(offer_id: @offer.id))) do%>
-            <i class="fa-solid fa-message"></i>
+            <i class="bi bi-chat-left-text"></i>
       <% end %>
-      <i class="fa-solid fa-comment-medical"></i>
+      <i class="bi bi-bookmark-check"></i>
     </div>
 
   </div>
@@ -29,28 +29,32 @@
 
   <div class="action">
 
-    <h1> Come and pick me up!</h1>
-    <div class="confirm-button"><i class="fa-solid fa-circle-check"></i>
-    </div>
-    <div class="more-infos">
-      <div class="button-wrapper">
-        <h6 class="fw-bolder">Posted</h6>
-        <h6>3 Days ago</h6>
-        <i class="fa-regular fa-calendar-days"></i>
-      </div>
+    <div class="checked-booking">
+    <h1> Come and pick me up! </h1>
+      <div class="more-infos">
+        <div class="button-wrapper">
+          <h6 class="fw-bold">Posted</h6>
+          <h6><%= time_ago_in_words(@offer.created_at) %> ago</h6>
+          <i class="fa-regular fa-calendar-days"></i>
+        </div>
 
-      <div class="button-wrapper">
-        <h6>Food Type</h6>
-        <h6>Vegan</h6>
-        <i class="fa-solid fa-leaf"></i>
-      </div>
+        <div class="button-wrapper">
+          <h6 class="fw-bold">Food Type</h6>
+          <h6><%= @offer.foodtype %></h6>
+          <i class="fa-solid fa-leaf"></i>
+        </div>
 
-      <div class="button-wrapper">
-        <h6>Allergens</h6>
-        <h6>Nuts</h6>
-        <i class="fa-solid fa-circle-exclamation"></i>
+        <div class="button-wrapper">
+          <h6 class="fw-bold">Allergens</h6>
+          <h6><%= @offer.allergen %></h6>
+          <i class="fa-solid fa-circle-exclamation"></i>
+        </div>
+        <div class="confirm-button">
+          <i class="fa-solid fa-circle-check"></i>
+        </div>
       </div>
     </div>
+
 
   </div>
 
