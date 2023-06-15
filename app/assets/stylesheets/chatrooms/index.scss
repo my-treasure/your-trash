@@ -4,8 +4,13 @@
   display: flex;
   flex-direction: column;
   padding: 8%;
-  justify-content: space-around;
+  justify-content: start;
+  height: 100%;
   grid-area: main;
   background-color: $secondary_bg;
-}
 
+  background: radial-gradient(circle, #fefefe 25%, transparent 26%),radial-gradient(circle at bottom left, #fefefe 12%, transparent 13%),radial-gradient(circle at bottom right, #fefefe 12%, transparent 13%),radial-gradient(circle at top left, #fefefe 12%, transparent 13%),radial-gradient(circle at top right, #fefefe 12%, transparent 13%);
+  background-size: 1em 1em;
+  background-color: #edf2f3;
+  opacity: 1
+}

@@ -1,6 +1,5 @@
 .chatroom {
   background: white;
-  margin-top: 9px;
   height: calc(100vh - 75px);
   display: flex;
   flex-direction: column;
@@ -17,6 +16,12 @@
     height: 100%;
     overflow: scroll;
     padding: 1rem;
+
+    background: radial-gradient(circle, #fefefe 25%, transparent 26%),radial-gradient(circle at bottom left, #fefefe 12%, transparent 13%),radial-gradient(circle at bottom right, #fefefe 12%, transparent 13%),radial-gradient(circle at top left, #fefefe 12%, transparent 13%),radial-gradient(circle at top right, #fefefe 12%, transparent 13%);
+    background-size: 1em 1em;
+    background-color: #f0e0f5;
+    opacity: 1;
+    box-shadow: $shadow_top;
   }
 
   #new_message {
@@ -35,7 +40,7 @@
   height: 40px;
   position: fixed;
   bottom: 110px;
-  right: 26px;
+  right: 20px;
 }
 
 .auto-resize {
@@ -52,12 +57,27 @@
 }
 
 .sendbox {
-  padding: 5px !important;
+  padding-top: 5px !important;
   justify-content: start;
+  box-shadow: $shadow_top;
+  padding-left: 5% !important;
+  padding-right: 5% !important;
 }
 
 .writebox {
   border-radius: 12px;
   border: 2px solid #e6e3e3;
   width: 80%;
+  margin-bottom: 0px !important;
+}
+
+.chatroom-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  padding: 8px;
+  padding-left: 5%;
+  padding-right: 5%;
+  box-shadow: $shadow;
 }

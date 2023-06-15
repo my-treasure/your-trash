@@ -1,6 +1,8 @@
 <div class="chatroom" data-controller="chatroom-subscription" data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
+  <div class="chatroom-header">
   <%= cl_image_tag @chatroom.booking.offer.images[0].key, :class => "avatar-square" %>
   <h6> Arrange the details of your bookind here </h6>
+  </div>
 
 
   <div class="messages" data-chatroom-subscription-target="messages">
@@ -22,6 +24,4 @@
         <i class='fa-solid fa-location-arrow' style='color: #ffffff;'></i>
     </button>
   <% end %>
-
-  <div class = "blankline"> </div>
 </div>
