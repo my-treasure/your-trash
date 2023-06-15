@@ -1,9 +1,13 @@
 .landing-container {
   display: block;
-
+  pointer-events: auto;
+  transition: opacity 3.5s cubic-bezier(0.075, 0.82, 0.165, 1),
+  // transform 1.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 .landing-hidden {
-  display: none;
+  pointer-events: none;
+  opacity: 0;
+  // transform: translateY(50%);
 }
 
 .landing-overlay {
