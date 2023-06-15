@@ -16,6 +16,9 @@
        <%= link_to edit_offer_path(offer.id) do %>
         <i class="fa-regular fa-eye"></i>
       <% end %>
+      <%= link_to chatroom_path(Chatroom.find_by(booking_id: Booking.find_by(offer_id: offer.id).id)) do %>
+         <i class="fa-regular fa-message"></i>
+      <% end %>
     </div>
 
 
