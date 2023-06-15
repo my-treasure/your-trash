@@ -43,11 +43,30 @@
   }
 }
 
-.dashboard-title {
+.dashboard-title-offer {
   font-size: 14px;
   font-weight: bold;
   padding-left: 5%;
   padding-right: 5%;
   background-color: $primary_bg;
   padding-top: 2%;
+  background: radial-gradient(circle at left bottom ,transparent 14%,#fefefe 15%, #fefefe 25%, transparent 26%, transparent 34%,#fefefe80 35%, #fefefe80 45%, transparent 46%, transparent 54%, #fefefe 55%, #fefefe 65%, transparent 66%, transparent 74%, #fefefe80 75%, #fefefe80 85%, transparent 86%);
+        background-size: 1em 1em;
+        background-color: #d3eeeb;
+        opacity: 1
+
+}
+
+.dashboard-title-booking {
+  font-size: 14px;
+  font-weight: bold;
+  padding-left: 5%;
+  padding-right: 5%;
+  background-color: $primary_bg;
+  padding-top: 2%;
+  background: radial-gradient(circle at top,transparent 9%, #fefefe 10% ,#fefefe 15% , transparent 16%), radial-gradient(circle at bottom,transparent 9%, #fefefe 10% ,#fefefe 15% , transparent 16%), radial-gradient(circle at right,transparent 9%, #fefefe 10% ,#fefefe 15% , transparent 16%), radial-gradient(circle at left,transparent 9%, #fefefe 10% ,#fefefe 15% , transparent 16%);
+        background-size: 1em 1em;
+        background-color: #f3dcf3;
+        opacity: 1
+
 }

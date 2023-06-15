@@ -1,0 +1,6 @@
+<% if user_avatar(User.find(offer.user_id)).present? %>
+<%= cl_image_tag user_avatar(User.find(offer.user_id)),
+        :gravity => "center",
+        :class => "avatar-bordered",
+        crop: :fill %>
+<% end %>
