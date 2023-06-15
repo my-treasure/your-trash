@@ -17,6 +17,7 @@
 
 
   <%# user information %>
+  <%= link_to offer do %>
   <div class= "info-container">
     <%# offer information %>
     <div class="card-title">
@@ -28,7 +29,7 @@
           <% end %>
         </div>
       <div>
-        <strong><%= link_to truncate(offer.title, length: 50), offer %></strong>
+        <strong><%= truncate(offer.title, length: 50) %></strong>
       </div>
     </div>
 
@@ -41,5 +42,5 @@
     </div>
 
   </div>
-
+  <% end %>
 </div>

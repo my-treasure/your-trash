@@ -1,6 +1,6 @@
-<div class="offergrid">
+<div class="chatroomgrid">
   <% @chatrooms.each do |chatroom| %>
-    <%= link_to "chatroom", chatroom_path(chatroom) %>
+    <%= render "chatroomcard", chatroom: chatroom %>
   <% end %>
 </div>
 
