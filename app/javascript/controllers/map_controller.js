@@ -21,6 +21,7 @@ export default class extends Controller {
       container: this.element,
       style: "mapbox://styles/jlgrobe/cjnpu54rp0h222srxnr5awqoz",
       center: [userLocation.longitude, userLocation.latitude],
+      zoom: 12,
     });
     this.#addMarkersToMap();
     this.#adduserMarkerToMap();
