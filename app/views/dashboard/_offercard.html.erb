@@ -20,7 +20,7 @@
         <%= link_to chatroom_path(Chatroom.find_by(booking_id: Booking.find_by(offer_id: offer.id).id)) do %>
           <div class="booked-received">
           <i class="fa-regular fa-message"></i>
-          <p>order booked ✅</p>
+          <p>Order Booked</p>
           </div>
         <% end  %>
       <% end %>

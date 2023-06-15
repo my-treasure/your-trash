@@ -27,6 +27,7 @@
   #new_message {
     border-top: 1px solid $gray-200;
     padding: 1rem;
+    background-color: azure;
 
     .form-group {
       margin-bottom: 0;
@@ -62,6 +63,9 @@
   box-shadow: $shadow_top;
   padding-left: 5% !important;
   padding-right: 5% !important;
+  position: fixed;
+  width: 100%;
+  bottom: 60px;
 }
 
 .writebox {
