@@ -9,12 +9,13 @@ export default class extends Controller {
   static values = {
     apiKey: String,
     markers: Array,
-    currentUser: Object,
+    userLocation: Object
   }
 
   connect() {
     console.log("Hello from the map controller 🫣");
     const userLocation = JSON.parse(this.data.get("userLocation"));
+    console.log(userLocation)
 
     mapboxgl.accessToken = this.apiKeyValue
     this.map = new mapboxgl.Map({
@@ -43,14 +44,13 @@ export default class extends Controller {
   }
 
   #adduserMarkerToMap() {
-    const userLocation = JSON.parse(this.data.get("userLocation"));
+    const userLocation2 = JSON.parse(this.data.get("userLocation"));
 
-    if (userLocation) {
+    if (userLocation2) {
       const userMarker = document.createElement("div");
-      userMarker.innerHTML = userLocation.usermarker_html;
-
+      userMarker.innerHTML = `<div class='usermarker'><i class='fas fa-map-marker-alt'></i>${userLocation2.username}</div>`;
       new mapboxgl.Marker(userMarker)
-        .setLngLat([userLocation.longitude, userLocation.latitude])
+        .setLngLat([userLocation2.longitude, userLocation2.latitude])
         .addTo(this.map);
     }
   }
