@@ -1,20 +1,32 @@
 <%= link_to chatroom_path(chatroom) do %>
 <div class="chatroom-container">
   <% if Message.where(chatroom_id: chatroom.id).last&.read == false %>
-  <div class = "chatroom unread">
+  <div class = "chatroomcard unread">
   <% else %>
-  <div class = "chatroom">
+  <div class = "chatroomcard">
   <% end %>
 
-    <div>
+    <div class = "chatroom-info">
     <% if chatroom.booker_id == current_user.id %>
       <%= user_avatar(User.find(chatroom.offerer_id)) %>
-      <%= Message.where(chatroom_id: chatroom.id).where(user_id: chatroom.offerer_id).first %>
-      <%= User.find(chatroom.offerer_id).username %>
+      <div>
+        <p>@<%= User.find(chatroom.offerer_id).username %></p>
+        <p><%= Message.where(chatroom_id: chatroom.id).where(user_id: chatroom.offerer_id).where(read: false).count %> new</p>
+      </div>
+      <div style="flex-grow:2;">
+        <p>last message: </p>
+        <p><%= Message.where(chatroom_id: chatroom.id).last&.content %></p>
+      </div>
     <% else %>
       <%= user_avatar(User.find(chatroom.booker_id)) %>
-      <%= Message.where(chatroom_id: chatroom.id).where(user_id: chatroom.booker_id).first %>
-      <%= User.find(chatroom.offerer_id).username %>
+      <div>
+        <p>@<%= User.find(chatroom.offerer_id).username %></p>
+        <p><%= Message.where(chatroom_id: chatroom.id).where(user_id: chatroom.booker_id).where(read: false).count %> new</p>
+      </div>
+      <div style="flex-grow:2;">
+        <p>last message: </p>
+        <p><%= Message.where(chatroom_id: chatroom.id).last&.content %></p>
+      </div>
     <% end %>
     </div>
   </div>

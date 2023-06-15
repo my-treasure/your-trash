@@ -40,9 +40,9 @@ module ApplicationHelper
       image_tag 'default_avatar.png', class: "avatar-show"
     elsif user.profile_picture.attached?
       cl_image_tag user.profile_picture.key,
-      :gravity => "center",
-      crop: :fit,
-      class:"avatar-show"
+        :gravity => "center",
+        :crop => "fill",
+        :class =>"avatar-show" 
     else
       image_tag 'default_avatar.png', class: "avatar-show"
     end
