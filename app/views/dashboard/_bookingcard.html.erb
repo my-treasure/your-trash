@@ -10,12 +10,12 @@
       <%= link_to booking_path(booking.id), data: {turbo_method: :delete} do %>
         <i class="fa-regular fa-trash-can"></i>
         <% end %>
-      <%= link_to booking_path(booking.id), data: {turbo_method: :delete} do %>
+      <%= link_to chatroom_path(Chatroom.find_by(booking_id: booking.id)) do %>
         <i class="fa-regular fa-message"></i>
         <% end %>
-      <%= link_to booking_path(booking.id), data: {turbo_method: :delete} do %>
+      <%= link_to new_booking_review_path(booking) do %>
         <i class="fa-regular fa-star"></i>
-        <% end %>
+      <% end %>
     </div>
 
 
@@ -27,7 +27,7 @@
       <% booking.offer.images.each do |photo| %>
       <%= cl_image_tag photo.key,
         :gravity => "center",
-        :class => "dashboard-offercard_image", crop: :fill %>
+        :class => "dashboard-img", crop: :fill %>
     <% end %>
     <% else %>
       <h5>PlaceHolder</h5>

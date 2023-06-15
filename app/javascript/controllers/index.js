@@ -10,8 +10,14 @@ application.register("chatroom-subscription", ChatroomSubscriptionController)
 import FilterController from "./filter_controller"
 application.register("filter", FilterController)
 
+import FormSubmitController from "./form_submit_controller"
+application.register("form-submit", FormSubmitController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import HidelandingController from "./hidelanding_controller"
+application.register("hidelanding", HidelandingController)
 
 import MapController from "./map_controller"
 application.register("map", MapController)
@@ -24,6 +30,9 @@ application.register("star-rating", StarRatingController)
 
 import SupersearchbarController from "./supersearchbar_controller"
 application.register("supersearchbar", SupersearchbarController)
+
+import UnreadMessagesController from "./unread_messages_controller"
+application.register("unread-messages", UnreadMessagesController)
 
 import VisibilityController from "./visibility_controller"
 application.register("visibility", VisibilityController)

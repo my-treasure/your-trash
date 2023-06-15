@@ -1,6 +1,6 @@
 
 
-<div class="offergrid" style="height: <%= (@offers.count / 2).round * 300 %>px">
+<div class="offergrid" style="height: <%= (@offers.count / 2).round * 500 %>px">
   <% @offers.each do |offer| %>
     <%= render "offercard", offer: offer%>
   <% end %>

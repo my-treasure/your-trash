@@ -1,0 +1,22 @@
+<%= link_to chatroom_path(chatroom) do %>
+<div class="chatroom-container">
+  <% if Message.where(chatroom_id: chatroom.id).last&.read == false %>
+  <div class = "chatroom unread">
+  <% else %>
+  <div class = "chatroom">
+  <% end %>
+
+    <div>
+    <% if chatroom.booker_id == current_user.id %>
+      <%= user_avatar(User.find(chatroom.offerer_id)) %>
+      <%= Message.where(chatroom_id: chatroom.id).where(user_id: chatroom.offerer_id).first %>
+      <%= User.find(chatroom.offerer_id).username %>
+    <% else %>
+      <%= user_avatar(User.find(chatroom.booker_id)) %>
+      <%= Message.where(chatroom_id: chatroom.id).where(user_id: chatroom.booker_id).first %>
+      <%= User.find(chatroom.offerer_id).username %>
+    <% end %>
+    </div>
+  </div>
+</div>
+<% end %>

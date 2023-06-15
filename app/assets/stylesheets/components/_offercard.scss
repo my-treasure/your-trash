@@ -86,15 +86,20 @@
 }
 
 .offer-card{
-  border: 2px solid black;
-  border-radius: 10px;
+  border-radius: 12px;
   margin-bottom: 14px;
   display: flex;
+  padding: 8px;
+  background-color: #fff;
+  overflow: hidden;
+  justify-content: space-between;
+  box-shadow: $shadow;
 
   img {
     height: 100%;
-    width: 70%;
+    width: 100%;
     object-fit: cover;
+    border-radius: 8px;
   }
 
   p {
@@ -113,7 +118,8 @@
 
   .left-image{
     text-align: end;
-    width: 60%;
+    width: 50%;
+    border-radius: 9px;
   }
 
   .placeholder-offer-card{
@@ -124,5 +130,11 @@
       margin-right: 10px;
     }
 
+  }
+  .dashboard-img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 8px;
   }
 }

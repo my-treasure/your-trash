@@ -1,0 +1,23 @@
+.chatroom-container {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: $shadow;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.chatroom {
+  height: 100%;
+  border-radius: 10px;
+  background-color: white;
+  border: 2px;
+
+
+  .unread {
+    border: 2px $highligted_text;
+  }
+}

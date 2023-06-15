@@ -1,4 +1,5 @@
 <div data-filter-target="profileiconcontainer" class="profileicon-container hiddennav">
+<div class = "blurring-bottomfilter" ></div>
   <% if user_signed_in? %>
     <div class="button-div profile">
     <%= link_to dashboard_index_path do %>
@@ -77,11 +78,16 @@
     <% end %>
   </div>
 
-  <div class="button-div">
-    <%= link_to new_offer_path do %>
+  <div class="button-div"  data-controller="unread-messages">
+    <%= link_to chatrooms_path do %>
     <div class="button-items">
       <i class="bi bi-chat-left"></i>
       <span class = "navbar-text">Messages</span>
+      <%# <div class="unread-messages-box" data-controller="unread-messages"
+      </div> %>
+      <div class="unread-messages-box" id="unread-messages-box" data-unread-messages-target="count">
+        <%= unread_messages() %>
+      </div>
     </div>
     <% end %>
   </div>

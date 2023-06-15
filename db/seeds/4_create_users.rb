@@ -23,7 +23,8 @@ admin = User.new(
   info: "I am the admin of this website",
   address: reverse_geocode.first.address,
   latitude: rand_latitude,
-  longitude: rand_longitude
+  longitude: rand_longitude,
+  admin: true
 )
 admin.profile_picture.attach(io: file, filename: photo_blob["public_id"], content_type: "image/jpg")
 admin.save
@@ -35,8 +36,8 @@ puts n_users
 puts "creating #{n_users} users..."
 
 n_users.times do
-  rand_latitude = rand(52.4901..52.5130)
-  rand_longitude = rand(13.3888..13.4449)
+  rand_latitude = rand(52.47203..52.54081)
+  rand_longitude = rand(13.35662..13.43633)
   reverse_geocode = Geocoder.search([rand_latitude, rand_longitude])
   photo_blob = PROFILE_PICTURES["resources"].sample
   file = URI.open(photo_blob["secure_url"])
@@ -48,7 +49,8 @@ n_users.times do
     role: "seed",
     address: reverse_geocode.first.address,
     latitude: rand_latitude,
-    longitude: rand_longitude
+    longitude: rand_longitude,
+    admin: false
   )
   new_user.profile_picture.attach(io: file, filename: photo_blob["public_id"], content_type: "image/jpg")
   new_user.save

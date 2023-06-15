@@ -5,8 +5,8 @@
       <% offer.images.each do |photo| %>
       <%= cl_image_tag photo.key,
         :gravity => "center",
-        :width => [200, 250, 300, 350].sample,
-        :height => [200, 250, 300, 350].sample,
+        :width => 200,
+        :height => [180, 200, 220, 250, 280, 310].sample,
         :effect=>"saturation:-25",
         :class => "offercard_image", crop: :fill %>
     <% end %>
@@ -17,19 +17,19 @@
 
 
   <%# user information %>
+  <%= link_to offer do %>
   <div class= "info-container">
     <%# offer information %>
     <div class="card-title">
         <div>
-          <% unless offer.bookings %>
-          <span class = "offer-reserved"> Reserved <i class="fas fa-times-circle"></i> </span>
-          <% else %>
+          <% if offer.bookings.empty? %>
           <span class = "offer-available"> Available <i class="fas fa-check-circle"></i> </span>
+          <% else %>
+          <span class = "offer-reserved"> Reserved <i class="fas fa-times-circle"></i> </span>
           <% end %>
         </div>
-
       <div>
-        <strong><%= link_to truncate(offer.title, length: 50), offer %></strong>
+        <strong><%= truncate(offer.title, length: 50) %></strong>
       </div>
     </div>
 
@@ -42,5 +42,5 @@
     </div>
 
   </div>
-
+  <% end %>
 </div>

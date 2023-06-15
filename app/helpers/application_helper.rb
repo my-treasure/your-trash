@@ -6,11 +6,32 @@ module ApplicationHelper
 
   # address helpers
   def short_address_text(entry)
-    entry.address&.split(",")[-4..-2]&.join
+    if entry.address.nil?
+      return "No address provided"
+    else
+      entry.address&.split(",")&.join
+    end
   end
 
   def long_address_text(entry)
-    entry.address&.split(",")[..-2]&.join(", ")
+    if entry.address.nil?
+      return "No address provided"
+    else
+      entry.address&.split(",")&.join(", ")
+    end
+  end
+
+  # check for unread messages in all user chatrooms
+  def unread_messages()
+    if current_user.nil?
+      return 0
+    else
+      chatroom_ids_as_booker = Chatroom.where(booker_id: current_user.id).pluck(:id)
+      chatroom_ids_as_offerer = Chatroom.where(offerer_id: current_user.id).pluck(:id)
+      chatroom_ids = chatroom_ids_as_booker + chatroom_ids_as_offerer
+      unread_messages = Message.where(chatroom_id: chatroom_ids).where(read: false).where.not(user: current_user)
+      unread_messages.count
+    end
   end
 
   # image helpers
@@ -87,10 +108,20 @@ module ApplicationHelper
   end
 
   def distance_km(start, finish)
-    if start.nil?
+    if start.nil? | current_user.nil?
       "-"
     else
       Geocoder::Calculations.distance_between([start.latitude, start.longitude], [finish.latitude, finish.longitude]).round(2)
     end
   end
+
+  def user_location_to_json()
+    if current_user.nil?
+      return ""
+    else
+      user_location = current_user.dup
+      user_location.to_json
+    end
+  end
+
 end

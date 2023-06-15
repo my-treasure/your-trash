@@ -6,17 +6,22 @@ Rails.application.routes.draw do
   root to: "offers#index"
 
   get "/map", to: "pages#map"
+  get "/landing", to: "offers#landing"
 
-  resources :chatrooms, only: %i[show new create] do
+  resources :chatrooms, only: %i[index show new create] do
     resources :messages, only: :create
   end
 
-  resources :bookings, except: %i[new create]
-  resources :reviews
+  resources :bookings, except: %i[new create] do
+      resources :reviews
+  end
+
 
   resources :offers do
     resources :bookings, only: %i[new create]
   end
+
+
 
   resources :dashboard, only: [:index] do
     resources :offers, only: %i[edit update destroy]
@@ -31,7 +36,6 @@ Rails.application.routes.draw do
   get "profiles/:id", to: "pages#profiles", as: 'profile'
   post 'profiles/:id', to: "pages#createprofile"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
 
   # Defines the root path route ("/")
   # root "articles#index"

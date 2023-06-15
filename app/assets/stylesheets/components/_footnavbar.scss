@@ -55,8 +55,27 @@
     cursor: pointer;
   }
 
+  .unread-messages-box {
+    position: absolute;
+    top: 4px;
+    right: 25%;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    background-color: grey;
+    color: white;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+
 }
 
+.active {
+  background-color: green;
+}
 
 .button-div .btn-transparent {
   font-size: 27px;
@@ -90,6 +109,17 @@
   .profile {
     width: 100% !important;
     height: 50px !important;
+  }
+
+  .blurring-bottomfilter{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    backdrop-filter: blur(2px);
+    z-index: -500;
+    top: 0;
+    left: 0;
+    bottom: 100%;
   }
 }
 

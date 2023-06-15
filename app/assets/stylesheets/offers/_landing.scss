@@ -1,0 +1,49 @@
+.landing-container {
+  display: block;
+
+}
+.landing-hidden {
+  display: none;
+}
+
+.landing-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #f6bd00 ;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .animation {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.landing-content {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 2010;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    color: azure;
+    font-weight: bolder;
+  }
+
+  .landing-icon {
+    width: fit-content;
+    height: auto;
+    font-size: 50px;
+  }
+}

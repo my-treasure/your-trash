@@ -8,28 +8,23 @@ export default class extends Controller {
 
   static values = {
     apiKey: String,
-    markers: Array
+    markers: Array,
+    currentUser: Object,
   }
 
   connect() {
     console.log("Hello from the map controller 🫣");
+    const userLocation = JSON.parse(this.data.get("userLocation"));
 
     mapboxgl.accessToken = this.apiKeyValue
     this.map = new mapboxgl.Map({
       container: this.element,
       style: "mapbox://styles/jlgrobe/cjnpu54rp0h222srxnr5awqoz",
-      // center: [-90.96, -0.47],
+      center: [userLocation.longitude, userLocation.latitude],
     });
     this.#addMarkersToMap();
-    this.#fitMapToMarkers();
-    this.map.resize();
-    // this.map.addControl(
-    //   new MapboxGeocoder({
-    //     accessToken: mapboxgl.accessToken,
-    //     mapboxgl: mapboxgl,
-    //   })
-    // );
-
+    this.#adduserMarkerToMap();
+    // this.#fitMapToMarkers();
   }
 
   #addMarkersToMap() {
@@ -46,11 +41,25 @@ export default class extends Controller {
     });
   }
 
+  #adduserMarkerToMap() {
+    const userLocation = JSON.parse(this.data.get("userLocation"));
+
+    if (userLocation) {
+      const userMarker = document.createElement("div");
+      userMarker.innerHTML = userLocation.usermarker_html;
+
+      new mapboxgl.Marker(userMarker)
+        .setLngLat([userLocation.longitude, userLocation.latitude])
+        .addTo(this.map);
+    }
+  }
+
+
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds();
     this.markersValue.forEach((marker) =>
       bounds.extend([marker.lng, marker.lat])
     );
-    this.map.fitBounds(bounds, { padding: 70, maxZoom: 10, duration: 0 });
+    this.map.fitBounds(bounds, { padding: 70, maxZoom: 16, duration: 0 });
   }
 }

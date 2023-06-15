@@ -1,6 +1,6 @@
 
 
-<div class="dashboard-title">
+<div class="dashboard-title-offer">
   <h3>My Offers</h3>
   <% @offers.each do |offer| %>
     <%= render "offercard", offer: offer %>
@@ -8,9 +8,12 @@
 </div>
 
 
-<div class="dashboard-title">
+<div class="dashboard-title-booking">
   <h3>My bookings</h3>
   <% @bookings.each do |booking| %>
     <%= render "bookingcard", booking: booking %>
   <% end %>
 </div>
+
+
+<div class = "blankline"> </div>
