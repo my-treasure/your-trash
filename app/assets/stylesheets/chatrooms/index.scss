@@ -1,0 +1,11 @@
+@import "chatroomcard";
+
+.chatroomgrid {
+  display: flex;
+  flex-direction: column;
+  padding: 8%;
+  justify-content: space-around;
+  grid-area: main;
+  background-color: $secondary_bg;
+}
+

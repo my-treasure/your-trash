@@ -6,7 +6,7 @@
 
 // External libraries
 @import "bootstrap";
-@import "bootstrap/scss/bootstrap";
+// @import "bootstrap/scss/bootstrap"; #duplicated from before
 @import "star-rating.js/dist/star-rating.css";
 
 // Your CSS partials
@@ -16,6 +16,7 @@
 @import "devise/users";
 @import "dashboard/index";
 @import "pages/profiles";
+@import "chatrooms/index";
 
 @import "bootstrap-icons/font/bootstrap-icons";
 @font-face {
