@@ -38,9 +38,7 @@ TOPIC = [
   "leftovers from a party",
   "conserves",
   "needs to go",
-  "food boxes",
-  "some food jars",
-  "some food cans",
+  "food boxes of vegetables",
   "some boxes of fruit",
 ]
 
