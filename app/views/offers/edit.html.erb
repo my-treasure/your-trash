@@ -12,28 +12,26 @@
         %>
         <%= f.input :address, input_html: {value: long_address_text(current_user)}, input_html: {type:"text", class:"form-control", placeholder:"Address"},
         label_html: {class: "d-none"} %>
-  <div class="pickupdetails">
-    <div class="pickuptime">
-      <p class="fw-bolder">Pickup Slots</p>
-        <%= f.input :pickupslots, legend: false, as: :check_boxes,  collection: ['12-15hrs', '15-18hrs', '18-20hrs'],
-        input_html: {class: "rounded-circle"}
-        %>
-    </div>
-    <div class="foodtype">
-      <p class="fw-bolder">Food Type</p>
-        <%= f.input :foodtype, as: :check_boxes, collection: ['Vegan', 'Vegetarian', 'Any'],
-        input_html: {class: "rounded-circle"}
-        %>
-    </div>
-    <div class="allergen">
-      <p class="fw-bolder">Allergen</p>
-        <%= f.input :allergen, as: :check_boxes, collection: ['gluten', 'nuts', 'fish', 'others'],
-        input_html: {class: "rounded-circle"}
-        %>
-    </div>
-  </div>
-        <%= f.input :images, as: :file, input_html: { multiple: true },
-        label_html: {class: "fw-bolder"} %>
+      <div class="pickupdetails">
+        <div class="pickuptime">
+          <p class="fw-bolder">Pickup Slots</p>
+            <%= f.input :pickupslots, legend: false, as: :check_boxes,  collection: ['12-15hrs', '15-18hrs', '18-20hrs'],
+            input_html: {class: "rounded-circle"}
+            %>
+        </div>
+        <div class="foodtype">
+          <p class="fw-bolder">Food Type</p>
+            <%= f.input :foodtype, as: :check_boxes, collection: ['Vegan', 'Vegetarian', 'Any'],
+            input_html: {class: "rounded-circle"}
+            %>
+        </div>
+        <div class="allergen">
+          <p class="fw-bolder">Allergen</p>
+            <%= f.input :allergen, as: :check_boxes, collection: ['gluten', 'nuts', 'fish', 'others'],
+            input_html: {class: "rounded-circle"}
+            %>
+        </div>
+      </div>
         <%= f.button :submit, class: "btn btn-primary mb-4" %>
     </div>
   <% end %>
