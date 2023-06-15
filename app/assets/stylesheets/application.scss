@@ -5,8 +5,8 @@
 @import "config/bootstrap_variables";
 
 // External libraries
-@import "bootstrap";
-// @import "bootstrap/scss/bootstrap"; #duplicated from before
+// @import "bootstrap";
+@import "bootstrap/scss/bootstrap"; //duplicated for icons
 @import "star-rating.js/dist/star-rating.css";
 
 // Your CSS partials

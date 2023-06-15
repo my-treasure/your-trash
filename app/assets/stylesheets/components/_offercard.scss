@@ -119,7 +119,7 @@
   }
 
   .padding-wrapper{
-    padding: 10px;
+    padding: 10px 10px 0px 5px;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -133,18 +133,47 @@
   }
 
   .placeholder-offer-card{
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      justify-content: start;
 
+    a {
+      margin: 3px;
+    }
     i{
       font-size: 15px;
       color: #4e4e4e;
       margin-right: 10px;
     }
 
-  }
-  .dashboard-img {
-      height: 100%;
+    .dashboard-img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+    .booked-received {
+      background-color: rgb(79, 203, 79);
+      font-style: bold;
+      color: white;
       width: 100%;
-      object-fit: cover;
-      border-radius: 8px;
+      border-radius: 7px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 5px;
+      align-items: center;
+
+      i{
+        color: white;
+      }
+
+      p{
+        color: white;
+        font-weight: 600;
+        margin-bottom: 0px;
+      };
+    }
   }
 }

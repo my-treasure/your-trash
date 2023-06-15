@@ -16,8 +16,13 @@
        <%= link_to edit_offer_path(offer.id) do %>
         <i class="fa-regular fa-eye"></i>
       <% end %>
-      <%= link_to chatroom_path(Chatroom.find_by(booking_id: Booking.find_by(offer_id: offer.id).id)) do %>
-         <i class="fa-regular fa-message"></i>
+      <% unless Booking.find_by(offer_id: offer.id).nil? %>
+        <%= link_to chatroom_path(Chatroom.find_by(booking_id: Booking.find_by(offer_id: offer.id).id)) do %>
+          <div class="booked-received">
+          <i class="fa-regular fa-message"></i>
+          <p>order booked ✅</p>
+          </div>
+        <% end  %>
       <% end %>
     </div>
 
@@ -31,7 +36,7 @@
       <%= cl_image_tag photo.key,
         :gravity => "center",
         :class => "dashboard-offercard_image", crop: :fill %>
-    <% end %>
+      <% end %>
     <% else %>
       <h5>PlaceHolder</h5>
     <% end %>
