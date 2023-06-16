@@ -1,6 +1,6 @@
 <div class="newoffer-container">
 <h1 class="new-title">Share your food 😄</h1>
-<div class="mt-3">
+<div class="mt-3" data-controller="preview">
   <%= simple_form_for(@offer) do |f| %>
     <div class = "container" class="form-inputs" >
       <div class="offer-title">
@@ -13,30 +13,34 @@
         %>
         <%= f.input :address, input_html: {type:"text", class:"form-control", value: long_address_text(current_user)},
         label_html: {class: "d-none"} %>
-  <div class="pickupdetails">
-    <div class="pickuptime">
-      <p class="fw-bolder">Pickup Slots</p>
-        <%= f.input :pickupslots, legend: false, as: :check_boxes,  collection: ['12-15hrs', '15-18hrs', '18-20hrs'],
-        input_html: {class: "rounded-circle"}
-        %>
-    </div>
-    <div class="foodtype">
-      <p class="fw-bolder">Food Type</p>
-        <%= f.input :foodtype, as: :check_boxes, collection: ['Vegan', 'Vegetarian', 'Any'],
-        input_html: {class: "rounded-circle"}
-        %>
-    </div>
-    <div class="allergen">
-      <p class="fw-bolder">Allergen</p>
-        <%= f.input :allergen, as: :check_boxes, collection: ['gluten', 'nuts', 'fish', 'others'],
-        input_html: {class: "rounded-circle"}
-        %>
-    </div>
-  </div>
-        <%= f.input :images, as: :file, input_html: { multiple: true },
-        label_html: {class: "fw-bolder"} %>
+      <div class="pickupdetails">
+        <div class="pickuptime">
+          <p class="fw-bolder">Pickup Slots</p>
+            <%= f.input :pickupslots, legend: false, as: :check_boxes,  collection: ['12-15hrs', '15-18hrs', '18-20hrs'],
+            input_html: {class: "rounded-circle"}
+            %>
+        </div>
+        <div class="foodtype">
+          <p class="fw-bolder">Food Type</p>
+            <%= f.input :foodtype, as: :check_boxes, collection: ['Vegan', 'Vegetarian', 'Any'],
+            input_html: {class: "rounded-circle"}
+            %>
+        </div>
+        <div class="allergen">
+          <p class="fw-bolder">Allergen</p>
+            <%= f.input :allergen, as: :check_boxes, collection: ['gluten', 'nuts', 'fish', 'others'],
+            input_html: {class: "rounded-circle"}
+            %>
+        </div>
+        <div>
+        <%= image_tag("preview.png", id: "preview-image", data: { target: "preview.output", src: "" }) %>
+        </div>
+        <div>
+        <%= f.input :images, as: :file, input_html: { multiple: true, data: { target: "preview.input", action: "change->preview#readURL" } },
+                     label_html: { class: "fw-bolder" } %>
         <%= f.button :submit, class: "btn btn-primary mb-4 btnrounded" %>
-    </div>
+        </div>
+      </div>
   <% end %>
 </div>
 </div>

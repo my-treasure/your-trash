@@ -22,6 +22,9 @@ application.register("hidelanding", HidelandingController)
 import MapController from "./map_controller"
 application.register("map", MapController)
 
+import PreviewController from "./preview_controller"
+application.register("preview", PreviewController)
+
 import ProfiledropdownController from "./profiledropdown_controller"
 application.register("profiledropdown", ProfiledropdownController)
 
