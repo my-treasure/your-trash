@@ -1,5 +1,5 @@
 class OffersController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :new, :show]
+  skip_before_action :authenticate_user!, only: [:index, :show, :landing]
 
   def new
     @offer = Offer.new
@@ -15,7 +15,7 @@ class OffersController < ApplicationController
       @offers = Offer.where("title ILIKE :query or body ILIKE :query", query: "%#{params[:query]}%") # where.not(id: completed_bookings )
     else
       # sort by created_at
-      @offers = Offer.all.order(created_at: :desc) 
+      @offers = Offer.all.order(created_at: :desc)
     end
 
     @markers = @offers.geocoded.map do |offer|

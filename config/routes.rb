@@ -1,27 +1,23 @@
 Rails.application.routes.draw do
-
   # get 'follows/destroy'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  devise_for :users
   root to: "offers#index"
-
   get "/map", to: "pages#map"
   get "/landing", to: "offers#landing"
+
+  devise_for :users
 
   resources :chatrooms, only: %i[index show new create] do
     resources :messages, only: :create
   end
 
   resources :bookings, except: %i[new create] do
-      resources :reviews
+    resources :reviews
   end
-
 
   resources :offers do
     resources :bookings, only: %i[new create]
   end
-
-
 
   resources :dashboard, only: [:index] do
     resources :offers, only: %i[edit update destroy]

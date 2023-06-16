@@ -13,18 +13,18 @@ export default class extends Controller {
 
   connect() {
     console.log("Hello from the map controller 🫣");
-    const userLocation = JSON.parse(this.data.get("userLocation"));
+    // const userLocation = JSON.parse(this.data.get("userLocation"));
 
     mapboxgl.accessToken = this.apiKeyValue
     this.map = new mapboxgl.Map({
       container: this.element,
       style: "mapbox://styles/jlgrobe/cjnpu54rp0h222srxnr5awqoz",
-      center: [userLocation.longitude, userLocation.latitude],
+      // center: [userLocation.longitude, userLocation.latitude],
       zoom: 12,
     });
     this.#addMarkersToMap();
     this.#adduserMarkerToMap();
-    // this.#fitMapToMarkers();
+    this.#fitMapToMarkers();
   }
 
   #addMarkersToMap() {
