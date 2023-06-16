@@ -1,7 +1,7 @@
 class ChatroomsController < ApplicationController
   def index
     # list chatrooms messages belonging to user
-    @chatrooms = Chatroom.where(booker_id: current_user.id).or(Chatroom.where(offerer_id: current_user.id))
+    @chatrooms = Chatroom.where(booker_id: current_user.id).or(Chatroom.where(offerer_id: current_user.id)).order(created_at: :desc)
   end
 
   def show
