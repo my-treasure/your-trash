@@ -31,16 +31,21 @@
 
     <div class="checked-booking">
     <h1> Come and pick me up! </h1>
+    <div style="border-radius:8px;background-color:#ebebeb;padding:5px;">
+    <p style="text-align:center;margin-bottom:0px;"><%= @offer.address %></p>
+    </div>
       <div class="more-infos">
         <div class="button-wrapper">
           <h6 class="fw-bold">Posted</h6>
-          <h6><%= time_ago_in_words(@offer.created_at) %> ago</h6>
+            <div>
+            <h6 style="text-align: center;"><%= time_ago_in_words(@offer.created_at) %> ago</h6>
+            </div>
           <i class="fa-regular fa-calendar-days"></i>
         </div>
 
         <div class="button-wrapper">
           <h6 class="fw-bold">Food Type</h6>
-          <h6><%= @offer.foodtype %></h6>
+          <h6><%= @offer.typeofoffer %></h6>
           <i class="fa-solid fa-leaf"></i>
         </div>
 
