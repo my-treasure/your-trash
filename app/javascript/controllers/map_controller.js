@@ -15,19 +15,23 @@ export default class extends Controller {
 
   connect() {
     console.log("Hello from the map controller 🫣");
-    // const userLocation = JSON.parse(this.data.get("userLocation"));
-    // console.log(userLocation)
-
     mapboxgl.accessToken = this.apiKeyValue
     this.map = new mapboxgl.Map({
       container: this.element,
       style: "mapbox://styles/jlgrobe/cjnpu54rp0h222srxnr5awqoz",
-      center: [13.3892, 52.5099],
-      zoom: 13,
+      // center: [-90.96, -0.47],
     });
     this.#addMarkersToMap();
+    this.#fitMapToMarkers();
     this.#adduserMarkerToMap();
-    // this.#fitMapToMarkers();
+
+
+    // this.map.addControl(
+    //   new MapboxGeocoder({
+    //     accessToken: mapboxgl.accessToken,
+    //     mapboxgl: mapboxgl,
+    //   })
+    // );
   }
 
   #addMarkersToMap() {
@@ -49,7 +53,7 @@ export default class extends Controller {
 
     if (userLocation2) {
       const userMarker = document.createElement("div");
-      userMarker.innerHTML = `<div class='usermarker'><i class="fa-solid fa-carrot"></i>${userLocation2.username}</div>`;
+      userMarker.innerHTML = `<div class='usermarker'><i class="fa-solid fa-carrot"></i></div>`;
       new mapboxgl.Marker(userMarker)
         .setLngLat([userLocation2.longitude, userLocation2.latitude])
         .addTo(this.map);
