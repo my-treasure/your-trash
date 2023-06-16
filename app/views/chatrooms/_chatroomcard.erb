@@ -10,22 +10,30 @@
     <% if chatroom.booker_id == current_user.id %>
       <%= user_avatar(User.find(chatroom.offerer_id)) %>
       <div>
-        <p>@<%= User.find(chatroom.offerer_id).username %></p>
+        <p style="font-weight: bold;">@<%= User.find(chatroom.offerer_id).username %></p>
+        <div class="newmessage">
         <p><%= Message.where(chatroom_id: chatroom.id).where(user_id: chatroom.offerer_id).where(read: false).count %> new</p>
+        </div>
       </div>
       <div style="flex-grow:2;">
         <p>last message: </p>
+        <div class="lastmessage">
         <p><%= Message.where(chatroom_id: chatroom.id).last&.content %></p>
+        </div>
       </div>
     <% else %>
       <%= user_avatar(User.find(chatroom.booker_id)) %>
       <div>
-        <p>@<%= User.find(chatroom.offerer_id).username %></p>
+        <p style="font-weight: bold;">@<%= User.find(chatroom.offerer_id).username %></p>
+        <div class="newmessage">
         <p><%= Message.where(chatroom_id: chatroom.id).where(user_id: chatroom.booker_id).where(read: false).count %> new</p>
+        </div>
       </div>
       <div style="flex-grow:2;">
         <p>last message: </p>
+        <div class="lastmessage">
         <p><%= Message.where(chatroom_id: chatroom.id).last&.content %></p>
+        </div>
       </div>
     <% end %>
     </div>

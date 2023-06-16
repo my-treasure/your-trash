@@ -13,6 +13,13 @@
     <% else %>
       <h5>PlaceHolder</h5>
     <% end %>
+        <div>
+          <% if offer.bookings.empty? %>
+          <span class = "offer-available"><i class="fas fa-check-circle"></i> Available</span>
+          <% else %>
+          <span class = "offer-reserved"><i class="fas fa-times-circle"></i> Reserved</span>
+          <% end %>
+        </div>
   </div>
 
 
@@ -21,13 +28,6 @@
   <div class= "info-container">
     <%# offer information %>
     <div class="card-title">
-        <div>
-          <% if offer.bookings.empty? %>
-          <span class = "offer-available"> Available <i class="fas fa-check-circle"></i> </span>
-          <% else %>
-          <span class = "offer-reserved"> Reserved <i class="fas fa-times-circle"></i> </span>
-          <% end %>
-        </div>
       <div>
         <strong><%= truncate(offer.title, length: 50) %></strong>
       </div>

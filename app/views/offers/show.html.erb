@@ -26,7 +26,7 @@
         <h6 class="text-title"> <%=@offer.title%> </h6>
 
       <div class="actionbuttons">
-        <i class="fa-solid fa-comment-medical"></i>
+        <i class="bi bi-bookmark-check"></i>
       </div>
     </div>
 
@@ -45,13 +45,15 @@
             <div class="more-infos">
               <div class="button-wrapper">
                 <h6 class="fw-bold">Posted</h6>
-                <h6><%= time_ago_in_words(@offer.created_at) %> ago</h6>
+                <div>
+                <h6 style="text-align: center;"><%= time_ago_in_words(@offer.created_at) %> ago</h6>
+                </div>
                 <i class="fa-regular fa-calendar-days"></i>
               </div>
 
               <div class="button-wrapper">
                 <h6 class="fw-bold">Food Type</h6>
-                <h6><%= @offer.foodtype %></h6>
+                <h6><%= @offer.typeofoffer %></h6>
                 <i class="fa-solid fa-leaf"></i>
               </div>
 
@@ -67,17 +69,19 @@
         <% end %>
       <% else %>
       <div class="checked-booking">
-          <h1> Your Order has been booked</h1>
+          <h1> This order has been booked</h1>
             <div class="more-infos">
               <div class="button-wrapper">
                 <h6 class="fw-bold">Posted</h6>
-                <h6><%= time_ago_in_words(@offer.created_at) %> ago</h6>
+                <div>
+                <h6 style="text-align: center;"><%= time_ago_in_words(@offer.created_at) %> ago</h6>
+                </div>
                 <i class="fa-regular fa-calendar-days"></i>
               </div>
 
               <div class="button-wrapper">
                 <h6 class="fw-bold">Food Type</h6>
-                <h6><%= @offer.foodtype %></h6>
+                <h6><%= @offer.typeofoffer %></h6>
                 <i class="fa-solid fa-leaf"></i>
               </div>
 

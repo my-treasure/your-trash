@@ -37,7 +37,7 @@
     flex-direction: column;
     justify-content: space-between;
     padding: 0.7rem;
-    line-height: 70%;
+    line-height: 100%;
   }
 
   .card-header {
@@ -65,13 +65,32 @@
 }
 
 .offer-reserved {
-  color: $red;
-  font-size: 0.6rem;
+    color: #3b3939;
+    font-size: 0.6rem;
+    font-weight: bold;
+    padding: 1px 6px 1px 4px;
+    border-radius: 9px;
+    background-color: #c6c4c4a3;
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    display: flex;
+    align-items: baseline;
+    gap: 3px;
 }
 
 .offer-available {
-  color: $green;
-  font-size: 0.6rem;
+    color: #f8f8f8;
+    font-size: 0.6rem;
+    font-weight: bold;
+    padding: 1px 6px 1px 4px;
+    border-radius: 9px;
+    background-color: #33f213a3;
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    display: flex;
+    align-items: baseline;
 }
 
 
