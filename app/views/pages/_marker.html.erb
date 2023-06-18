@@ -1,6 +1,8 @@
 <% if offer.images[0].present? %>
 <%= cl_image_tag offer.images[0].key,
         :gravity => "center",
+        :width => 50,
+        :height => 50,
         :class => "avatar-bordered",
         crop: :fit %>
 <% end %>

@@ -97,8 +97,10 @@
           <% if current_user && current_user.profile_picture.attached? %>
               <%= cl_image_tag current_user.profile_picture.key,
                 :gravity => "center",
+                :width => 50,
+                :height => 50,
                 :class => "avatar-bordered-profile",
-                crop: :fit %>
+                :crop => :fill %>
               <% else %>
                 <img src="https://res.cloudinary.com/dxdyu4tqu/image/upload/v1683908905/profile_pictures/photo-1583795128727-6ec3642408f8.jpg" alt="", class= "avatar-bordered-profile">
           <% end %>
