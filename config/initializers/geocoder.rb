@@ -1,4 +1,10 @@
 Geocoder.configure(
+
+  # Set custom User-Agent header from environment variable
+  :http_headers => { 'User-Agent' => ENV['USER_AGENT'] },
+
+  # Set custom Referer header from environment variable
+  :request_headers => { 'Referer' => ENV['REFERER'] }
   # Geocoding options
   # timeout: 3,                 # geocoding service timeout (secs)
   # lookup: :nominatim,         # name of geocoding service (symbol)
