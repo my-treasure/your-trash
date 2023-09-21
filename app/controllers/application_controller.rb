@@ -20,4 +20,7 @@ class ApplicationController < ActionController::Base
       "application"
     end
   end
+
+  puts "REDIS_URL: #{ENV['REDIS_URL']}"
+  puts "SCALINGO_REDIS_URL: #{ENV['SCALINGO_REDIS_URL']}"
 end
