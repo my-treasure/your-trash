@@ -11,7 +11,8 @@
     "bootstrap-icons": "^1.10.5",
     "star-rating.js": "^4.3.0",
     "webpack": "^5.83.1",
-    "webpack-cli": "^5.1.1"
+    "webpack-cli": "^5.1.1",
+    "yarn": "^1.22.19"
   },
   "scripts": {
     "build": "webpack --config webpack.config.js"
